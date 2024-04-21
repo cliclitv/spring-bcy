@@ -1,0 +1,7 @@
+# spring.application.name=bcy
+spring:
+    application:
+        name: 'bcy'
+
+server:
+    port: 8888
