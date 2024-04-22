@@ -12,7 +12,7 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public Long query(Long id){
+    public Long query(Long id) {
         return userDao.query(id);
     }
 
@@ -20,10 +20,10 @@ public class UserService {
 
         User dbUser = this.getUserByEmail(user.getEmail());
 
-        if(dbUser != null){
+        if (dbUser != null) {
             // 报错
         }
-        
+
         String salt = "clicli&bcy@123.";
         String pwd = user.getPwd();
 
@@ -31,13 +31,16 @@ public class UserService {
 
         user.setPwd(md5Pwd);
 
+        if (user.getSign() == null) {
+            user.setSign("这个人很懒，木有签名~");
+        }
+
         userDao.addUser(user);
 
-        
     }
 
-    public User getUserByEmail(String email){
+    public User getUserByEmail(String email) {
         return userDao.getUserByEmail(email);
     }
-    
+
 }
