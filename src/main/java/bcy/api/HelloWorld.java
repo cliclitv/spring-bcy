@@ -11,7 +11,8 @@ import bcy.service.UserService;
 public class HelloWorld {
     @Autowired
     private UserService userService;
-    @RequestMapping("/")
+
+    @RequestMapping("/query")
     public Long query(Long id){
         return userService.query(id);
     }

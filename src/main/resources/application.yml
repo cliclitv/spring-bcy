@@ -3,7 +3,7 @@ spring:
     application:
         name: 'bcy'
     datasource:
-        url: 'jdbc:mysql://localhost:3306/demo'
+        url: 'jdbc:mysql://localhost:3306/bcy'
         username: 'root'
         password: 'phpts'
         driver-class-name: 'com.mysql.cj.jdbc.Driver' 
