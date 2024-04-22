@@ -7,6 +7,9 @@ spring:
         username: 'root'
         password: 'phpts'
         driver-class-name: 'com.mysql.cj.jdbc.Driver' 
+
+mybatis:
+    mapper-locations: classpath:/mapper/*.xml
         
 
 server:
