@@ -2,6 +2,12 @@
 spring:
     application:
         name: 'bcy'
+    datasource:
+        url: 'jdbc:mysql://localhost:3306/demo'
+        username: 'root'
+        password: 'phpts'
+        driver-class-name: 'com.mysql.cj.jdbc.Driver' 
+        
 
 server:
     port: 8888
