@@ -5,4 +5,12 @@
     <select id="query" parameterType="java.lang.Long" resultType="java.lang.Long"> 
         select id from users where id = #{id}
     </select>
+    
+    <select id="getUserByEmail" parameterType="java.lang.String" resultType="bcy.dao.User"> 
+        select * from users where email = #{email}
+    </select>
+
+    <insert id="addUser" parameterType="bcy.dao.User" > 
+        insert into users (name, email, pwd, sign, level) values (#{name}, #{email}, #{pwd}, #{sign}, #{level})
+    </insert>
 </mapper>
