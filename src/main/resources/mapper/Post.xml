@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bcy.dao.PostDao">
+    
+
+    <select id="getPostById" parameterType="java.lang.Long" resultType="bcy.dao.Post"> 
+        select * from posts where id = #{id}
+    </select>
+
+    <insert id="addPost" parameterType="bcy.dao.Post" > 
+        insert into posts (title, content, status, sort, tag, uid, pid, createTime, updateTime) values (#{title}, #{content}, #{status}, #{sort}, #{tag}, #{uid}, #{pid}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="updatePost" parameterType="bcy.dao.Post" > 
+        update posts set title=#{title}, content=#{content}, status=#{status}, sort=#{sort}, tag=#{tag}, pid=#{pid}, updateTime=#{updateTime} where id = #{id}
+    </update>
+</mapper>
