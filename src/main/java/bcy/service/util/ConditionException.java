@@ -15,18 +15,6 @@ public class ConditionException extends RuntimeException {
     private static final Long servialVersionUID = 1L;
     private Integer code;
 
-    @ExceptionHandler(Exception.class)
-    @ResponseBody
-    public JsonResponse<String> CommonException(HttpServletRequest req, Exception e) {
-        String err = e.getMessage();
-        if (e instanceof ConditionException) {
-            Integer code = ((ConditionException) e).getCode();
-            return new JsonResponse<>(code, err);
-        } else {
-            return new JsonResponse<>(500, err);
-        }
-    }
-
     public ConditionException(Integer code, String name) {
         super(name);
         this.code = code;
@@ -37,6 +25,21 @@ public class ConditionException extends RuntimeException {
         super(name);
         code = 500;
 
+    }
+
+    public ConditionException() {
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public JsonResponse<String> CommonException(HttpServletRequest req, Exception e) {
+        String err = e.getMessage();
+        if (e instanceof ConditionException) {
+            Integer code = ((ConditionException) e).getCode();
+            return new JsonResponse<>(code, err);
+        } else {
+            return new JsonResponse<>(500, err);
+        }
     }
 
     public Integer getCode() {
