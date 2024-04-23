@@ -15,9 +15,8 @@ public class UserService {
     private UserDao userDao;
     private static String salt = "clicli&bcy@123.";
 
-    public Long query(Long id) {
-        return userDao.query(id);
-    }
+    @Autowired
+    private UserSupport userSupport;
 
     public void addUser(User user) {
 
@@ -59,15 +58,22 @@ public class UserService {
             throw new ConditionException("密码错误！");
         }
 
-        return TokenUtil.generateToken(dbUser.getId());
+        return TokenUtil.generateToken(dbUser.getId(), dbUser.getLevel());
     }
 
     public void updateUser(User user) {
+
+        Long currentId = userSupport.getCurrentUserId();
+        Integer currentLevel = userSupport.getCurrentUserLevel();
 
         User dbUser = this.getUserById(user.getId());
 
         if (dbUser == null) {
             throw new ConditionException("用户不存在");
+        }
+
+        if (dbUser.getId() != currentId && currentLevel < 4) { // 不是当前用户或管理
+            throw new ConditionException("没有权限");
         }
 
         String pwd = user.getPwd();
