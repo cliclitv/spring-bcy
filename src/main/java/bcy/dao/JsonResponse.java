@@ -13,7 +13,7 @@ public class JsonResponse<T> {
     public JsonResponse(T data) {
         this.data = data;
         msg = "成功啦";
-        code = 0;
+        code = 200;
     }
 
     public static JsonResponse<String> success() {
@@ -25,7 +25,7 @@ public class JsonResponse<T> {
     }
 
     public static JsonResponse<String> failed() {
-        return new JsonResponse<>(1, "失败了");
+        return new JsonResponse<>(500, "失败了");
     }
 
     public static JsonResponse<String> failed(Integer code, String msg) {

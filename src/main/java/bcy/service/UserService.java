@@ -42,7 +42,6 @@ public class UserService {
     }
 
     public String login(User user) {
-        String email = user.getEmail();
 
         User dbUser = this.getUserByEmail(user.getEmail());
 
@@ -60,8 +59,7 @@ public class UserService {
             throw new ConditionException("密码错误！");
         }
 
-        TokenUtil tokenUtil = new TokenUtil();
-        return tokenUtil.generateToken(dbUser.getId());
+        return TokenUtil.generateToken(dbUser.getId());
 
 
     }
