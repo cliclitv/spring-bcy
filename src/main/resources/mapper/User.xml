@@ -11,7 +11,7 @@
     </select>
 
     <select id="getUserById" parameterType="java.lang.Long" resultType="bcy.dao.User"> 
-        select * from users where email = #{email}
+        select * from users where id = #{id}
     </select>
 
     <insert id="addUser" parameterType="bcy.dao.User" > 

@@ -29,6 +29,8 @@ public class TokenUtil {
             DecodedJWT jwt = jwtVerifier.verify(token);
             return Long.valueOf(jwt.getClaim("uid").toString());
         } catch (TokenExpiredException e) {
+            throw new ConditionException(555, "token过期！");
+        } catch (Exception e) {
             throw new ConditionException(555, e.getMessage());
         }
     }

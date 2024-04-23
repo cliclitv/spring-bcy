@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @RestController
 public class UserApi {
     @Autowired
@@ -27,13 +26,12 @@ public class UserApi {
     }
 
     @GetMapping("/user")
-    public JsonResponse<User> getCurrentUser(@RequestParam String param) {
+    public JsonResponse<User> getCurrentUser() {
         Long uid = userSupport.getCurrentUserId();
         User user = userService.getUserById(uid);
         return new JsonResponse<>(user);
 
     }
-    
 
     @PostMapping("/register")
     public JsonResponse<String> addUser(@RequestBody User user) {
