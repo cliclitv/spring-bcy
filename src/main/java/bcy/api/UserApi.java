@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
 @RestController
 public class UserApi {
     @Autowired
@@ -28,12 +27,10 @@ public class UserApi {
         return userService.query(id);
     }
 
-    @GetMapping("/user")
-    public JsonResponse<User> getCurrentUser() {
-        Long uid = userSupport.getCurrentUserId();
-        User user = userService.getUserById(uid);
+    @GetMapping("/user/{id}")
+    public JsonResponse<User> getCurrentUser(@PathVariable String id) {
+        User user = userService.getUserById(Long.valueOf(id));
         return new JsonResponse<>(user);
-
     }
 
     @PostMapping("/register")
@@ -55,7 +52,7 @@ public class UserApi {
         user.setId(Long.valueOf(id));
 
         userService.updateUser(user);
-        
+
         return JsonResponse.success();
     }
 
