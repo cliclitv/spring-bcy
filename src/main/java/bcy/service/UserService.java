@@ -68,4 +68,8 @@ public class UserService {
         return userDao.getUserByEmail(email);
     }
 
+    public User getUserById(Long id) {
+        return userDao.getUserById(id);
+    }
+
 }

@@ -15,4 +15,6 @@ public class UserSupport {
         Long uid = TokenUtil.parseToken(token);
         return uid;
     }
+
+
 }
