@@ -20,10 +20,17 @@ public class UserApi {
         return userService.query(id);
     }
 
-    @PostMapping("/user")
+    @PostMapping("/register")
     public JsonResponse<String> addUser(@RequestBody User user) {
         userService.addUser(user);
         return JsonResponse.success();
+
+    }
+
+    @PostMapping("/login")
+    public JsonResponse<String> login(@RequestBody User user) {
+        String token = userService.login(user);
+        return new JsonResponse<>(token);
 
     }
 
