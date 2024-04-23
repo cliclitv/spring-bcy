@@ -15,6 +15,9 @@ public class UserApi {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserSupport userSupport;
+
     @RequestMapping("/query")
     public Long query(Long id) {
         return userService.query(id);
