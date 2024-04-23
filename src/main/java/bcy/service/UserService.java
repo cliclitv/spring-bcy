@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import bcy.dao.User;
 import bcy.dao.UserDao;
+import bcy.service.util.ConditionException;
 import bcy.service.util.MD5Util;
 
 @Service
@@ -21,7 +22,7 @@ public class UserService {
         User dbUser = this.getUserByEmail(user.getEmail());
 
         if (dbUser != null) {
-            // 报错
+            throw new ConditionException("邮箱已注册！");
         }
 
         String salt = "clicli&bcy@123.";
