@@ -4,10 +4,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface PostDao {
-    public User getPostById(Long id);
+    public Post getPostById(Long id);
 
-    public Integer addPost(User user);
+    public Integer addPost(Post post);
 
-    public Integer updatePost(User user);
+    public Integer updatePost(Post post);
 
 }
