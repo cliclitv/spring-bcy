@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ConditionException extends RuntimeException {
-    private static final Long servialVersionUID = 1L;
     private Integer code;
 
     public ConditionException(Integer code, String name) {
