@@ -12,14 +12,14 @@ import java.io.UnsupportedEncodingException;
  */
 public class MD5Util {
 
-	public static String sign(String content, String salt, String charset) {
+	public static String sign(String content, String salt) {
 		content = content + salt;
-		return DigestUtils.md5Hex(getContentBytes(content, charset));
+		return DigestUtils.md5Hex(getContentBytes(content, "UTF-8"));
 	}
 
-	public static boolean verify(String content, String sign, String salt, String charset) {
+	public static boolean verify(String content, String sign, String salt) {
 		content = content + salt;
-		String mysign = DigestUtils.md5Hex(getContentBytes(content, charset));
+		String mysign = DigestUtils.md5Hex(getContentBytes(content, "UTF-8"));
 		return mysign.equals(sign);
 	}
 

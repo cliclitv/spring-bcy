@@ -29,7 +29,7 @@ public class UserService {
 
         String pwd = user.getPwd();
 
-        String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt, "UTF-8"), salt, "UTF-8");
+        String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt), salt);
 
         user.setPwd(md5Pwd);
 
@@ -51,7 +51,7 @@ public class UserService {
 
         String pwd = user.getPwd();
 
-        String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt, "UTF-8"), salt, "UTF-8");
+        String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt), salt);
 
         String dbPwd = dbUser.getPwd();
 
@@ -73,6 +73,9 @@ public class UserService {
         String pwd = user.getPwd();
         if (pwd == null || pwd == "") { // 密码留空
             user.setPwd(dbUser.getPwd());
+        } else {
+            String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt), salt);
+            user.setPwd(md5Pwd);
         }
 
         userDao.updateUser(user);
