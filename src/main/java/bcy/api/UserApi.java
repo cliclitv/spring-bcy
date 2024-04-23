@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 public class UserApi {
@@ -45,6 +48,15 @@ public class UserApi {
         String token = userService.login(user);
         return new JsonResponse<>(token);
 
+    }
+
+    @PutMapping("/user/{id}")
+    public JsonResponse<String> putMethodName(@PathVariable String id, @RequestBody User user) {
+        user.setId(Long.valueOf(id));
+
+        userService.updateUser(user);
+        
+        return JsonResponse.success();
     }
 
 }

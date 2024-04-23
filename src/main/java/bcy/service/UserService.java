@@ -60,7 +60,22 @@ public class UserService {
         }
 
         return TokenUtil.generateToken(dbUser.getId());
+    }
 
+    public void updateUser(User user) {
+
+        User dbUser = this.getUserById(user.getId());
+
+        if (dbUser == null) {
+            throw new ConditionException("用户不存在");
+        }
+
+        String pwd = user.getPwd();
+        if (pwd == null || pwd == "") { // 密码留空
+            user.setPwd(dbUser.getPwd());
+        }
+
+        userDao.updateUser(user);
 
     }
 

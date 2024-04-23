@@ -11,5 +11,6 @@ public interface UserDao {
     public User getUserById(Long id);
 
     public Integer addUser(User user);
+    public Integer updateUser(User user);
 
 }

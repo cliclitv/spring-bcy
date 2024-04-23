@@ -17,4 +17,8 @@
     <insert id="addUser" parameterType="bcy.dao.User" > 
         insert into users (name, email, pwd, sign, level) values (#{name}, #{email}, #{pwd}, #{sign}, #{level})
     </insert>
+
+    <update id="updateUser" parameterType="bcy.dao.User" > 
+        update users set name=#{name}, email=#{email}, pwd=#{pwd}, sign=#{sign}, level=#{level} where id = #id
+    </update>
 </mapper>
