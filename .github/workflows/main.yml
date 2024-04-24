@@ -1,0 +1,53 @@
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          cd fre
+          yarn
+          yarn build
+          cd ../
+      
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.19.0'
+      - run: |
+          go version
+      - name: download go mod
+        run: |
+          go mod download
+      - name: go build
+        run: |
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o app
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "app"
+      - name: Build Image
+        env:
+          DockerUsername: ${{ secrets.DOCKER_USERNAME }}
+          DockerPassword: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker login -u $DockerUsername -p $DockerPassword
+          docker build -t yisar/clicli_api .
+          docker push yisar/clicli_api
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
+          port: ${{ secrets.DEPLOY_PORT }}
+          script: |
+            docker-compose pull 
+            docker-compose up -d 
