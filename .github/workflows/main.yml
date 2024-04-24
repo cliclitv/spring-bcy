@@ -7,9 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        env:
+          databaseurl: ${{ secrets.databaseurl }}
+          databaseuser: ${{ secrets.databaseuser }}
+          databasepwd: ${{ secrets.databasepwd }}
       - run: |
           ls
           node setup.js
+          cat ./src/main/resources/application.yml
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
