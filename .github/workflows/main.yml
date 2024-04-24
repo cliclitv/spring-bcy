@@ -13,7 +13,7 @@ jobs:
           databasepwd: ${{ secrets.DATABASEPWD }}
       - run: |
           ls
-          node setup.js
+          node setup.js $databasepwd
           cat ./src/main/resources/application.yml
       - name: Set up JDK
         uses: actions/setup-java@v2

@@ -19,9 +19,12 @@ mybatis:
 server:
     port: 8888
 `
+
+const argv = process.argv.slice(2)
+
 const databaseurl = process.env.databaseurl || 'jdbc:mysql://localhost:3306/bcy'
 const databaseuser = process.env.databaseuser || 'root'
-const databasepwd = process.env.databasepwd || 'phpts'
+const databasepwd = argv[0] || 'phpts'
 
 
 fs.writeFileSync('./src/main/resources/application.yml', yml(databaseurl, databaseuser, databasepwd), 'utf8');
