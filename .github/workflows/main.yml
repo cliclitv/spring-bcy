@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         env:
-          databaseurl: ${{ secrets.DATABASEURL }}
+          databaseurl: jdbc:mysql://localhost:3306/bcy
           databaseuser: root
           databasepwd: ${{ secrets.DATABASEPWD }}
       - run: |
