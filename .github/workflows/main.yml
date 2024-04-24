@@ -51,5 +51,7 @@ jobs:
           password: ${{ secrets.DEPLOY_PASSWORD }}
           port: 29073
           script: |
+            docker stop bcy
+            docker rm bcy
             docker pull yisar/bcy_api
-            docker run -p 8888:8888 -d yisar/bcy_api
+            docker run -p 8888:8888 -d --name bcy yisar/bcy_api
