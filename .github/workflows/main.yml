@@ -24,7 +24,8 @@ jobs:
           java --version
       - name: java package
         run: |
-          mvn -B package
+          mvn -tar package
+          cd target
           ls
       - name: Check file existence
         id: check_files
