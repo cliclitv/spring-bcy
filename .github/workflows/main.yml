@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           ls
-          node setup.js ${{ secrets.DATABASEPWD }}
+          node setup.js ${{ secrets.DATABASEURL }} ${{ secrets.DATABASEPWD }}
           cat ./src/main/resources/application.yml
       - name: Set up JDK
         uses: actions/setup-java@v2

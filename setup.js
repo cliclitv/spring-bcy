@@ -22,9 +22,9 @@ server:
 
 const argv = process.argv.slice(2)
 
-const databaseurl = process.env.databaseurl || 'jdbc:mysql://localhost:3306/bcy'
+const databaseurl = argv[0] || 'jdbc:mysql://localhost:3306/bcy'
 const databaseuser = process.env.databaseuser || 'root'
-const databasepwd = argv[0] || 'phpts'
+const databasepwd = argv[1] || 'phpts'
 
 
 fs.writeFileSync('./src/main/resources/application.yml', yml(databaseurl, databaseuser, databasepwd), 'utf8');
