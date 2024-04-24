@@ -7,13 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        env:
-          databaseurl: jdbc:mysql://localhost:3306/bcy
-          databaseuser: root
-          databasepwd: ${{ secrets.DATABASEPWD }}
       - run: |
           ls
-          node setup.js $databasepwd
+          node setup.js ${{ secrets.DATABASEPWD }}
           cat ./src/main/resources/application.yml
       - name: Set up JDK
         uses: actions/setup-java@v2
