@@ -16,7 +16,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - run: |
-          java version
+          java --version
       - name: java package
         run: |
           mvn -B package
