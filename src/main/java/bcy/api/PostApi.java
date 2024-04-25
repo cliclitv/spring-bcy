@@ -52,6 +52,15 @@ public class PostApi {
         if (pid == null) {
             pid = "0";
         }
+        if (page == null) {
+            page = "0";
+        }
+        if (size == null) {
+            size = "0";
+        }
+        if (tag == null){
+            tag = "";
+        }
         List<Post> list = postService.getPosts(status, sort, tag, Long.valueOf(uid), Long.valueOf(pid), search,
                 Long.valueOf(page), Long.valueOf(size));
         return new JsonResponse<>(list);
