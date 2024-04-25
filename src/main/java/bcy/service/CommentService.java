@@ -14,9 +14,6 @@ public class CommentService {
     @Autowired
     private CommentDao commentDao;
 
-    @Autowired
-    private UserSupport userSupport;
-
     public void addComment(Comment comment) {
 
         Comment dbComment = this.getCommentById(comment.getId());

@@ -23,7 +23,6 @@ public class ConditionException extends RuntimeException {
     public ConditionException(String name) {
         super(name);
         code = 500;
-
     }
 
     public ConditionException() {

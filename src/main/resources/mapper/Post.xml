@@ -16,10 +16,10 @@
         <if test="sort != null and sort != '' ">
             and sort=#{sort}
         </if>
-        <if test="tags != null and tags.size > 0 ">
+        <if test="tags != null and tags.length > 0">
             and (1=1
             <foreach collection="tags" item="tag" index="index">
-                or tag like %#{tag}%
+                or tag like CONCAT('%',#{tag},'%')
             </foreach>)
         </if>
         <if test="uid != null and uid != 0 ">
@@ -29,10 +29,9 @@
             and pid=#{pid}
         </if>
         <if test="search != null and search != '' ">
-            and (title like %#{search}% or content like %#{search}%)
+            and (title like CONCAT('%',#{search},'%') or content like CONCAT('%',#{search},'%'))
         </if>
-
-        ORDER BY time DESC limit #{start}, #{size}
+        order by createTime desc limit #{start}, #{size}
     </select>
 
     <insert id="addPost" parameterType="bcy.dao.Post" > 
