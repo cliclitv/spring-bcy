@@ -2,14 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="bcy.dao.PostDao">
-    
 
     <select id="getPostById" parameterType="java.lang.Long" resultType="bcy.dao.Post"> 
         select * from posts where id = #{id}
     </select>
 
-    <select id="getPosts" resultType="bcy.dao.Post"> 
-        select * from posts where 1=1
+    <select id="getPosts" resultType="bcy.dao.Post">
+
+        select posts.id,posts.title,posts.content,posts.status,posts.sort,posts.tag,posts.pid,posts.createTime,posts.updateTime,posts.uid,users.name,users.email 
+        from posts LEFT JOIN users ON posts.uid = users.id where 1=1
         <if test="status != null and status != '' ">
             and status=#{status}
         </if>
