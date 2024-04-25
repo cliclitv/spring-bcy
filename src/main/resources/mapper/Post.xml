@@ -8,6 +8,33 @@
         select * from posts where id = #{id}
     </select>
 
+    <select id="getPosts" resultType="bcy.dao.Post"> 
+        select * from posts where 1=1
+        <if test="status != null and status != '' ">
+            and status=#{status}
+        </if>
+        <if test="sort != null and sort != '' ">
+            and sort=#{sort}
+        </if>
+        <if test="tags != null and tags.size > 0 ">
+            and (1=1
+            <foreach collection="tags" item="tag" index="index">
+                or tag like %#{tag}%
+            </foreach>)
+        </if>
+        <if test="uid != null and uid != 0 ">
+            and uid=#{uid}
+        </if>
+        <if test="pid != null and pid != 0 ">
+            and pid=#{pid}
+        </if>
+        <if test="search != null and search != '' ">
+            and (title like %#{search}% or content like %#{search}%)
+        </if>
+
+        ORDER BY time DESC limit #{start}, #{size}
+    </select>
+
     <insert id="addPost" parameterType="bcy.dao.Post" > 
         insert into posts (title, content, status, sort, tag, uid, pid, createTime, updateTime) values (#{title}, #{content}, #{status}, #{sort}, #{tag}, #{uid}, #{pid}, #{createTime}, #{updateTime})
     </insert>

@@ -1,6 +1,7 @@
 package bcy.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,12 @@ public class PostService {
 
         postDao.updatePost(post);
 
+    }
+
+    public List<Post> getPosts(String status, String sort, String tag, Long uid, Long pid, String search, Long page, Long size){
+        String[] tags = tag.split(",");
+        Long start = size * (page -1);
+        return postDao.getPosts(status, sort, tags, uid, pid, search, start, size);
     }
 
     public Post getPostById(Long id) {

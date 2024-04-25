@@ -1,5 +1,7 @@
 package bcy.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class PostApi {
@@ -38,6 +41,13 @@ public class PostApi {
         postService.updatePost(post);
 
         return JsonResponse.success();
+    }
+
+    @GetMapping("/posts")
+    public JsonResponse<List<Post>> getPosts(String status, String sort, String tag, Long uid, Long pid,
+            String search, String page, String size) {
+        List<Post> list = postService.getPosts(status, sort, tag, Long.valueOf(uid), Long.valueOf(pid), search, Long.valueOf(page), Long.valueOf(size));
+        return new JsonResponse<>(list);
     }
 
 }
