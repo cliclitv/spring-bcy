@@ -93,6 +93,9 @@ public class UserService {
     }
 
     public User getUserById(Long id) {
+        if (id == 0) {
+            id = userSupport.getCurrentUserId();
+        }
         return userDao.getUserById(id);
     }
 

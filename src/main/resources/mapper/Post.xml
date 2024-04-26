@@ -8,7 +8,6 @@
     </select>
 
     <select id="getPosts" resultType="bcy.dao.Post">
-
         select posts.id,posts.title,posts.content,posts.status,posts.sort,posts.tag,posts.pid,posts.createTime,posts.updateTime,posts.uid,users.name,users.email 
         from posts LEFT JOIN users ON posts.uid = users.id where 1=1
         <if test="status != null and status != '' ">

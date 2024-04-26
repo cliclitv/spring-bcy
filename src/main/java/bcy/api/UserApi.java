@@ -13,13 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+
 @RestController
 public class UserApi {
     @Autowired
     private UserService userService;
+    
 
     @GetMapping("/user/{id}")
-    public JsonResponse<User> getCurrentUser(@PathVariable String id) {
+    public JsonResponse<User> getUser(@PathVariable String id) {
         User user = userService.getUserById(Long.valueOf(id));
         return new JsonResponse<>(user);
     }
