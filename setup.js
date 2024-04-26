@@ -15,9 +15,13 @@ spring:
 mybatis:
     mapper-locations: classpath:/mapper/*.xml
         
-
 server:
     port: 8888
+    servlet:
+        encoding:
+            charset: 'UTF-8'
+            enabled: true
+            force: true
 `
 
 const argv = process.argv.slice(2)
