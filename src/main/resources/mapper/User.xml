@@ -7,6 +7,10 @@
         select * from users where email = #{email}
     </select>
 
+    <select id="getUserByName" parameterType="java.lang.String" resultType="bcy.dao.User"> 
+        select * from users where name = #{name}
+    </select>
+
     <select id="getUserById" parameterType="java.lang.Long" resultType="bcy.dao.User"> 
         select * from users where id = #{id}
     </select>

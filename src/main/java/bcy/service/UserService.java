@@ -42,7 +42,9 @@ public class UserService {
 
     public String login(User user) {
 
-        User dbUser = this.getUserByEmail(user.getEmail());
+        String email = user.getEmail();
+
+        User dbUser = email.contains("@")?this.getUserByEmail(email):this.getUserByName(email);
 
         if (dbUser == null) {
             throw new ConditionException("当前邮箱不存在！");
@@ -90,6 +92,10 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return userDao.getUserByEmail(email);
+    }
+
+    public User getUserByName(String name){
+        return userDao.getUserByName(name);
     }
 
     public User getUserById(Long id) {
