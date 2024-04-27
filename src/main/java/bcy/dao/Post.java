@@ -14,6 +14,9 @@ public class Post {
     private Date updateTime;
     private Long uid;
     private String name;
+    private String email;
+
+
     public String getName() {
         return name;
     }
@@ -29,8 +32,6 @@ public class Post {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String email;
 
     public Long getId() {
         return id;
