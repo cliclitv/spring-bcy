@@ -13,16 +13,9 @@
     </insert>
 
     <select id="getComments" resultType="bcy.dao.Comment">
-        select comments.id,comments.content,comments.pid,comments.createTime,comments.uid,users.name,users.email 
-        from comments LEFT JOIN users ON comments.uid = users.id where 1=1
-        <if test="uid != null and uid != 0 ">
-            and uid=#{uid}
-        </if>
+        select * from comments LEFT JOIN users ON comments.uid = users.id where 1=1
         <if test="pid != null and pid != 0 ">
             and pid=#{pid}
-        </if>
-        <if test="cid != null and cid != 0 ">
-            and cid=#{cid}
         </if>
         order by createTime desc limit #{start}, #{size}
     </select>

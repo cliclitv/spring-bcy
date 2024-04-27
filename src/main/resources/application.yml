@@ -4,9 +4,9 @@ spring:
     application:
         name: 'bcy'
     datasource:
-        url: jdbc:mysql://localhost:3306/bcy
+        url: jdbc:mysql://107.182.184.150:3306/bcy
         username: root
-        password: phpts
+        password: changhao123
         driver-class-name: 'com.mysql.cj.jdbc.Driver'
 
 mybatis:
