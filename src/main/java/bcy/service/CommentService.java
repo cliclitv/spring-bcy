@@ -1,6 +1,7 @@
 package bcy.service;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,11 @@ public class CommentService {
 
     public Comment getCommentById(Long id) {
         return commentDao.getCommentById(id);
+    }
+
+    public List<Comment> getComments(Long pid, Long cid, Long page, Long size){
+        Long start = size * (page - 1);
+        return commentDao.getComments(pid, cid, start, size);
     }
 
 }
