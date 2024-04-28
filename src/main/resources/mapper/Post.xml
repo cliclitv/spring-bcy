@@ -17,7 +17,7 @@
             and sort=#{sort}
         </if>
         <if test="tags != null and tags.length > 0">
-            and (1=1
+            and (1=2
             <foreach collection="tags" item="tag" index="index">
                 or tag like CONCAT('%',#{tag},'%')
             </foreach>)
