@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bcy.dao.FollowDao">
+    <select id="getFollowByUId" parameterType="java.lang.Long" resultType="bcy.dao.Follow"> 
+        select * from follows where uid = #{uid}
+    </select>
+
+    <insert id="addFollow" parameterType="bcy.dao.Follow" > 
+        insert into follows (uid, tid, each) values (#{uid}, #{tid}, 0)
+    </insert>
+
+    <delete id="deleteFollow"  parameterType="java.lang.Long">
+        delete from follows where uid=#{uid}
+    </delete>
+
+    <update id="updateFollow">
+        update follows set each=#{each} where uid=#{uid}
+    </update>
+
+</mapper>
