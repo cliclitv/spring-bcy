@@ -32,19 +32,18 @@ public class FollowService {
         this.addFollow(follow.getUid(), follow.getTid(), 0);
     }
 
-    public Integer getFollowStatus(Follow follow) {
+    public String getFollowStatus(Follow follow) {
         Follow dbFollow = this.getFollowByUid(follow.getUid(), follow.getTid());
 
         if (dbFollow != null) {
-            // 互关
             if (dbFollow.getFriend() == 1) {
-                return 2;
+                return "互相关注"; // 互关
             } else {
-                return 1; // 已关注
+                return "已关注"; // 已关注
             }
 
         }
-        return 0;
+        return "关注";
     }
 
     public void addFollow(Long uid, Long tid, Integer friend) {

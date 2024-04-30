@@ -9,8 +9,6 @@ import bcy.dao.Follow;
 import bcy.dao.JsonResponse;
 import bcy.service.FollowService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 public class FollowApi {
@@ -24,8 +22,9 @@ public class FollowApi {
     }
 
     @GetMapping("/follow")
-    public String getFollowStatus(@RequestParam String param) {
-        return new String();
+    public JsonResponse<String> getFollowStatus(@RequestBody Follow follow) {
+        String status = followService.getFollowStatus(follow);
+        return new JsonResponse<>(status);
     }
-    
+
 }
