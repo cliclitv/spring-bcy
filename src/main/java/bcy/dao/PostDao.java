@@ -12,6 +12,7 @@ public interface PostDao {
 
     public Integer updatePost(Post post);
 
-    public List<Post> getPosts(String status, String sort, String[] tags, Long uid, Long pid, String search, Long start, Long size);
+    public List<Post> getPosts(String status, String sort, String[] tags, Long uid, Long pid, String search, Long start,
+            Long size, Long fid);
 
 }

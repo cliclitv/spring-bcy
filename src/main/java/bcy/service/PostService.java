@@ -58,13 +58,13 @@ public class PostService {
     }
 
     public List<Post> getPosts(String status, String sort, String tag, Long uid, Long pid, String search, Long page,
-            Long size) {
+            Long size,Long fid) {
         String[] tags = new String[0];
         if (tag != null) {
             tags = tag.split(",");
         }
         Long start = size * (page - 1);
-        return postDao.getPosts(status, sort, tags, uid, pid, search, start, size);
+        return postDao.getPosts(status, sort, tags, uid, pid, search, start, size, fid);
     }
 
     public Post getPostById(Long id) {
