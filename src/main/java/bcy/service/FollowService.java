@@ -11,10 +11,14 @@ public class FollowService {
 
     public void replaceFollow(Follow follow) {
         Follow dbFollow = this.getFollowByUid(follow.getUid());
+        Follow dbFollow2 = this.getFollowByUid(follow.getTid());
+
         if (dbFollow != null) {
             this.deleteFollow(follow); // 取关
+            if (dbFollow2 != null) { // 更新 each
+                this.updateFollow(follow.getTid(), 0);
+            }
         }
-        Follow dbFollow2 = this.getFollowByUid(follow.getTid());
         if (dbFollow2 != null) {
             // 互关
             this.eachFollow(follow);
@@ -29,12 +33,14 @@ public class FollowService {
 
     public void eachFollow(Follow follow) {
         followDao.addFollow(follow.getUid(), follow.getTid());
+        // 更新 each
         followDao.updateFollow(follow.getUid(), 1);
         followDao.updateFollow(follow.getTid(), 1);
     }
 
     public void deleteFollow(Follow follow) {
         followDao.deleteFollow(follow.getUid());
+
     }
 
     public void updateFollow(Long uid, Integer each) {
