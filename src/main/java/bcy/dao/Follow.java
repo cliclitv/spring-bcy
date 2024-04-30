@@ -1,5 +1,6 @@
 package bcy.dao;
 
+
 public class Follow {
     private Long uid;
     private Long tid;

@@ -2,24 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="bcy.dao.UserDao">
-    
-    <select id="getUserByEmail" parameterType="java.lang.String" resultType="bcy.dao.User"> 
-        select * from users where email = #{email}
-    </select>
 
-    <select id="getUserByName" parameterType="java.lang.String" resultType="bcy.dao.User"> 
-        select * from users where name = #{name}
-    </select>
+    <select id="getUserByEmail" parameterType="java.lang.String" resultType="bcy.dao.User"> select *
+        from users where email = #{email} </select>
 
-    <select id="getUserById" parameterType="java.lang.Long" resultType="bcy.dao.User"> 
-        select *,(select count(*) from follows where uid=#{id}) as following,(select count(*) from follows where tid=#{id}) as followers from users where id = #{id}
-    </select>
+    <select id="getUserByName" parameterType="java.lang.String" resultType="bcy.dao.User"> select *
+        from users where name = #{name} </select>
 
-    <insert id="addUser" parameterType="bcy.dao.User" > 
-        insert into users (name, email, pwd, sign, level) values (#{name}, #{email}, #{pwd}, #{sign}, #{level})
-    </insert>
+    <select id="getUserById" parameterType="java.lang.Long" resultType="bcy.dao.User"> select
+        users.id,users.name,users.email,users.sign,users.level,(select count(*) from follows where
+        uid=#{id}) as following,(select count(*) from follows where tid=#{id}) as followers from
+        users where id = #{id} </select>
 
-    <update id="updateUser" parameterType="bcy.dao.User" > 
-        update users set name=#{name}, email=#{email}, pwd=#{pwd}, sign=#{sign}, level=#{level} where id = #{id}
-    </update>
+    <insert id="addUser" parameterType="bcy.dao.User"> insert into users (name, email, pwd, sign,
+        level) values (#{name}, #{email}, #{pwd}, #{sign}, #{level}) </insert>
+
+    <update id="updateUser" parameterType="bcy.dao.User"> update users set name=#{name},
+        email=#{email}, pwd=#{pwd}, sign=#{sign}, level=#{level} where id = #{id} </update>
 </mapper>
