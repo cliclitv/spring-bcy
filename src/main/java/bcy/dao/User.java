@@ -8,6 +8,10 @@ public class User {
     private String sign;
     private Integer level;
 
+    // 粉丝数
+    private Long following;
+    private long followers;
+
     public Long getId() {
         return id;
     }
