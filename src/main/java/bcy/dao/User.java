@@ -12,6 +12,22 @@ public class User {
     private Long following;
     private long followers;
 
+    public Long getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Long following) {
+        this.following = following;
+    }
+
+    public long getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(long followers) {
+        this.followers = followers;
+    }
+
     public Long getId() {
         return id;
     }

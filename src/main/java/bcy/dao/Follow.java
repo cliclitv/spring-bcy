@@ -4,7 +4,7 @@ package bcy.dao;
 public class Follow {
     private Long uid;
     private Long tid;
-    private Long each;
+    private Integer friend;
 
     public Long getUid() {
         return uid;
@@ -22,12 +22,12 @@ public class Follow {
         this.tid = tid;
     }
 
-    public Long getEach() {
-        return each;
+    public Integer getFriend() {
+        return friend;
     }
 
-    public void setEach(Long each) {
-        this.each = each;
+    public void setFriend(Integer friend) {
+        this.friend = friend;
     }
 
 }

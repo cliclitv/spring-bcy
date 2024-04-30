@@ -12,31 +12,32 @@ public class FollowService {
     private FollowDao followDao;
 
     public void replaceFollow(Follow follow) {
-        Follow dbFollow = this.getFollowByUid(follow.getUid());
-        Follow dbFollow2 = this.getFollowByUid(follow.getTid());
+        Follow dbFollow = this.getFollowByUid(follow.getUid(),follow.getTid());
+        Follow dbFollow2 = this.getFollowByUid(follow.getTid(),follow.getUid());
 
         if (dbFollow != null) {
             this.deleteFollow(follow); // 取关
-            if (dbFollow2 != null) { // 更新 each
+            if (dbFollow2 != null) { // 更新 friend
                 this.updateFollow(follow.getTid(), 0);
             }
+            return;
         }
         if (dbFollow2 != null) {
             // 互关
-            this.eachFollow(follow);
+            this.friendFollow(follow);
+            return;
         }
         // 普通关注
         this.addFollow(follow);
     }
 
     public void addFollow(Follow follow) {
-        followDao.addFollow(follow.getUid(), follow.getTid());
+        followDao.addFollow(follow.getUid(), follow.getTid(), 0);
     }
 
-    public void eachFollow(Follow follow) {
-        followDao.addFollow(follow.getUid(), follow.getTid());
-        // 更新 each
-        followDao.updateFollow(follow.getUid(), 1);
+    public void friendFollow(Follow follow) {
+        followDao.addFollow(follow.getUid(), follow.getTid(), 1);
+        // 更新 friend
         followDao.updateFollow(follow.getTid(), 1);
     }
 
@@ -45,11 +46,11 @@ public class FollowService {
 
     }
 
-    public void updateFollow(Long uid, Integer each) {
-        followDao.updateFollow(uid, each);
+    public void updateFollow(Long uid, Integer friend) {
+        followDao.updateFollow(uid, friend);
     }
 
-    public Follow getFollowByUid(Long uid) {
-        return followDao.getFollowByUid(uid);
+    public Follow getFollowByUid(Long uid, Long tid) {
+        return followDao.getFollowByUid(uid, tid);
     }
 }

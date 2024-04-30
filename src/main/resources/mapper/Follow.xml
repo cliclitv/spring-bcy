@@ -3,11 +3,11 @@
 
 <mapper namespace="bcy.dao.FollowDao">
     <select id="getFollowByUid" parameterType="java.lang.Long" resultType="bcy.dao.Follow"> 
-        select * from follows where uid = #{uid}
+        select * from follows where uid = #{uid} and tid = #{tid}
     </select>
 
     <insert id="addFollow" parameterType="bcy.dao.Follow" > 
-        insert into follows (uid, tid, each) values (#{uid}, #{tid}, 0)
+        insert into follows (uid, tid, friend) values (#{uid}, #{tid}, #{friend})
     </insert>
 
     <delete id="deleteFollow"  parameterType="java.lang.Long">
@@ -15,7 +15,7 @@
     </delete>
 
     <update id="updateFollow">
-        update follows set each=#{each} where uid=#{uid}
+        update follows set friend=#{friend} where uid=#{uid}
     </update>
 
 </mapper>
