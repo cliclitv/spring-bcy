@@ -11,6 +11,15 @@ public class User {
     // 粉丝数
     private Long following;
     private long followers;
+    private Long postcount;
+
+    public Long getPostcount() {
+        return postcount;
+    }
+
+    public void setPostcount(Long postcount) {
+        this.postcount = postcount;
+    }
 
     public Long getFollowing() {
         return following;

@@ -12,7 +12,7 @@
     <select id="getUserById" parameterType="java.lang.Long" resultType="bcy.dao.User"> select
         users.id,users.name,users.pwd,users.email,users.sign,users.level,(select count(*) from
         follows where uid=#{id}) as following,(select count(*) from follows where tid=#{id}) as
-        followers,(select count(*) from posts where uid=#{id}) as postCount from users where id =
+        followers,(select count(*) from posts where uid=#{id}) as postcount from users where id =
         #{id} </select>
 
     <insert id="addUser" parameterType="bcy.dao.User"> insert into users (name, email, pwd, sign,
