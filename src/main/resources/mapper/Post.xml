@@ -26,7 +26,7 @@
             and uid=#{uid}
         </if>
         <if test="fid != null and fid != 0 ">
-            and uid in (SELECT * FROM follows WHERE uid=#{fid})
+            and uid in (SELECT uid FROM follows WHERE uid=#{fid})
         </if>
         <if test="pid != null and pid != 0 ">
             and pid=#{pid}
