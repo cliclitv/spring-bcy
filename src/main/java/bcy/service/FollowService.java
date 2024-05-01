@@ -32,8 +32,8 @@ public class FollowService {
         this.addFollow(follow.getUid(), follow.getTid(), 0);
     }
 
-    public String getFollowStatus(Follow follow) {
-        Follow dbFollow = this.getFollowByUid(follow.getUid(), follow.getTid());
+    public String getFollowStatus(Long uid, Long tid) {
+        Follow dbFollow = this.getFollowByUid(uid, tid);
 
         if (dbFollow != null) {
             if (dbFollow.getFriend() == 1) {
@@ -41,7 +41,6 @@ public class FollowService {
             } else {
                 return "已关注"; // 已关注
             }
-
         }
         return "关注";
     }

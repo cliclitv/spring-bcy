@@ -22,8 +22,14 @@ public class FollowApi {
     }
 
     @GetMapping("/follow")
-    public JsonResponse<String> getFollowStatus(@RequestBody Follow follow) {
-        String status = followService.getFollowStatus(follow);
+    public JsonResponse<String> getFollowStatus(String uid, String tid) {
+        if(uid==null){
+            uid="0";
+        }
+        if(tid==null){
+            tid="0";
+        }
+        String status = followService.getFollowStatus(Long.valueOf(uid), Long.valueOf(tid));
         return new JsonResponse<>(status);
     }
 
