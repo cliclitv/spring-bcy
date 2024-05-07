@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="bcy.dao.FollowDao">
-    <select id="getFollowByUid" parameterType="java.lang.Long" resultType="bcy.dao.Follow"> 
+    <select id="getFollow" parameterType="java.lang.Long" resultType="bcy.dao.Follow"> 
         select * from follows where uid = #{uid} and tid = #{tid} and type='follow'
     </select>
 
-    <select id="getCollectByUid" parameterType="java.lang.Long" resultType="bcy.dao.Follow"> 
+    <select id="getCollect" parameterType="java.lang.Long" resultType="bcy.dao.Follow"> 
         select * from follows where uid = #{uid} and tid = #{tid} and type='collect'
     </select>
 

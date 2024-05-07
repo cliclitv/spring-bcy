@@ -47,7 +47,7 @@ public class FollowApi {
         if(tid==null){
             tid="0";
         }
-        String status = followService.getFollowStatus(Long.valueOf(uid), Long.valueOf(tid));
+        String status = followService.getCollectStatus(Long.valueOf(uid), Long.valueOf(tid));
         return new JsonResponse<>(status);
     }
 
