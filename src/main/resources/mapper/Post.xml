@@ -11,7 +11,7 @@
     <select id="getPosts" resultType="bcy.dao.Post">
         select posts.id,posts.title,posts.content,posts.tag,posts.pid,posts.createTime,posts.updateTime,posts.pv,posts.uid,users.name,users.email,(select count(*) from
         follows where tid=posts.id and type="collect") as collects
-        from posts LEFT JOIN users ON posts.uid = users.id where title is not "删除"
+        from posts LEFT JOIN users ON posts.uid = users.id where title != "删除"
         <if test="tags != null and tags.length > 0">
             and (1=2
             <foreach collection="tags" item="tag" index="index">
