@@ -9,15 +9,9 @@
     </select>
 
     <select id="getPosts" resultType="bcy.dao.Post">
-        select posts.id,posts.title,posts.content,posts.status,posts.sort,posts.tag,posts.pid,posts.createTime,posts.updateTime,posts.pv,posts.uid,users.name,users.email,(select count(*) from
+        select posts.id,posts.title,posts.content,posts.tag,posts.pid,posts.createTime,posts.updateTime,posts.pv,posts.uid,users.name,users.email,(select count(*) from
         follows where tid=posts.id and type="collect") as collects
-        from posts LEFT JOIN users ON posts.uid = users.id where 1=1
-        <if test="status != null and status != '' ">
-            and status=#{status}
-        </if>
-        <if test="sort != null and sort != '' ">
-            and sort=#{sort}
-        </if>
+        from posts LEFT JOIN users ON posts.uid = users.id where title is not "删除"
         <if test="tags != null and tags.length > 0">
             and (1=2
             <foreach collection="tags" item="tag" index="index">
@@ -40,11 +34,11 @@
     </select>
 
     <insert id="addPost" parameterType="bcy.dao.Post" > 
-        insert into posts (title, content, status, sort, tag, uid, pid, createTime, updateTime,pv) values (#{title}, #{content}, #{status}, #{sort}, #{tag}, #{uid}, #{pid}, #{createTime}, #{updateTime},0)
+        insert into posts (title, content, tag, uid, pid, createTime, updateTime,pv) values (#{title}, #{content}, #{tag}, #{uid}, #{pid}, #{createTime}, #{updateTime},0)
     </insert>
 
     <update id="updatePost" parameterType="bcy.dao.Post" > 
-        update posts set title=#{title}, content=#{content}, status=#{status}, sort=#{sort}, tag=#{tag}, pid=#{pid}, updateTime=#{updateTime} where id = #{id}
+        update posts set title=#{title}, content=#{content}, tag=#{tag}, pid=#{pid}, updateTime=#{updateTime} where id = #{id}
     </update>
 
     <update id="replacePv">

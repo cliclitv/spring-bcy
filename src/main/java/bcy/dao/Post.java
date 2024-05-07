@@ -6,8 +6,6 @@ public class Post {
     private Long id;
     private String title;
     private String content;
-    private String status;
-    private String sort;
     private String tag;
     private Long pid;
     private Date createTime;
@@ -72,22 +70,6 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getSort() {
-        return sort;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
     }
 
     public String getTag() {
