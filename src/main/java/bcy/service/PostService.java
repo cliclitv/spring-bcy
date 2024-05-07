@@ -58,7 +58,7 @@ public class PostService {
     }
 
     public List<Post> getPosts(String status, String sort, String tag, Long uid, Long pid, String search, Long page,
-            Long size,Long fid) {
+            Long size, Long fid) {
         String[] tags = new String[0];
         if (tag != null) {
             tags = tag.split(",");
@@ -71,8 +71,11 @@ public class PostService {
         return postDao.getPostById(id);
     }
 
-    public Integer replacePv(Long pid, Long pv) {
-        return postDao.replacePv(pid,pv);
+    public Long replacePv(Long pid) {
+        Post dbPost = this.getPostById(pid);
+        Long pv = dbPost.getPv()+1;
+        postDao.replacePv(pid,pv);
+        return pv;
     }
 
 }

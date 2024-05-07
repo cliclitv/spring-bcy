@@ -27,9 +27,9 @@ public class PostApi {
     }
 
     @GetMapping("/pv/{pid}")
-    public JsonResponse<Post> replacePv(@PathVariable String pid) {
-        Post post = postService.replacePv(Long.valueOf(pid));
-        return new JsonResponse<>(post);
+    public JsonResponse<Long> replacePv(@PathVariable String pid) {
+        Long pv = postService.replacePv(Long.valueOf(pid));
+        return new JsonResponse<>(pv);
     }
 
     @PostMapping("/post")
