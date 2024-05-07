@@ -1,10 +1,18 @@
 package bcy.dao;
 
-
 public class Follow {
     private Long uid;
     private Long tid;
+    private String type;
     private Integer friend;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Long getUid() {
         return uid;

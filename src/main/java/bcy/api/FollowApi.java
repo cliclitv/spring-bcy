@@ -33,4 +33,22 @@ public class FollowApi {
         return new JsonResponse<>(status);
     }
 
+    @PostMapping("/collect")
+    public JsonResponse<String> replaceCollect(@RequestBody Follow follow) {
+        followService.replaceFollow(follow);
+        return JsonResponse.success();
+    }
+
+    @GetMapping("/collect")
+    public JsonResponse<String> getCollectStatus(String uid, String tid) {
+        if(uid==null){
+            uid="0";
+        }
+        if(tid==null){
+            tid="0";
+        }
+        String status = followService.getFollowStatus(Long.valueOf(uid), Long.valueOf(tid));
+        return new JsonResponse<>(status);
+    }
+
 }
