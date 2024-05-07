@@ -15,7 +15,16 @@ public class Post {
     private Long uid;
     private String name;
     private String email;
+    private Integer collects;
 
+
+    public Integer getCollects() {
+        return collects;
+    }
+
+    public void setCollects(Integer collects) {
+        this.collects = collects;
+    }
 
     public String getName() {
         return name;
