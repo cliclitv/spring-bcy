@@ -35,7 +35,7 @@ public class FollowApi {
 
     @PostMapping("/collect")
     public JsonResponse<String> replaceCollect(@RequestBody Follow follow) {
-        followService.replaceFollow(follow);
+        followService.replaceCollect(follow);
         return JsonResponse.success();
     }
 
