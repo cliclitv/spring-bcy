@@ -71,4 +71,8 @@ public class PostService {
         return postDao.getPostById(id);
     }
 
+    public Integer replacePv(Long pid, Long pv) {
+        return postDao.replacePv(pid,pv);
+    }
+
 }

@@ -16,7 +16,15 @@ public class Post {
     private String name;
     private String email;
     private Integer collects;
+    private Long pv;
 
+    public Long getPv() {
+        return pv;
+    }
+
+    public void setPv(Long pv) {
+        this.pv = pv;
+    }
 
     public Integer getCollects() {
         return collects;

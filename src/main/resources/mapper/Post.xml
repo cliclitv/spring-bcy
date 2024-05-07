@@ -40,10 +40,14 @@
     </select>
 
     <insert id="addPost" parameterType="bcy.dao.Post" > 
-        insert into posts (title, content, status, sort, tag, uid, pid, createTime, updateTime) values (#{title}, #{content}, #{status}, #{sort}, #{tag}, #{uid}, #{pid}, #{createTime}, #{updateTime})
+        insert into posts (title, content, status, sort, tag, uid, pid, createTime, updateTime,pv) values (#{title}, #{content}, #{status}, #{sort}, #{tag}, #{uid}, #{pid}, #{createTime}, #{updateTime},0)
     </insert>
 
     <update id="updatePost" parameterType="bcy.dao.Post" > 
         update posts set title=#{title}, content=#{content}, status=#{status}, sort=#{sort}, tag=#{tag}, pid=#{pid}, updateTime=#{updateTime} where id = #{id}
+    </update>
+
+    <update id="replacePv">
+        update posts set pv=#{pv} where id = #{pid}
     </update>
 </mapper>

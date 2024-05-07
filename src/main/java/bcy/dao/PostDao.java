@@ -12,6 +12,8 @@ public interface PostDao {
 
     public Integer updatePost(Post post);
 
+    public Integer replacePv(Long pid, Long pv);
+
     public List<Post> getPosts(String status, String sort, String[] tags, Long uid, Long pid, String search, Long start,
             Long size, Long fid);
 
