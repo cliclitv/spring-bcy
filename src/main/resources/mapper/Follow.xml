@@ -14,7 +14,7 @@
         insert into follows (uid,type, tid, friend) values (#{uid},#{type}, #{tid}, #{friend})
     </insert>
 
-    <delete id="deleteFollow"  parameterType="java.lang.Long">
+    <delete id="deleteFollow"  parameterType="bcy.dao.Follow">
         delete from follows where uid=#{uid} and tid=#{tid} and type=#{type}
     </delete>
 

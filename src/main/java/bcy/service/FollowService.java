@@ -39,7 +39,6 @@ public class FollowService {
             this.deleteFollow(follow.getUid(), "collect", follow.getTid()); // 取消收藏
             return;
         }
-        // 普通关注
         this.addFollow(follow.getUid(), "collect", follow.getTid(), 0);
     }
 
