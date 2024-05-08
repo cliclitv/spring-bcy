@@ -11,7 +11,7 @@ public class FollowService {
     @Autowired
     private FollowDao followDao;
 
-    public void replaceFollow(Follow follow) {
+    public String replaceFollow(Follow follow) {
         Follow dbFollow = this.getFollowByUid(follow.getUid(), follow.getTid());
         Follow dbFollow2 = this.getFollowByUid(follow.getTid(), follow.getUid());
 
@@ -20,26 +20,28 @@ public class FollowService {
             if (dbFollow2 != null) { // 更新 friend
                 this.updateFollow(follow.getTid(), follow.getTid(), 0);
             }
-            return;
+            return this.getFollowStatus(follow.getUid(), follow.getTid());
         }
         if (dbFollow2 != null) {
             // 互关
             this.addFollow(follow.getUid(), "follow", follow.getTid(), 1);
             this.updateFollow(follow.getTid(), follow.getTid(), 1);
-            return;
+            return this.getFollowStatus(follow.getUid(), follow.getTid());
         }
         // 普通关注
         this.addFollow(follow.getUid(), "follow", follow.getTid(), 0);
+        return this.getFollowStatus(follow.getUid(), follow.getTid());
     }
 
-    public void replaceCollect(Follow follow) {
+    public String replaceCollect(Follow follow) {
         Follow dbCollect = this.getCollectByUid(follow.getUid(), follow.getTid());
 
         if (dbCollect != null) {
             this.deleteFollow(follow.getUid(), "collect", follow.getTid()); // 取消收藏
-            return;
+            return this.getCollectStatus(follow.getUid(), follow.getTid());
         }
         this.addFollow(follow.getUid(), "collect", follow.getTid(), 0);
+        return this.getCollectStatus(follow.getUid(), follow.getTid());
     }
 
     public String getFollowStatus(Long uid, Long tid) {

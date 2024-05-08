@@ -17,8 +17,8 @@ public class FollowApi {
 
     @PostMapping("/follow")
     public JsonResponse<String> replaceFollow(@RequestBody Follow follow) {
-        followService.replaceFollow(follow);
-        return JsonResponse.success();
+        String status = followService.replaceFollow(follow);
+        return new JsonResponse<>(status);
     }
 
     @GetMapping("/follow")
@@ -35,8 +35,8 @@ public class FollowApi {
 
     @PostMapping("/collect")
     public JsonResponse<String> replaceCollect(@RequestBody Follow follow) {
-        followService.replaceCollect(follow);
-        return JsonResponse.success();
+        String status = followService.replaceCollect(follow);
+        return new JsonResponse<>(status);
     }
 
     @GetMapping("/collect")
