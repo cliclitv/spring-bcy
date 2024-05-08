@@ -5,7 +5,7 @@
 
     <select id="getNotices" resultType="bcy.dao.Notice"> select
         *,users.name,users.email from notices LEFT
-        JOIN users ON notices.uid = users.id where tid=#{tid} order by id desc limit 0,20 </select>
+        JOIN users ON notices.uid = users.id where tid=#{tid} order by notices.id desc limit 0,20 </select>
 
     <insert id="addNotice" parameterType="bcy.dao.Notice"> insert into notices (uid,tid, action, source) values (#{uid},#{tid}, #{action}, #{source}) </insert>
 </mapper>
