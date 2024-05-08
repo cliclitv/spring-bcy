@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import bcy.dao.JsonResponse;
 import bcy.dao.Notice;
-import bcy.dao.Post;
 import bcy.service.NoticeService;
 
 public class NoticeApi {
@@ -22,8 +21,8 @@ public class NoticeApi {
         return new JsonResponse<>(list);
     }
 
-    @PostMapping("/post")
-    public JsonResponse<String> addPost(@RequestBody Notice notice) {
+    @PostMapping("/notice")
+    public JsonResponse<String> addNotice(@RequestBody Notice notice) {
         noticeService.addNotice(notice);
         return JsonResponse.success();
 

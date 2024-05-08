@@ -15,7 +15,7 @@
     </insert>
 
     <delete id="deleteFollow"  parameterType="java.lang.Long">
-        delete from follows where uid=#{uid} and tid=#{tid} type=#{type}
+        delete from follows where uid=#{uid} and tid=#{tid} and type=#{type}
     </delete>
 
     <update id="updateFollow">
