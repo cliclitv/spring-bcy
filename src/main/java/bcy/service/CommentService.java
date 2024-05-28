@@ -1,7 +1,10 @@
 package bcy.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +38,29 @@ public class CommentService {
         return commentDao.getCommentById(id);
     }
 
-    public List<Comment> getComments(Long pid, Long cid, Long page, Long size){
+    public List<Comment> getComments(Long pid, Long cid, Long page, Long size) {
         Long start = size * (page - 1);
-        return commentDao.getComments(pid, cid, start, size);
+        List<Comment> comments = commentDao.getComments(pid, cid, start, size);
+        List<Comment> list = new ArrayList<>();
+        Map<Long, Comment> commentMap = new HashMap<>();
+
+        for (Comment comment : comments) {
+            Long parentid = comment.getCid();
+            Long id = comment.getId();
+            if (parentid == 0) {
+                list.add(comment);
+            }
+            commentMap.put(id, comment);
+        }
+        for (Comment comment : comments) {
+            Long parentid = comment.getCid();
+
+            if (parentid != 0) {
+                Comment parent = commentMap.get(parentid);
+                parent.getReplies().add(comment);
+            }
+        }
+        return list;
     }
 
 }

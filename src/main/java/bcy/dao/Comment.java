@@ -1,6 +1,8 @@
 package bcy.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Comment {
     private Long id;
@@ -11,6 +13,16 @@ public class Comment {
     private Date createTime;
     private String name;
     private String email;
+    private List<Comment> replies = new ArrayList<>();
+
+
+    public List<Comment> getReplies() {
+        return replies;
+    }
+
+    public void setReplies(List<Comment> replies) {
+        this.replies = replies;
+    }
 
     public String getName() {
         return name;
