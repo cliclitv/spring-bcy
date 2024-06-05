@@ -15,6 +15,15 @@ public class Post {
     private String email;
     private Integer collects;
     private Long pv;
+    private Long cv;
+
+    public Long getCv() {
+        return cv;
+    }
+
+    public void setCv(Long cv) {
+        this.cv = cv;
+    }
 
     public Long getPv() {
         return pv;
