@@ -9,7 +9,7 @@
     </select>
 
     <select id="getPosts" resultType="bcy.dao.Post">
-        select posts.id,posts.title,posts.content,posts.tag,posts.pid,posts.createTime,posts.updateTime,posts.pv,posts.uid,users.name,users.email,(select count(*) from
+        select posts.id,posts.title,posts.content,posts.tag,posts.createTime,posts.updateTime,posts.pv,posts.uid,users.name,users.email,(select count(*) from
         follows where tid=posts.id and type="collect") as collects,(select count(*) from
         comments where pid=posts.id) as cv
         from posts LEFT JOIN users ON posts.uid = users.id where title != "删除"

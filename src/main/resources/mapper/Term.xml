@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="bcy.dao.TagDao">
-    <select id="getCollections" resultType="bcy.dao.Tag"> select *,users.name,users.email from
+<mapper namespace="bcy.dao.TermDao">
+    <select id="getCollections" resultType="bcy.dao.Term"> select *,users.name,users.email from
         terms LEFT JOIN users ON terms.pid = users.id where type = 0 and pid=#{uid} order by terms.id desc
         limit 0,20 </select>
-    <insert id="addCollection" parameterType="bcy.dao.Tag"> insert into terms (title,pid, type) values (#{title},#{uid}, #{type}) </insert>
+    <insert id="addCollection" parameterType="bcy.dao.Term"> insert into terms (title,pid, type) values (#{title},#{uid}, #{type}) </insert>
 </mapper>

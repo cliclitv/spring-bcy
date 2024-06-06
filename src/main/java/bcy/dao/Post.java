@@ -7,7 +7,6 @@ public class Post {
     private String title;
     private String content;
     private String tag;
-    private Long pid;
     private Date createTime;
     private Date updateTime;
     private Long uid;
@@ -95,14 +94,6 @@ public class Post {
 
     public void setUid(Long uid) {
         this.uid = uid;
-    }
-
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
     }
 
     public Date getCreateTime() {
