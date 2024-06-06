@@ -3,7 +3,7 @@
 
 <mapper namespace="bcy.dao.TagDao">
     <select id="getCollections" resultType="bcy.dao.Tag"> select *,users.name,users.email from
-        tags LEFT JOIN users ON tags.pid = users.id where type = 0 and pid=#{uid} order by tags.id desc
+        terms LEFT JOIN users ON terms.pid = users.id where type = 0 and pid=#{uid} order by terms.id desc
         limit 0,20 </select>
-    <insert id="addCollection" parameterType="bcy.dao.Tag"> insert into tags (title,pid, type) values (#{title},#{uid}, #{type}) </insert>
+    <insert id="addCollection" parameterType="bcy.dao.Tag"> insert into terms (title,pid, type) values (#{title},#{uid}, #{type}) </insert>
 </mapper>

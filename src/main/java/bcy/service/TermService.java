@@ -5,19 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bcy.dao.Tag;
-import bcy.dao.TagDao;
+import bcy.dao.Term;
+import bcy.dao.TermDao;
 
 @Service
-public class TagService {
+public class TermService {
     @Autowired
-    private TagDao tagDao;
+    private TermDao tagDao;
 
-    public void addTag(Tag tag){
+    public void addTag(Term tag){
         tagDao.addCollection(tag.getPid(), tag.getTitle(),0);
     }
 
-    public List<Tag> getTags(Long pid){
+    public List<Term> getTags(Long pid){
         return tagDao.getCollections(pid);
     }
 }

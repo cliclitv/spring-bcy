@@ -9,22 +9,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import bcy.dao.JsonResponse;
-import bcy.dao.Tag;
-import bcy.service.TagService;
+import bcy.dao.Term;
+import bcy.service.TermService;
 
 @RestController
-public class TagApi {
+public class TermApi {
     @Autowired
-    private TagService tagService;
+    private TermService tagService;
 
     @GetMapping("/collections")
-    public JsonResponse<List<Tag>> getTags(String pid) {
-        List<Tag> list = tagService.getTags(Long.valueOf(pid));
+    public JsonResponse<List<Term>> getTags(String pid) {
+        List<Term> list = tagService.getTags(Long.valueOf(pid));
         return new JsonResponse<>(list);
     }
 
     @PostMapping("/collection")
-    public JsonResponse<String> addTag(@RequestBody Tag tag) {
+    public JsonResponse<String> addTag(@RequestBody Term tag) {
         tagService.addTag(tag);
         return JsonResponse.success();
 

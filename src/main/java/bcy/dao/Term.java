@@ -1,6 +1,6 @@
 package bcy.dao;
 
-public class Tag {
+public class Term {
     private Long id;
     private Long pid;
     private String title;
