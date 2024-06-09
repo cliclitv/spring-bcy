@@ -25,6 +25,11 @@
         <if test="fid != null and fid != 0 ">
             and uid in (SELECT uid FROM follows WHERE uid=#{fid})
         </if>
+        <if test="ids != null and ids.length > 0">
+            and posts.id in <foreach collection="ids"  item="id" open="(" close=")" separator=",">
+                #{id}
+        </foreach>
+        </if>
         <if test="search != null and search != '' ">
             and (title like CONCAT('%',#{search},'%') or content like CONCAT('%',#{search},'%'))
         </if>

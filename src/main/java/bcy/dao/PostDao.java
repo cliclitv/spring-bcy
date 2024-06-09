@@ -15,6 +15,6 @@ public interface PostDao {
     public Integer replacePv(Long pid, Long pv);
 
     public List<Post> getPosts(String[] tags, Long uid, Long pid, String search, Long start,
-            Long size, Long fid);
+            Long size, Long fid, String[] ids);
 
 }
