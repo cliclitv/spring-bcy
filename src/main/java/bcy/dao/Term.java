@@ -9,6 +9,27 @@ public class Term {
     private String name;
     private String ids;
     private String content;
+    private Long pid;
+    private Date createTime;
+    private String type;
+
+    
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getPid() {
+        return pid;
+    }
+
+    public void setPid(Long pid) {
+        this.pid = pid;
+    }
+
     public String getContent() {
         return content;
     }
@@ -25,7 +46,6 @@ public class Term {
         this.ids = ids;
     }
 
-    private Date createTime;
 
     public Date getCreateTime() {
         return createTime;

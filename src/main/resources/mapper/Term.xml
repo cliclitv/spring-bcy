@@ -7,7 +7,7 @@
         order by terms.createTime desc limit 0,20 
     </select>
     <insert id="addTerm" parameterType="bcy.dao.Term"> 
-        insert into terms (title, content, pid, ids, type, createTime) values (#{title},#{content},#{uid},#{ids},#{type},#{createTime}) 
+        insert into terms (title, content, pid, ids, type, createTime) values (#{title},#{content},#{pid},#{ids},#{type},#{createTime}) 
     </insert>
 
     <update id="updateTerm" parameterType="bcy.dao.Term" > 
