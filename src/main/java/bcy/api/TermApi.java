@@ -17,13 +17,13 @@ public class TermApi {
     @Autowired
     private TermService tagService;
 
-    @GetMapping("/collections")
+    @GetMapping("/terms")
     public JsonResponse<List<Term>> getTags(String pid) {
         List<Term> list = tagService.getTags(Long.valueOf(pid));
         return new JsonResponse<>(list);
     }
 
-    @PostMapping("/collection")
+    @PostMapping("/term")
     public JsonResponse<String> addTag(@RequestBody Term tag) {
         tagService.addTag(tag);
         return JsonResponse.success();
