@@ -1,5 +1,6 @@
 package bcy.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,14 @@ public class TermService {
     private TermDao termDao;
 
     public void addTerm(Term term){
-        termDao.addTerm(term.getPid(), term.getTitle(),term.getType());
+        Date now = new Date();
+
+        term.setCreateTime(now);
+        
+        termDao.addTerm(term);
     }
 
     public List<Term> getTerms(Long pid){
-        return termDao.getTerm(pid);
+        return termDao.getTerms(pid);
     }
 }

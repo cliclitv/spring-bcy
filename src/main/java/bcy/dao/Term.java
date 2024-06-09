@@ -1,6 +1,7 @@
 package bcy.dao;
 
 import java.util.List;
+import java.util.Date;
 
 public class Term {
     private Long id;
@@ -9,15 +10,25 @@ public class Term {
     private String type;
     private String email;
     private String name;
-    private List<Post> posts;
+    private Date createTime;
+    private String posts;
 
-    public List<Post> getPosts() {
+    public String getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(String posts) {
         this.posts = posts;
     }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
 
     public String getType() {
         return type;
