@@ -36,6 +36,7 @@ public class ConditionException extends RuntimeException {
             Integer code = ((ConditionException) e).getCode();
             return new JsonResponse<>(code, err);
         } else {
+            System.out.println(e);
             return new JsonResponse<>(500, err);
         }
     }
