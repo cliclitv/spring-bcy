@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bcy.dao.Comment;
+import bcy.dao.Post;
+import bcy.dao.PostDao;
 import bcy.dao.Term;
 import bcy.dao.TermDao;
 
@@ -13,8 +16,10 @@ import bcy.dao.TermDao;
 public class TermService {
     @Autowired
     private TermDao termDao;
+    @Autowired
+    private PostDao postDao;
 
-    public void addTerm(Term term){
+    public void addTerm(Term term) {
         Date now = new Date();
 
         term.setCreateTime(now);
@@ -22,15 +27,16 @@ public class TermService {
         termDao.addTerm(term);
     }
 
-    public void updateTerm(Term term){
+    public void updateTerm(Term term) {
         Date now = new Date();
 
         term.setCreateTime(now);
-        
+
         termDao.updateTerm(term);
     }
 
-    public List<Term> getTerms(Long pid){
-        return termDao.getTerms(pid);
+    public List<Term> getTerms(Long pid) {
+        List<Term> terms = termDao.getTerms(pid);
+        return terms;
     }
 }
