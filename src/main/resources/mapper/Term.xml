@@ -6,10 +6,10 @@
         terms LEFT JOIN users ON terms.pid = users.id where type = 0 and pid=#{uid} order by terms.createTime desc
         limit 0,20 </select>
     <insert id="addTerm" parameterType="bcy.dao.Term"> 
-        insert into terms (title, content, pid, ids, type, createTime) values (#{title},#{content},#{uid},#{ids},#{type},#{createTime}) 
+        insert into terms (title, content, pid, posts, type, createTime) values (#{title},#{content},#{uid},#{posts},#{type},#{createTime}) 
     </insert>
 
     <update id="updateTerm" parameterType="bcy.dao.Term" > 
-        update posts set title=#{title}, content=#{content}, ids=#{ids} where id = #{id}
+        update posts set title=#{title}, content=#{content}, posts=#{posts} where id = #{id}
     </update>
 </mapper>

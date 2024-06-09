@@ -18,8 +18,16 @@ public class TermService {
         Date now = new Date();
 
         term.setCreateTime(now);
-        
+
         termDao.addTerm(term);
+    }
+
+    public void updateTerm(Term term){
+        Date now = new Date();
+
+        term.setCreateTime(now);
+        
+        termDao.updateTerm(term);
     }
 
     public List<Term> getTerms(Long pid){

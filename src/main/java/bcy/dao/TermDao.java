@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TermDao {
     public Integer addTerm(Term team);
+    public Integer updateTerm(Term team);
 
     public List<Term> getTerms(Long uid);
 }

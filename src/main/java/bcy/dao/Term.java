@@ -1,6 +1,5 @@
 package bcy.dao;
 
-import java.util.List;
 import java.util.Date;
 
 public class Term {
