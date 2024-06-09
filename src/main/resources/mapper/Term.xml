@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="bcy.dao.TermDao">
-    <select id="getCollections" resultType="bcy.dao.Term"> select *,users.name,users.email from
-        terms LEFT JOIN users ON terms.pid = users.id where type = 0 and pid=#{uid} order by terms.id desc
+    <select id="getTerms" resultType="bcy.dao.Term"> select *,users.name,users.email from
+        terms LEFT JOIN users ON terms.pid = users.id where type = 0 and pid=#{uid} order by terms.createTime desc
         limit 0,20 </select>
-    <insert id="addCollection" parameterType="bcy.dao.Term"> insert into terms (title,pid, type) values (#{title},#{uid}, #{type}) </insert>
+    <insert id="addTerm" parameterType="bcy.dao.Term"> 
+        insert into terms (title, content, pid, ids, type, createTime) values (#{title},#{content},#{uid},#{ids},#{type},#{createTime}) 
+    </insert>
+
+    <update id="updateTerm" parameterType="bcy.dao.Term" > 
+        update posts set title=#{title}, content=#{content}, ids=#{ids} where id = #{id}
+    </update>
 </mapper>
