@@ -11,13 +11,13 @@ import bcy.dao.TermDao;
 @Service
 public class TermService {
     @Autowired
-    private TermDao tagDao;
+    private TermDao termDao;
 
-    public void addTag(Term tag){
-        tagDao.addCollection(tag.getPid(), tag.getTitle(),0);
+    public void addTerm(Term term){
+        termDao.addTerm(term.getPid(), term.getTitle(),term.getType());
     }
 
-    public List<Term> getTags(Long pid){
-        return tagDao.getCollections(pid);
+    public List<Term> getTerms(Long pid){
+        return termDao.getTerm(pid);
     }
 }

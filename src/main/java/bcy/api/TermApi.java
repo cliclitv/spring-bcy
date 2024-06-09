@@ -11,22 +11,35 @@ import org.springframework.web.bind.annotation.RestController;
 import bcy.dao.JsonResponse;
 import bcy.dao.Term;
 import bcy.service.TermService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
 public class TermApi {
     @Autowired
-    private TermService tagService;
+    private TermService termService;
 
     @GetMapping("/terms")
-    public JsonResponse<List<Term>> getTags(String pid) {
-        List<Term> list = tagService.getTags(Long.valueOf(pid));
+    public JsonResponse<List<Term>> getTerms(String pid, String uid) {
+        if (uid == null) {
+            uid = "0";
+        }
+        if (pid == null) {
+            pid = "0";
+        }
+        List<Term> list = termService.getTerms(Long.valueOf(pid));
         return new JsonResponse<>(list);
     }
 
     @PostMapping("/term")
-    public JsonResponse<String> addTag(@RequestBody Term tag) {
-        tagService.addTag(tag);
+    public JsonResponse<String> addTerm(@RequestBody Term term) {
+        termService.addTerm(term);
         return JsonResponse.success();
+    }
 
+    @PutMapping("/term")
+    public JsonResponse<String> updateTerm(@RequestBody Term term) {
+        termService.addTerm(term);
+        return JsonResponse.success();
     }
 }
