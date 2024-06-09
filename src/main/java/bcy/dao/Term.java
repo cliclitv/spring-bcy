@@ -1,6 +1,5 @@
 package bcy.dao;
 
-import java.util.List;
 import java.util.Date;
 
 public class Term {
@@ -9,6 +8,15 @@ public class Term {
     private String email;
     private String name;
     private String ids;
+    private String content;
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getIds() {
         return ids;
     }
