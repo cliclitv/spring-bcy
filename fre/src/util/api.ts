@@ -45,7 +45,7 @@ export function addPost({ title, content, status, sort, tag, videos }) {
   })
 }
 
-export function getUser() {
+export function getUserInfo() {
   return JSON.parse(window.localStorage.getItem('user'))
 }
 
@@ -128,7 +128,7 @@ export function addComment({ pid, uid, pos, content, rid = 0, ruid, read = 0 }) 
   return post('https://www.ichushou.com/comment/add', {
     content,
     pos: pos.toString(),
-    uid: getUser().id,
+    uid: getUserInfo().id,
     pid, rid, ruid, read
   })
 }
@@ -144,7 +144,7 @@ export function addDanmaku({ pid, p, uid, color, pos, content }) {
     color,
     p,
     pos,
-    uid: getUser().id,
+    uid: getUserInfo().id,
     pid
   })
 }

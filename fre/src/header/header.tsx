@@ -1,10 +1,6 @@
 import { render, useState, useEffect } from "fre"
-import { push } from '../use-route'
-import { getUser, getBal } from "../util/api"
-import Search from "./search"
+import { getUserInfo } from "../util/api";
 import './header.css'
-import Avatar from "../component/avatar/avatar"
-import { logout } from "../login/register"
 
 function debounce(func, wait) {
     let timeout;
@@ -22,7 +18,7 @@ export default function Header() {
     const [key, setKey] = useState("")
     const [show, setShow] = useState(false)
 
-    let user = getUser() || {}
+    let user = getUserInfo() || {}
     const keydown = (e) => {
         console.log(key)
     }

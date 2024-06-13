@@ -1,6 +1,6 @@
 import { useState, useEffect } from "fre"
 import { push } from "../use-route"
-import { addPost, getGonggao, getPostB, getPostDetail, getUser, updatePost } from "../util/api"
+import { addPost, getGonggao, getPostB, getPostDetail, getUserInfo, updatePost } from "../util/api"
 import './draft.css'
 
 let lock = false
@@ -17,7 +17,7 @@ const tags1 = ['推荐', '幻灯', '国漫', '美漫', '剧场版', '漫画改',
 
 export default function Upload(props) {
     const [post, setPost] = useState({ title: "", status: "待审核", sort: "原创", time: "", content: "", tag: "", videos: "" })
-    const user = getUser()
+    const user = getUserInfo()
     const [tag, setTag] = useState([])
     const [draft, setDraft] = useState([])
     const [tags, setTags] = useState(tags1)

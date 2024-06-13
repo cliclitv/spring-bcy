@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 import bcy.dao.Follow;
 import bcy.dao.JsonResponse;
 import bcy.service.FollowService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class FollowApi {
     @Autowired
     private FollowService followService;
