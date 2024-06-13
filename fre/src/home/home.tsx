@@ -22,8 +22,11 @@ function CenterSection({ comp, props }) {
 
 export default function App(props) {
     return (
-        <div>
-            111
+        <div class="wrap">
+            <ul>
+                <li>挖坑</li>
+                <li>填坑</li>
+            </ul>
         </div>
 
     )
