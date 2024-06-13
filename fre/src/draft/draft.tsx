@@ -1,6 +1,6 @@
 import { useState, useEffect } from "fre"
 import { push } from "../use-route"
-import { addPost, getGonggao, getPostB, getPostDetail, getUserInfo, updatePost } from "../util/api"
+import { addPost, getGonggao, getPostDetail, getUserInfo, updatePost } from "../util/api"
 import './draft.css'
 
 let lock = false
