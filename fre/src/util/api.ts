@@ -64,6 +64,10 @@ export function addComment({ pid, uid, pos, content, rid = 0, ruid, read = 0 }) 
   })
 }
 
-export function getGonggao(){
+export function getGonggao() {
   return get(`https://www.ichushou.com/post/1`)
+}
+
+export function getTerms(uid) {
+  return get(`https://www.ichushou.com/terms?pid=${uid}`)
 }

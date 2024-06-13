@@ -4,23 +4,19 @@ import './home.css'
 import { push } from '../use-route'
 
 import Register from '../login/register'
+import { getTerms, getUserInfo } from '../util/api'
 
-function CenterSection({ comp, props }) {
-    const Comp = comp
-    return <div style={{ 'position': 'relative' }}>
-        <div className={props.gv ? 'postplayer' : "usercenter"}>
-            <Comp {...props}></Comp>
-        </div>
-        <div className="mask">
-            <i class='icon-font icon-back' onclick={() => {
-                push('/')
-            }}></i>
-        </div>
-    </div>
 
-}
+const user = getUserInfo()
 
 export default function App(props) {
+    const [terms ,setTerms] = useState([])
+
+    useEffect(()=>{
+        getTerms(user.id).then(res=>{
+            console.log(res)
+        })
+    },[])
     return (
         <div class="wrap">
             <ul>

@@ -7,7 +7,15 @@ public class Term {
     private String title;
     private String email;
     private String name;
-    private String ids;
+    private String channel;
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
     private String content;
     private Long pid;
     private Date createTime;
@@ -37,15 +45,6 @@ public class Term {
     public void setContent(String content) {
         this.content = content;
     }
-
-    public String getIds() {
-        return ids;
-    }
-
-    public void setIds(String ids) {
-        this.ids = ids;
-    }
-
 
     public Date getCreateTime() {
         return createTime;
