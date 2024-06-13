@@ -9,10 +9,10 @@ body {
     color: var(--color);
     background: #f0f0f5;
     background-size: 32px 32px;
-    --primary: #8a61ff;
-    --secondary: #9fdc0b;
+    --primary: #FD4C86;
+    --secondary: #03a9f4;
     --secondary-bg:rgba(108, 230, 123, 0.3);
-    --bg: #f2f2f2;
+    --bg: #f0f0f5;
     --black: rgb(37, 37, 37);
     --white: #fff;
     --border: 0 1px 2px #ddd;
