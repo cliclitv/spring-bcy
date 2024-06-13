@@ -28,13 +28,8 @@ export function getSearch(key) {
   return get(`https://www.ichushou.com/search/posts?key=${key}`)
 }
 
-function replaceContent(c = '') {
-  return c.replace(/tb-binary.cdn.bcebos.com\/TbGame/g, 'bos.nj.bpc.baidu.com/tieba-movideo')
-    .replace(/img[0-9].doubanio.com/g, 'doubanimg.deno.dev')
-}
 
 export function addPost({ title, content, status, sort, tag, videos }) {
-  videos = replaceContent(videos)
   return post('https://www.ichushou.com/post/add', {
     title,
     content,
@@ -50,7 +45,6 @@ export function getUserInfo() {
 }
 
 export function updatePost({ id, title, content, status, sort, tag, time, videos }) {
-  videos = replaceContent(videos)
   return post(`https://www.ichushou.com/post/update/${id}`, {
     id,
     title,
@@ -69,8 +63,8 @@ export function updateUser({ id, name, pwd, qq, level, hash, sign }) {
   })
 }
 
-export function getUserB({ id, qq, name }) {
-  return get(`https://www.ichushou.com/user?uid=${id || ""}&uname=${name || ""}&uqq=${qq || ""}`)
+export function getUser(id) {
+  return get(`https://www.ichushou.com/user/${id}`)
 }
 
 export function getDogeToken({ fname, rname }) {

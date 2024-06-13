@@ -18,7 +18,12 @@ export function post(url, params) {
 
 export function get(url) {
     return new Promise(resolve => {
-        fetch(url).then(function (res) {
+        fetch(url, {
+            headers: {
+                'Content-Type': 'application/json',
+                token: localStorage.getItem('token')
+            }
+        }).then(function (res) {
             return res.json()
         }).then(data => {
             resolve(data)

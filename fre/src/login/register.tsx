@@ -2,7 +2,7 @@ import { useState, useEffect } from 'fre'
 import { A, push } from '../use-route'
 import { post } from '../util/post'
 import './login.css'
-import { getUserInfo, getUserB, updateUser } from '../util/api'
+import { getUserInfo, getUser, updateUser } from '../util/api'
 
 export function logout() {
     localStorage.clear()
@@ -15,7 +15,7 @@ export default function Register({ uid }) {
 
     useEffect(() => {
         if (uid) {
-            getUserB({ qq: uid } as any).then((user: any) => {
+            getUser(uid).then((user: any) => {
                 setUser(user.result)
             })
         }
