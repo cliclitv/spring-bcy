@@ -6,6 +6,9 @@ const yml =(databaseurl, databaseuser, databasepwd)=> `
 spring:
     application:
         name: 'bcy'
+    web:
+        resources:
+            static-locations: "classpath:/dist"
     datasource:
         url: ${databaseurl}
         username: ${databaseuser}
