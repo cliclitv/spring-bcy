@@ -8,7 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          ls
+          cd fre
+          yarn
+          yarn build
+          cd ../
+          ls ./src/main/resources/dist/
           node setup.js ${{ secrets.DATABASEURL }} ${{ secrets.DATABASEPWD }}
           cat ./src/main/resources/application.yml
       - name: Set up JDK
