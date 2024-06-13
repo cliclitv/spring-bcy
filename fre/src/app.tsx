@@ -10,9 +10,6 @@ const routes = {
     '/login': import('./home/home'),
     '/register': import('./home/home'),
     '/draft/:id': import('./draft/draft'),
-    '/play/:gv': import('./home/home'),
-    '/user/:uid': import('./home/home'),
-    '/sponsor': import('./sponsor/sponsor'),
 }
 
 const App = () => {
