@@ -1,31 +1,31 @@
 import { get, post } from './post'
 
 export function getPost(sort, tag, page, pageSize, status?, uid?) {
-  return get(`https://www.clicli.cc/posts?status=${status || 'public'}&sort=${sort}&tag=${tag}&uid=${uid || ''}&page=${page}&pageSize=${pageSize}`)
+  return get(`https://www.ichushou.com/posts?status=${status || 'public'}&sort=${sort}&tag=${tag}&uid=${uid || ''}&page=${page}&pageSize=${pageSize}`)
 }
 
 export function getPostB(type, tag, page, pageSize, status?, uid?) {
-  return get(`https://www.clicli.cc/posts?status=${status}&sort=${type}&tag=${tag}&uid=${uid || ''}&page=${page}&pageSize=${pageSize}`)
+  return get(`https://www.ichushou.com/posts?status=${status}&sort=${type}&tag=${tag}&uid=${uid || ''}&page=${page}&pageSize=${pageSize}`)
 }
 
 export function getRank(day) {
-  return get(`https://www.clicli.cc/rank?day=${day}`)
+  return get(`https://www.ichushou.com/rank?day=${day}`)
 }
 
 export function getPostDetail(pid) {
-  return get(`https://www.clicli.cc/post/${pid}`)
+  return get(`https://www.ichushou.com/post/${pid}`)
 }
 
 export function getPlayUrl(url) {
-  return get(`https://www.clicli.cc/play?url=${url}`)
+  return get(`https://www.ichushou.com/play?url=${url}`)
 }
 
 export function getPv(pid) {
-  return get(`https://www.clicli.cc/pv/${pid}`)
+  return get(`https://www.ichushou.com/pv/${pid}`)
 }
 
 export function getSearch(key) {
-  return get(`https://www.clicli.cc/search/posts?key=${key}`)
+  return get(`https://www.ichushou.com/search/posts?key=${key}`)
 }
 
 function replaceContent(c = '') {
@@ -35,7 +35,7 @@ function replaceContent(c = '') {
 
 export function addPost({ title, content, status, sort, tag, videos }) {
   videos = replaceContent(videos)
-  return post('https://www.clicli.cc/post/add', {
+  return post('https://www.ichushou.com/post/add', {
     title,
     content,
     status,
@@ -51,7 +51,7 @@ export function getUser() {
 
 export function updatePost({ id, title, content, status, sort, tag, time, videos }) {
   videos = replaceContent(videos)
-  return post(`https://www.clicli.cc/post/update/${id}`, {
+  return post(`https://www.ichushou.com/post/update/${id}`, {
     id,
     title,
     content,
@@ -64,45 +64,45 @@ export function updatePost({ id, title, content, status, sort, tag, time, videos
 }
 
 export function updateUser({ id, name, pwd, qq, level, hash, sign }) {
-  return post(`https://www.clicli.cc/user/update/${id}`, {
+  return post(`https://www.ichushou.com/user/update/${id}`, {
     name, pwd, qq, level: parseInt(level), hash, sign
   })
 }
 
 export function getUserB({ id, qq, name }) {
-  return get(`https://www.clicli.cc/user?uid=${id || ""}&uname=${name || ""}&uqq=${qq || ""}`)
+  return get(`https://www.ichushou.com/user?uid=${id || ""}&uname=${name || ""}&uqq=${qq || ""}`)
 }
 
 export function getDogeToken({ fname, rname }) {
-  return get(`https://www.clicli.cc/doge?fname=${fname}&rname=${rname}`)
+  return get(`https://www.ichushou.com/doge?fname=${fname}&rname=${rname}`)
 }
 
 export function getTransfer({ from, to }) {
-  return get(`https://www.clicli.cc/eth/transfer?from=${from}&to=${to}`)
+  return get(`https://www.ichushou.com/eth/transfer?from=${from}&to=${to}`)
 }
 
 export function getBal(from) {
-  return get(`https://www.clicli.cc/eth/balanceof?from=${from}`)
+  return get(`https://www.ichushou.com/eth/balanceof?from=${from}`)
 }
 
 export function pay({ price, order, uid }) {
-  return get(`https://www.clicli.cc/vip/pay?price=${price}&order=${order}&uid=${uid}`)
+  return get(`https://www.ichushou.com/vip/pay?price=${price}&order=${order}&uid=${uid}`)
 }
 
 export function paycheck(tradeno) {
-  return get(`https://www.clicli.cc/vip/paycheck?tradeno=${tradeno}`)
+  return get(`https://www.ichushou.com/vip/paycheck?tradeno=${tradeno}`)
 }
 
 export function getArticles(pid) {
-  return get(`https://www.clicli.cc/articles?pid=${pid}&page=1&pageSize=200`)
+  return get(`https://www.ichushou.com/articles?pid=${pid}&page=1&pageSize=200`)
 }
 
 export function getArticle(pid) {
-  return get(`https://www.clicli.cc/article/${pid}`)
+  return get(`https://www.ichushou.com/article/${pid}`)
 }
 
 export function addArticle({ pid, oid, title, content, bio }) {
-  return post(`https://www.clicli.cc/article/add`, {
+  return post(`https://www.ichushou.com/article/add`, {
     pid: parseInt(pid),
     oid: parseInt(oid),
     content,
@@ -111,7 +111,7 @@ export function addArticle({ pid, oid, title, content, bio }) {
 }
 
 export function updateArticle({ pid, oid, title, content, bio, id }) {
-  return post(`https://www.clicli.cc/article/update/${id}`, {
+  return post(`https://www.ichushou.com/article/update/${id}`, {
     pid: parseInt(pid),
     oid: parseInt(oid),
     content,
@@ -121,11 +121,11 @@ export function updateArticle({ pid, oid, title, content, bio, id }) {
 
 export function getComments(pid, rid, page?, pageSize?) {
   console.log(pid)
-  return get(`https://www.clicli.cc/comments?pid=${pid}&rid=${rid}&page=${page || 1}&pageSize=${pageSize || 1000}`)
+  return get(`https://www.ichushou.com/comments?pid=${pid}&rid=${rid}&page=${page || 1}&pageSize=${pageSize || 1000}`)
 }
 
 export function addComment({ pid, uid, pos, content, rid = 0, ruid, read = 0 }) {
-  return post('https://www.clicli.cc/comment/add', {
+  return post('https://www.ichushou.com/comment/add', {
     content,
     pos: pos.toString(),
     uid: getUser().id,
@@ -135,11 +135,11 @@ export function addComment({ pid, uid, pos, content, rid = 0, ruid, read = 0 }) 
 
 export function getDanmakus(pid, p, page?, pageSize?) {
   console.log(pid)
-  return get(`https://www.clicli.cc/danmakus?pid=${pid}&p=${p}&page=${page || 1}&pageSize=${pageSize || 1000}`)
+  return get(`https://www.ichushou.com/danmakus?pid=${pid}&p=${p}&page=${page || 1}&pageSize=${pageSize || 1000}`)
 }
 
 export function addDanmaku({ pid, p, uid, color, pos, content }) {
-  return post('https://www.clicli.cc/danmaku/add', {
+  return post('https://www.ichushou.com/danmaku/add', {
     content,
     color,
     p,
@@ -151,9 +151,9 @@ export function addDanmaku({ pid, p, uid, color, pos, content }) {
 
 
 export function getUsers(names) {
-  return get(`https://www.clicli.cc/users?names=${names.join(',')}`)
+  return get(`https://www.ichushou.com/users?names=${names.join(',')}`)
 }
 
 export function getGonggao(){
-  return get(`https://www.clicli.cc/post/1`)
+  return get(`https://www.ichushou.com/post/1`)
 }

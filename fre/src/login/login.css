@@ -13,7 +13,7 @@
 
 .login li input {
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: none;
     width: 100%;
     box-sizing: border-box;
@@ -24,20 +24,20 @@
     color: #fff;
     width: 100%;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
 }
 
 .login li h1 {
-    color: #fff;
+    color: var(--primary);
     padding: 10px 0;
 }
 
 .login .header {
-    background: var(--primary);
+    /* background: var(--primary); */
     padding: 10px 0;
-    border-bottom: 5px solid var(--secondary);
+    /* border-bottom: 5px solid var(--secondary); */
 }
 
 button:disabled {
@@ -47,7 +47,7 @@ button:disabled {
 
 .login select {
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 8px;
     border: none;
     width: 330px;
     box-sizing: border-box;

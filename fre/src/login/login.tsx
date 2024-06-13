@@ -16,7 +16,7 @@ export default function Login() {
     }
 
     function login() {
-        post("https://www.clicli.cc/user/login", { name, pwd }).then((res: any) => {
+        post("https://www.ichushou.com/login", { name, pwd }).then((res: any) => {
             if (res.code === 200) {
                 window.localStorage.setItem('token', res.token)
                 window.localStorage.setItem('user', JSON.stringify(res.user))
@@ -29,7 +29,7 @@ export default function Login() {
     return <div className=" section">
         <div class="login">
             <div className="header">
-                <li><h1>CliCli.登录</h1></li>
+                <li><h1>登录</h1></li>
             </div>
             <li><input type="text" placeholder="昵称" onInput={(e) => changeName(e.target.value)} /></li>
             <li><input type="password" placeholder="密码" onInput={(e) => changePwd(e.target.value)} /></li>

@@ -44,7 +44,7 @@ export default function Register({ uid }) {
             alert('全都得填::>_<::')
             return
         }
-        const res = await post("https://www.clicli.cc/user/register", { name: user.name, pwd: user.pwd, qq: user.qq, sign: "这个人很懒，什么都没有留下~" }) as any
+        const res = await post("https://www.ichushou.com/user/register", { name: user.name, pwd: user.pwd, qq: user.qq, sign: "这个人很懒，什么都没有留下~" }) as any
         if (res.code === 200) {
             alert("注册成功啦~")
         } else {
@@ -57,7 +57,7 @@ export default function Register({ uid }) {
     return <div class="section">
         <div class="login">
             <div className="header">
-                <li><h1>{uid ? `${user.name}の资料卡` : 'CliCli.注册'}</h1></li>
+                <li><h1>{uid ? `${user.name}の资料卡` : '注册'}</h1></li>
             </div>
             <li><input type="text" placeholder="QQ" onInput={(e) => change('qq', e.target.value)} value={user.qq} /></li>
             <li><input type="text" placeholder="昵称" onInput={(e) => change('name', e.target.value)} value={user.name} /></li>

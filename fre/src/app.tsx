@@ -7,8 +7,8 @@ import { getToken } from "./util/post"
 
 const routes = {
     '/': import('./home/home'),
-    '/login': import('./home/home'),
-    '/register': import('./home/home'),
+    '/login': import('./login/login'),
+    '/register': import('./login/register'),
     '/draft/:id': import('./draft/draft'),
 }
 
