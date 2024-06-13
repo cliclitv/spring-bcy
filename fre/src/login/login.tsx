@@ -16,7 +16,7 @@ export default function Login() {
     }
 
     function login() {
-        post("https://www.ichushou.com/login", { name, pwd }).then((res: any) => {
+        post("https://www.ichushou.com/user/login", { name, pwd }).then((res: any) => {
             if (res.code === 200) {
                 window.localStorage.setItem('token', res.token)
                 window.localStorage.setItem('user', JSON.stringify(res.user))

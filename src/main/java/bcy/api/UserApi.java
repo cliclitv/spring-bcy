@@ -26,14 +26,14 @@ public class UserApi {
         return new JsonResponse<>(user);
     }
 
-    @PostMapping("/register")
+    @PostMapping("/user/register")
     public JsonResponse<String> addUser(@RequestBody User user) {
         userService.addUser(user);
         return JsonResponse.success();
 
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public JsonResponse<String> login(@RequestBody User user) {
         String token = userService.login(user);
         return new JsonResponse<>(token);
