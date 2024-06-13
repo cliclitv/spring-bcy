@@ -1,6 +1,6 @@
 export default function Footer(props) {
     return <footer class='wrap section'>
-        <p>© 2018 - 2024 clicli.cc & admin@clicli.us <a href="https://github.com/cliclitv" class='github'>Github</a></p>
+        <p>© 2024 ichoushou.com <a href="https://github.com/cliclitv" class='github'>Github</a></p>
 
         {/* <ul class="friends">
 
