@@ -1,24 +1,42 @@
-.table thead{
-    background: #bbb;
+.table thead {
+    background: #ddd;
     width: 1100px;
+
 }
 
-.table table{
+.table {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.table table {
     width: 100%;
     border: 0;
     table-layout: fixed;
 }
-.table thead th{
+
+.table thead th {
     /* flex: 1; */
     padding: 10px;
+    text-align: left;
 }
 
-.write{
+.write {
     display: flex;
     justify-content: space-between;
 }
 
-.write-btn{
+.write-btn {
     margin: 20px 0;
     padding: 10px 30px;
+}
+
+.table tr {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.table td {
+    padding: 10px;
 }

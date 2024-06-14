@@ -8,7 +8,8 @@ body {
     list-style: none;
     color: var(--color);
     background: #f0f0f5;
-    background-size: 32px 32px;
+    
+    
     --primary: #FD4C86;
     --secondary: #03a9f4;
     --secondary-bg: rgba(108, 230, 123, 0.3);
@@ -16,7 +17,7 @@ body {
     --black: rgb(37, 37, 37);
     --white: #fff;
     --border: 0 1px 2px #ddd;
-    --color: #555;
+    --color: rgb(55,65,81);
     --background: #fafafa;
     --primary-bg: rgba(230, 108, 167, 0.1);
     --shadow: 2px 2px 0px rgba(5, 20, 50, 0.1)
@@ -35,6 +36,7 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 
 .icon {
     width: 1em;
