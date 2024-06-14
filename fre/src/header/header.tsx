@@ -39,7 +39,7 @@ export default function Header() {
             <nav>
                 <ul class="wrap">
                     <li class="active">首页</li>
-                    <button>作者中心</button>
+                    {/* <button>作者中心</button> */}
                 </ul>
             </nav>
         </header>

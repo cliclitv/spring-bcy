@@ -11,7 +11,7 @@ body {
     background-size: 32px 32px;
     --primary: #FD4C86;
     --secondary: #03a9f4;
-    --secondary-bg:rgba(108, 230, 123, 0.3);
+    --secondary-bg: rgba(108, 230, 123, 0.3);
     --bg: #f0f0f5;
     --black: rgb(37, 37, 37);
     --white: #fff;
@@ -29,6 +29,11 @@ button {
     border-radius: 8px;
     border: none;
     cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .icon {
@@ -63,7 +68,6 @@ h1 {
 
 }
 
-.container{
-    background: linear-gradient(180deg,hsla(0,0%,100%,0),#f0f0f5 140px),fixed 0 0 /20px 20px radial-gradient(#d0d0d0 1px,transparent 0),fixed 10px 10px /20px 20px radial-gradient(#d0d0d0 1px,transparent 0);
+.container {
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #f0f0f5 140px), fixed 0 0 /20px 20px radial-gradient(#d0d0d0 1px, transparent 0), fixed 10px 10px /20px 20px radial-gradient(#d0d0d0 1px, transparent 0);
 }
-
