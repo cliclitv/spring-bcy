@@ -11,12 +11,13 @@ header h1 {
 }
 
 header nav {
-    background: var(--primary);
+    background: var(--light);
+    border: 1px solid var(--border);
 }
 
 header nav li {
     padding: 12px;
-    color: #fff;
+    color: var(--primary);
     position: relative;
 }
 

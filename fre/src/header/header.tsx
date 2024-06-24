@@ -34,7 +34,7 @@ export default function Header() {
     return (
         <header>
             <div className="top wrap">
-                <h1>触手♂阅读</h1>
+                <h1>北极圈</h1>
             </div>
             <nav>
                 <ul class="wrap">

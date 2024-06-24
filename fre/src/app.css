@@ -10,7 +10,9 @@ body {
     background: #f0f0f5;
     
     
-    --primary: #FD4C86;
+    --primary: #31b0d4;
+    --border:#a1dbf3;
+    --light:#bae3ff;
     --secondary: #03a9f4;
     --secondary-bg: rgba(108, 230, 123, 0.3);
     --bg: #f0f0f5;
