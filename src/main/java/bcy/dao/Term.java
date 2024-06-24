@@ -5,38 +5,18 @@ import java.util.Date;
 public class Term {
     private Long id;
     private String title;
-    private String email;
-    private String name;
-    private String channel;
-    public String getChannel() {
-        return channel;
+    private String cat;
+    public String getCat() {
+        return cat;
     }
 
-    public void setChannel(String channel) {
-        this.channel = channel;
+    public void setCat(String cat) {
+        this.cat = cat;
     }
 
     private String content;
-    private Long pid;
+    private Long author;
     private Date createTime;
-    private String type;
-
-    
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Long getPid() {
-        return pid;
-    }
-
-    public void setPid(Long pid) {
-        this.pid = pid;
-    }
 
     public String getContent() {
         return content;
@@ -67,21 +47,5 @@ public class Term {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
