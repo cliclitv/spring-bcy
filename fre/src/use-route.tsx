@@ -36,7 +36,7 @@ export function useRoutes(routes) {
 function perfrom(stack) {
   const { routes, setter } = stack
   const currentPath = location.pathname ? location.pathname + location.hash : '/'
-  let path, component, props,ii
+  let path, component, props, ii
 
   for (let i = 0; i < routes.length; i++) {
     ii = i
@@ -44,10 +44,13 @@ function perfrom(stack) {
     path = route[0]
     component = route[1]
     const [reg, params] = pathSlice(path)
-    const res = currentPath.match(reg)
+    let res = currentPath.match(reg)
+
     if (!res) {
       component = () => { }
       continue
+    } else {
+      res = res.map(path => path.split('#')[0])
     }
 
     if (params.length) {
@@ -110,7 +113,7 @@ window.addEventListener('popstate', (e) => {
 })
 
 function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
 }
 
 export function A(props) {

@@ -6,7 +6,6 @@ import { getPosts, getTermDetail, getTerms, getUserInfo } from '../util/api'
 import Avatar from '../component/avatar/avatar'
 import * as dayjs from 'dayjs'
 import Publish from '../publish/publish-fen'
-import snarkdown from 'snarkdown'
 import { marked } from 'marked'
 
 function CenterSection({ comp, props }) {
@@ -28,7 +27,9 @@ export default function Read(props) {
     const [post, setPost] = useState({} as any)
     const [term, setTerm] = useState({} as any)
     const [show, setShow] = useState(null)
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(parseInt(window.location.hash.slice(1)) || 1)
+
+    console.log(props.id)
 
     const user = getUserInfo()
     const isEditor = user.level > 1
@@ -46,16 +47,16 @@ export default function Read(props) {
         setPage(page + 1)
     }
 
-    function page$(){
+    function page$() {
         return <div className="page">
-        {new Array(term.count).fill(null).map((c, index) => {
+            {new Array(term.count).fill(null).map((c, index) => {
 
-            return <li class={page === index + 1 ? 'active' : ''} onClick={() => {
-                setPage(index + 1)
-            }}>{index + 1}</li>
-        })}
-        <div className="next" onClick={nextPage}>下一篇</div>
-    </div>
+                return <li class={page === index + 1 ? 'active' : ''} onClick={() => {
+                    setPage(index + 1)
+                }}>{index + 1}</li>
+            })}
+            <div className="next" onClick={nextPage}>下一篇</div>
+        </div>
     }
 
     return (
