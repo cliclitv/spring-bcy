@@ -38,7 +38,8 @@ export default function App(props) {
             <div class="main">
                 <div class="write">
                     <div></div>
-                    <button className="write-btn" onclick={() => push('/publish/0')}>挖坑</button>
+                    <button className="write-btn" onclick={() => push('/publish/0')}>
+                        <i class="icon-font icon-writerin-f"> </i> 挖坑</button>
                 </div>
                 <div className="terms">
                     <ul>
@@ -48,7 +49,7 @@ export default function App(props) {
                         <li>发布时间</li>
                     </ul>
                     {terms.map(term => {
-                        return <ul onClick={() => push(`/t/${term.id}`)}>
+                        return <ul onClick={() => push(`/read/${term.id}`)}>
                             <li>{term.title}</li>
                             <li>{term.content}</li>
                             <li>{term.author}</li>

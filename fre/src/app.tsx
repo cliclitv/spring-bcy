@@ -11,6 +11,7 @@ const routes = {
     '/login': import('./login/login'),
     '/register': import('./login/register'),
     '/publish/:id': import('./home/home'),
+    '/read/:id': import('./read/read'),
 }
 
 const App = (props) => {

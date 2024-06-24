@@ -1,0 +1,92 @@
+
+
+.write {
+    display: flex;
+    justify-content: space-between;
+}
+
+.write-btn {
+    padding: 8px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.mask {
+    background: rgba(0, 0, 0, .8);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.icon-back {
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #111;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.center-wrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    border-radius: 10px;
+    background: #f0f0f5;
+    width: 800px;
+    padding: 10px 20px;
+    overflow: hidden;
+}
+
+.main {
+    border-radius: 10px 10px 0 0;
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.post .info{
+    display: flex;
+    align-items: center;
+}
+
+.post .info .avatar{
+    margin: 0 10px 0 0;
+}
+
+.post h1{
+    padding:10px 0 5px 0;
+
+}
+
+.post .info img{
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+}
+
+.post .info time{
+    padding: 0 10px;
+    color: #bbb;
+}
+
+.post  p{
+    font-size: 16px;
+    letter-spacing: 2;
+    line-height: 18px;
+    padding: 10px 0;
+}

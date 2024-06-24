@@ -1,7 +1,7 @@
 import { get, post } from './post'
 
-export function getPost(sort, tag, page, pageSize, status?, uid?) {
-  return get(`https://www.ichushou.com/posts?status=${status || 'public'}&sort=${sort}&tag=${tag}&uid=${uid || ''}&page=${page}&pageSize=${pageSize}`)
+export function getPosts(tag, page, pageSize) {
+  return get(`https://www.ichushou.com/posts?&tag=${tag}&page=${page}&size=${pageSize}`)
 }
 
 export function getPostDetail(pid) {
