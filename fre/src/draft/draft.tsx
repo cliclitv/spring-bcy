@@ -8,20 +8,7 @@ import './draft.css'
 export default function Publish(props) {
 
     const user = getUserInfo()
-    const [post, setPost] = useState({ title: "", cat: "原耽", author: user.name, createTime: "", content: "" })
-
-
-    useEffect(() => {
-        if (props.id > 0) {
-            // getPostDetail(props.id).then((res: any) => {
-            //     setPost(res.result)
-            //     setTag(res.result.tag.split(' '))
-            // })
-
-        } else {
-            // 新增
-        }
-    }, [props.id])
+    const [post, setPost] = useState({ title: "", cat: "原耽", author: user.name, createTime: "", content: "", uid: user.id })
 
     function change(key, val) {
         setPost({
