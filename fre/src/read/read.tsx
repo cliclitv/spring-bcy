@@ -29,8 +29,6 @@ export default function Read(props) {
     const [show, setShow] = useState(null)
     const [page, setPage] = useState(parseInt(window.location.hash.slice(1)) || 1)
 
-    console.log(props.id)
-
     const user = getUserInfo()
     const isEditor = user.level > 1
 
