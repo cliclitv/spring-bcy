@@ -9,5 +9,5 @@ public interface TermDao {
     public Integer addTerm(Term team);
     public Integer updateTerm(Term team);
 
-    public List<Term> getTerms(Long pid);
+    public List<Term> getTerms(String cat, String author);
 }

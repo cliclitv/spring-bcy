@@ -28,8 +28,8 @@ public class TermService {
 
     }
 
-    public List<Term> getTerms(Long pid) {
-        List<Term> terms = termDao.getTerms(pid);
+    public List<Term> getTerms(String cat, String author) {
+        List<Term> terms = termDao.getTerms(cat, author);
         return terms;
     }
 }
