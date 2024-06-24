@@ -4,7 +4,6 @@ import './read.css'
 import { push } from '../use-route'
 import { getPosts, getTermDetail, getTerms, getUserInfo } from '../util/api'
 import Avatar from '../component/avatar/avatar'
-import * as dayjs from 'dayjs'
 import Publish from '../publish/publish-fen'
 import { marked } from 'marked'
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'fre'
 import './home.css'
-import * as dayjs from 'dayjs'
 
 import { push } from '../use-route'
 import { getTerms, getUserInfo } from '../util/api'
