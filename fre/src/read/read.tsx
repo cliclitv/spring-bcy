@@ -41,6 +41,7 @@ export default function Read(props) {
     }, [page])
 
     function nextPage() {
+        window.location.hash = '#' + (page + 1)
         setPage(page + 1)
     }
 
@@ -49,6 +50,7 @@ export default function Read(props) {
             {new Array(term.count).fill(null).map((c, index) => {
 
                 return <li class={page === index + 1 ? 'active' : ''} onClick={() => {
+                    window.location.hash = '#' + (index + 1)
                     setPage(index + 1)
                 }}>{index + 1}</li>
             })}
