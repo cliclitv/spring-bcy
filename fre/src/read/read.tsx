@@ -15,7 +15,7 @@ function CenterSection({ comp, props }) {
         </div>
         <div className="mask">
             <i class='icon-font icon-back' onclick={() => {
-                push('/')
+                props.setShow(false)
             }}></i>
         </div>
     </div>
@@ -25,6 +25,7 @@ function CenterSection({ comp, props }) {
 export default function Read(props) {
     const [post, setPost] = useState({} as any)
     const [term, setTerm] = useState({} as any)
+    const [show, setShow] = useState(false)
 
     const user = getUserInfo()
     const isEditor = user.level > 1
@@ -37,20 +38,18 @@ export default function Read(props) {
             })
         })
     }, [])
-    const newProps = {
-        ...props,
-        tag: term.id,
-        ptitle: term.title
-    }
+
+    console.log(props)
+
     return (
         <div class="main">
             <div class="wrap">
                 {isEditor && <div class="write">
                     <div className="info">
-                        合集由     <Avatar email={term.email} name={term.name}></Avatar> 发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time>
+                        合集由  <Avatar email={term.email} name={term.name}></Avatar> 发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time>
                     </div>
                     <div>
-                        <button className="write-btn" onclick={() => push('/upload/0')}>
+                        <button className="write-btn" onclick={() => setShow(true)}>
                             <i class="icon-font icon-writerin-f"> </i> 添加分集</button>
                         <button className="write-btn" onclick={() => push(`/publish/${props.id}`)} style={{ background: 'var(--secondary)' }}>
                             <i class="icon-font icon-writerin-f"> </i> 编辑合集</button>
@@ -62,7 +61,11 @@ export default function Read(props) {
                 </div>
 
             </div>
-            {props.id && <CenterSection comp={Publish} props={props}></CenterSection>}
+            {show && <CenterSection comp={Publish} props={{
+                tag: term.id,
+                ptitle: term.title,
+                setShow
+            }}></CenterSection>}
         </div>
     )
 }

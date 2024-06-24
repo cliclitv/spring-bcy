@@ -1,6 +1,6 @@
 import { useState, useEffect } from "fre"
 import { push } from "../use-route"
-import { addTerm, addpost, getPostDetail, getTermDetail, getUserInfo, updatePost } from "../util/api"
+import { addTerm, addpost, getPostDetail, getTermDetail, getUserInfo } from "../util/api"
 import './publish.css'
 
 
@@ -8,7 +8,7 @@ import './publish.css'
 export default function Publish(props) {
 
     const user = getUserInfo()
-    const [post, setPost] = useState({ title: "", tag: props.tag,  createTime: "", content: "", uid: user.id })
+    const [post, setPost] = useState({ title: "", tag: props.tag, content: "", uid: user.id })
 
     useEffect(() => {
         if (props.id > 0) {
@@ -26,7 +26,7 @@ export default function Publish(props) {
     }
 
     function submit() {
-        if (!post.title || !post.content || !post.cat || !post.author) {
+        if (!post.title || !post.content || !post.tag) {
             alert("都要填")
             return
         }
@@ -40,14 +40,9 @@ export default function Publish(props) {
 
         <div className="upload wrap">
             <div className="title">
-                <input type="text" placeholder="请输入文名" value={post.title} onInput={e => change('title', e.target.value)} />
+                <input type="text" placeholder="请输入分集标题" value={post.title} onInput={e => change('title', e.target.value)} />
             </div>
-            {
-                post.cat === '藏书馆' && <div className="title">
-                    <input type="text" placeholder="请输入原作者名" value={post.author} onInput={e => change('author', e.target.value)} />
-                </div>
-            }
-            <textarea spellcheck="false" placeholder="请输入文案，支持 markdown 语法" value={post.content} onInput={e => change('content', e.target.value)}></textarea>
+            <textarea spellcheck="false" placeholder="请输入正文，支持 markdown 语法" value={post.content} onInput={e => change('content', e.target.value)}></textarea>
             <div className="options">
                 <div>合集: {props.ptitle}</div>
                 {props.id > 0 && <input type="text" value={post.createTime} onInput={e => change('time', e.target.value)} />}
