@@ -28,8 +28,7 @@
 }
 
 .write-btn {
-    margin: 20px 0;
-    padding: 10px 30px;
+    padding: 8px 30px;
 }
 
 .table tr {
@@ -79,4 +78,10 @@
     width: 800px;
     padding: 10px 20px;
     overflow: hidden;
+}
+
+.main{
+    border-radius: 10px 10px 0 0;
+    background-color: #fff;
+    padding: 10px;
 }

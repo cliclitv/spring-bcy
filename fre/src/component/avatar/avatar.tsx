@@ -1,11 +1,10 @@
-import  { getAv, getAvatar } from '../../util/avatar'
+import { getAv, getAvatar } from '../../util/avatar'
 import './avatar.css'
 
 export default function Avatar(props) {
     return <div className="avatar">
-        <img src={getAvatar(props.uqq)} alt="" />{
-            !props.noname && <p>{props.uname}</p>
+        <img src={getAvatar(props.email)} alt="" />{
+            props.name && <p>{props.name}</p>
         }
-        {/* <i className="icon-font icon-shouye" onClick={transfer}></i> */}
     </div>
 }

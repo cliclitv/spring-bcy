@@ -34,11 +34,13 @@ export default function App(props) {
     }, [])
     return (
         <div class="wrap">
-            <div class="write">
-                <div></div>
-                <button className="write-btn" onclick={() => push('/publish/0')}>挖坑</button>
+            <div class="main">
+                <div class="write">
+                    <div></div>
+                    <button className="write-btn" onclick={() => push('/publish/0')}>挖坑</button>
+                </div>
+                {props.id && <CenterSection comp={Publish} props={props}></CenterSection>}
             </div>
-            {props.id && <CenterSection comp={Publish} props={props}></CenterSection>}
         </div>
 
     )

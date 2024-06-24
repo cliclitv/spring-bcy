@@ -1,9 +1,15 @@
-header .wrap {
-    width: 1100px;
-    margin: 0 auto;
-    cursor: pointer;
-    color: #fff;
-    background: transparent;
+header {
+    background: var(--bg);
+}
+
+header .logo {
+
+    background: url(https://cdn-us.imgs.moe/2023/05/17/6464ee8220a64.png);
+    width: 80px;
+    height: 40px;
+    background-size: cover;
+    margin: 10px 20px;
+
 }
 
 header h1 {
@@ -11,25 +17,12 @@ header h1 {
 }
 
 header nav {
-    background: var(--light);
-    border: 1px solid var(--border);
+    color: var(--color);
 }
 
 header nav li {
     padding: 12px;
-    color: var(--primary);
-    position: relative;
-}
 
-header nav li.active::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    margin-left: -8px;
-    border-bottom: 8px solid var(--bg);
-    border-right: 8px solid rgba(0, 0, 0, 0);
-    border-left: 8px solid rgba(0, 0, 0, 0);
 }
 
 header nav ul {
@@ -37,12 +30,15 @@ header nav ul {
     justify-content: space-between;
 }
 
-header nav button{
-    background: var(--bg);
-    color: var(--secondary);
-    height: 32px;
-    align-self: center;
+header .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+header .bio{
+    align-items: center;
+    display: flex;
 }
 
 footer {

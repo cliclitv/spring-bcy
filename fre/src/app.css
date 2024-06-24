@@ -8,12 +8,10 @@ body {
     list-style: none;
     color: var(--color);
     background: #f0f0f5;
-    
-    
-    --primary: #31b0d4;
+    --primary: #F77649;
     --border:#a1dbf3;
     --light:#bae3ff;
-    --secondary: #03a9f4;
+    --secondary: #00b8ac;
     --secondary-bg: rgba(108, 230, 123, 0.3);
     --bg: #f0f0f5;
     --black: rgb(37, 37, 37);
@@ -73,5 +71,5 @@ h1 {
 }
 
 .container {
-    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #f0f0f5 140px), fixed 0 0 /20px 20px radial-gradient(#d0d0d0 1px, transparent 0), fixed 10px 10px /20px 20px radial-gradient(#d0d0d0 1px, transparent 0);
+    
 }

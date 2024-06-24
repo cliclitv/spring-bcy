@@ -1,17 +1,18 @@
 import { render, useState, useEffect } from "fre"
-import { getUserInfo } from "../util/api";
+import { getUserInfo } from "../util/api"
+import Avatar from "../component/avatar/avatar"
 import './header.css'
 
 function debounce(func, wait) {
-    let timeout;
+    let timeout
     return function () {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeout);
+        const context = this
+        const args = arguments
+        clearTimeout(timeout)
         timeout = setTimeout(function () {
-            func.apply(context, args);
-        }, wait);
-    };
+            func.apply(context, args)
+        }, wait)
+    }
 }
 
 export default function Header() {
@@ -34,14 +35,19 @@ export default function Header() {
     return (
         <header>
             <div className="top wrap">
-                <h1>北极圈</h1>
+                <div class="bio">
+                    <div className="logo"></div>
+                    <nav>
+                        <ul>
+                            <li class="active">藏书馆</li>
+                            <li>原耽</li>
+                            <li>同人</li>
+                        </ul>
+                    </nav>
+                </div>
+                <Avatar email={getUserInfo().email}></Avatar>
             </div>
-            <nav>
-                <ul class="wrap">
-                    <li class="active">首页</li>
-                    {/* <button>作者中心</button> */}
-                </ul>
-            </nav>
+
         </header>
     )
 }
