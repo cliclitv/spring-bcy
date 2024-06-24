@@ -4,8 +4,9 @@
 <mapper namespace="bcy.dao.TermDao">
     <select id="getTermById" parameterType="java.lang.Long" resultType="bcy.dao.Term"> 
         select terms.id, terms.title, terms.content, terms.cat,
-        terms.createTime,terms.author,terms.uid, users.name,users.email from
-        terms LEFT JOIN users ON terms.uid = users.id where terms.id = #{id}
+        terms.createTime,terms.author,terms.uid, users.name,users.email,(select count(*) from
+        posts where tag=terms.id) as count 
+        from terms LEFT JOIN users ON terms.uid = users.id where terms.id = #{id}
     </select>
     <select id="getTerms" resultType="bcy.dao.Term"> select terms.id, terms.title, terms.content, terms.cat,
         terms.createTime,terms.author,terms.uid,users.name,users.email from

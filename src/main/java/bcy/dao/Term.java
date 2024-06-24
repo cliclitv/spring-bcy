@@ -7,7 +7,7 @@ public class Term {
     private String title;
     private String cat;
     private Long uid;
-
+    private Integer count;
     private String content;
     private String author;
     private String name;
@@ -84,5 +84,13 @@ public class Term {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }
