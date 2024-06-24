@@ -32,7 +32,8 @@ export default function Publish(props) {
         }
 
         addTerm(post).then(res => {
-            console.log(res)
+            alert(res.msg)
+            window.history.back()
         })
     }
 

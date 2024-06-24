@@ -48,11 +48,13 @@ table {
 
 a {
     color: var(--color);
-    text-decoration: none
+    text-decoration: none;
+    cursor: pointer;
 }
 
 a:hover {
     color: var(--primary);
+    transition: 1s;
 }
 
 h3 {

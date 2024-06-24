@@ -15,7 +15,7 @@ function CenterSection({ comp, props }) {
         </div>
         <div className="mask">
             <i class='icon-font icon-back' onclick={() => {
-                props.setShow(false)
+                props.setShow(null)
             }}></i>
         </div>
     </div>
@@ -25,7 +25,7 @@ function CenterSection({ comp, props }) {
 export default function Read(props) {
     const [post, setPost] = useState({} as any)
     const [term, setTerm] = useState({} as any)
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(null)
 
     const user = getUserInfo()
     const isEditor = user.level > 1
@@ -46,10 +46,10 @@ export default function Read(props) {
             <div class="wrap">
                 {isEditor && <div class="write">
                     <div className="info">
-                        合集由  <Avatar email={term.email} name={term.name}></Avatar> 发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time>
+                        合集由  <Avatar email={term.email} name={term.name}></Avatar> 发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> <a onClick={() => setShow(post.id)}>编辑分集</a>
                     </div>
                     <div>
-                        <button className="write-btn" onclick={() => setShow(true)}>
+                        <button className="write-btn" onclick={() => setShow(0)}>
                             <i class="icon-font icon-writerin-f"> </i> 添加分集</button>
                         <button className="write-btn" onclick={() => push(`/publish/${props.id}`)} style={{ background: 'var(--secondary)' }}>
                             <i class="icon-font icon-writerin-f"> </i> 编辑合集</button>
@@ -61,7 +61,8 @@ export default function Read(props) {
                 </div>
 
             </div>
-            {show && <CenterSection comp={Publish} props={{
+            {show != null && <CenterSection comp={Publish} props={{
+                id: show > 0 ? show : null,
                 tag: term.id,
                 ptitle: term.title,
                 setShow

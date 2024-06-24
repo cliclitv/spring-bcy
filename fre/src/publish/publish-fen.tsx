@@ -1,6 +1,5 @@
 import { useState, useEffect } from "fre"
-import { push } from "../use-route"
-import { addTerm, addpost, getPostDetail, getTermDetail, getUserInfo } from "../util/api"
+import { addpost, getPostDetail, getUserInfo } from "../util/api"
 import './publish.css'
 
 
@@ -32,7 +31,8 @@ export default function Publish(props) {
         }
 
         addpost(post).then(res => {
-            console.log(res)
+            alert(res.msg)
+            window.history.back()
         })
     }
 
