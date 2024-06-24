@@ -23,6 +23,7 @@ header nav {
 header nav li {
     padding: 12px;
     position: relative;
+    cursor: pointer;
 }
 
 header nav li.active{

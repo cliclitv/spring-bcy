@@ -79,7 +79,7 @@
     flex: 1;
 }
 
-.terms ul li:nth-child(1),
+
 .terms ul li:nth-child(2) {
     flex: 2;
 }

@@ -6,6 +6,8 @@ import { getPosts, getTermDetail, getTerms, getUserInfo } from '../util/api'
 import Avatar from '../component/avatar/avatar'
 import * as dayjs from 'dayjs'
 import Publish from '../publish/publish-fen'
+import snarkdown from 'snarkdown'
+import { marked } from 'marked'
 
 function CenterSection({ comp, props }) {
     const Comp = comp
@@ -40,8 +42,8 @@ export default function Read(props) {
         })
     }, [page])
 
-    function nextPage(){
-        setPage(page+1)
+    function nextPage() {
+        setPage(page + 1)
     }
 
     return (
@@ -59,18 +61,22 @@ export default function Read(props) {
                     </div>
                 </div>}
                 <div className="post">
-                    {post.title ? <><h2>{post?.title}</h2>
-                        <p>{post?.content}</p></> : <div>还没有添加分集</div>}
+                    {post?.title ? <><h2>{post?.title}</h2>
+                        <p ref={dom => {
+                            if (dom) dom.innerHTML = marked(post?.content)
+                        }}></p></> : <div>还没有添加分集</div>}
                 </div>
                 <div className="next" onClick={nextPage}>下一篇</div>
 
             </div>
-            {show != null && <CenterSection comp={Publish} props={{
-                id: show > 0 ? show : null,
-                tag: term.id,
-                ptitle: term.title,
-                setShow
-            }}></CenterSection>}
-        </div>
+            {
+                show != null && <CenterSection comp={Publish} props={{
+                    id: show > 0 ? show : null,
+                    tag: term.id,
+                    ptitle: term.title,
+                    setShow
+                }}></CenterSection>
+            }
+        </div >
     )
 }
