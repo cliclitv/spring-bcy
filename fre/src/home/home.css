@@ -1,26 +1,4 @@
-.table thead {
-    background: #ddd;
-    width: 1100px;
 
-}
-
-.table {
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    overflow: hidden;
-}
-
-.table table {
-    width: 100%;
-    border: 0;
-    table-layout: fixed;
-}
-
-.table thead th {
-    /* flex: 1; */
-    padding: 10px;
-    text-align: left;
-}
 
 .write {
     display: flex;
@@ -31,14 +9,6 @@
     padding: 8px 30px;
 }
 
-.table tr {
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
-}
-
-.table td {
-    padding: 10px;
-}
 .mask {
     background: rgba(0, 0, 0, .8);
     position: fixed;
@@ -80,8 +50,34 @@
     overflow: hidden;
 }
 
-.main{
+.main {
     border-radius: 10px 10px 0 0;
     background-color: #fff;
     padding: 10px;
+    margin-top: 10px;
+}
+
+.terms {
+    padding: 10px 0;
+}
+
+.terms ul {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.terms ul:first-child {
+    background: var(--bg);
+    border-radius: 5px;
+
+}
+
+.terms ul li {
+    flex: 1;
+}
+
+.terms ul li:nth-child(1),
+.terms ul li:nth-child(2) {
+    flex: 2;
 }

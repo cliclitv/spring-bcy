@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'fre'
 import './home.css'
+import * as dayjs from 'dayjs'
 
 import { push } from '../use-route'
 import { getTerms, getUserInfo } from '../util/api'
@@ -28,9 +29,9 @@ export default function App(props) {
     console.log(props.id)
 
     useEffect(() => {
-        // getTerms(user.id).then(res => {
-
-        // })
+        getTerms('', '', 0).then(res => {
+            setTerms(res.data)
+        })
     }, [])
     return (
         <div class="wrap">
@@ -38,6 +39,22 @@ export default function App(props) {
                 <div class="write">
                     <div></div>
                     <button className="write-btn" onclick={() => push('/publish/0')}>挖坑</button>
+                </div>
+                <div className="terms">
+                    <ul>
+                        <li>文名</li>
+                        <li>简介</li>
+                        <li>作者</li>
+                        <li>发布时间</li>
+                    </ul>
+                    {terms.map(term => {
+                        return <ul onClick={() => push(`/t/${term.id}`)}>
+                            <li>{term.title}</li>
+                            <li>{term.content}</li>
+                            <li>{term.author}</li>
+                            <li>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</li>
+                        </ul>
+                    })}
                 </div>
                 {props.id && <CenterSection comp={Publish} props={props}></CenterSection>}
             </div>

@@ -68,8 +68,8 @@ export function getGonggao() {
   return get(`https://www.ichushou.com/post/1`)
 }
 
-export function getTerms(uid) {
-  return get(`https://www.ichushou.com/terms?pid=${uid}`)
+export function getTerms(cat, author, uid) {
+  return get(`https://www.ichushou.com/terms?cat=${cat}&author=${author}&uid=${uid}`)
 }
 
 export function addTerm(data){
