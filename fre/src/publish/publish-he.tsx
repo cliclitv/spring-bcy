@@ -1,6 +1,6 @@
 import { useState, useEffect } from "fre"
 import { push } from "../use-route"
-import { addTerm, getPostDetail, getUserInfo, updatePost } from "../util/api"
+import { addTerm, getTermDetail, getUserInfo, updatePost } from "../util/api"
 import './publish.css'
 
 
@@ -9,6 +9,12 @@ export default function Publish(props) {
 
     const user = getUserInfo()
     const [post, setPost] = useState({ title: "", cat: "原耽", author: user.name, createTime: "", content: "", uid: user.id })
+
+    useEffect(() => {
+        getTermDetail(props.id).then(res => {
+            setPost(res.data)
+        })
+    }, [])
 
     function change(key, val) {
         setPost({

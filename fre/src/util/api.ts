@@ -4,8 +4,12 @@ export function getPosts(tag, page, pageSize) {
   return get(`https://www.ichushou.com/posts?&tag=${tag}&page=${page}&size=${pageSize}`)
 }
 
-export function getPostDetail(pid) {
-  return get(`https://www.ichushou.com/post/${pid}`)
+export function getPostDetail(id) {
+  return get(`https://www.ichushou.com/post/${id}`)
+}
+
+export function getTermDetail(id) {
+  return get(`https://www.ichushou.com/term/${id}`)
 }
 
 export function addPost({ title, content, status, sort, tag, videos }) {
@@ -46,12 +50,7 @@ export function getUser(id) {
   return get(`https://www.ichushou.com/user/${id}`)
 }
 
-export function pay({ price, order, uid }) {
-  return get(`https://www.ichushou.com/vip/pay?price=${price}&order=${order}&uid=${uid}`)
-}
-
 export function getComments(pid, rid, page?, pageSize?) {
-  console.log(pid)
   return get(`https://www.ichushou.com/comments?pid=${pid}&rid=${rid}&page=${page || 1}&pageSize=${pageSize || 1000}`)
 }
 
