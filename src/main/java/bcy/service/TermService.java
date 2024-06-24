@@ -20,7 +20,7 @@ public class TermService {
             term.setCreateTime(now);
         }
 
-        if (term.getId() != 0) {
+        if (term.getId() != null) {
             termDao.updateTerm(term);
         } else {
             termDao.addTerm(term);

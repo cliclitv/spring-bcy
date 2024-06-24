@@ -1,35 +1,25 @@
 import { useState, useEffect } from "fre"
 import { push } from "../use-route"
-import { addPost, getGonggao, getPostDetail, getUserInfo, updatePost } from "../util/api"
+import { addPost, addTerm, getGonggao, getPostDetail, getUserInfo, updatePost } from "../util/api"
 import './draft.css'
 
 
 
-export default function Upload(props) {
-    const [post, setPost] = useState({ title: "", cat: "原创", createTime: "", content: "" })
+export default function Publish(props) {
+
     const user = getUserInfo()
-    const [tag, setTag] = useState([])
+    const [post, setPost] = useState({ title: "", cat: "原耽", author: user.name, createTime: "", content: "" })
 
 
     useEffect(() => {
         if (props.id > 0) {
-            getPostDetail(props.id).then((res: any) => {
-                setPost(res.result)
-                setTag(res.result.tag.split(' '))
-            })
+            // getPostDetail(props.id).then((res: any) => {
+            //     setPost(res.result)
+            //     setTag(res.result.tag.split(' '))
+            // })
 
         } else {
             // 新增
-        }
-        if (user) {
-            getPostB("", "", 1, 200, "", user?.id).then(res => {
-                setDraft(res.posts)
-            })
-            getGonggao().then(res => {
-                let t = tags.concat(res.result.videos.split('\n'))
-                console.log(t)
-                setTags([...new Set(t)])
-            })
         }
     }, [props.id])
 
@@ -40,32 +30,18 @@ export default function Upload(props) {
         } as any)
     }
 
-    function selectTag(item) {
-        let a = tag
-        if (tag.includes(item)) {
-            a = tag.filter(i => i != item)
-        } else {
-            a = tag.concat([item])
-        }
-        setTag(a)
-        change('tag', a.join(' '))
-    }
-
     function submit() {
-        if (!post.title || !post.content || !post.cat || !post.tag) {
+        if (!post.title || !post.content || !post.cat || !post.author) {
             alert("都要填")
             return
         }
-        if (props.id > 0) {
-            updatePost(post as any).then(res => {
-                alert((res.msg || '搞定^_^') + ' gv' + res.result.id)
-            })
-        } else {
-            console.log(post)
-            addPost(post as any).then(res => {
-                alert((res.msg || '搞定^_^'))
-            })
-        }
+
+        console.log(post)
+
+
+        addTerm(post).then(res => {
+            console.log(res)
+        })
     }
 
     return (
@@ -76,7 +52,7 @@ export default function Upload(props) {
             </div>
             {
                 post.cat === '藏书馆' && <div className="title">
-                    <input type="text" placeholder="请输入作者笔名" value={post.title} onInput={e => change('author', e.target.value)} />
+                    <input type="text" placeholder="请输入原作者名" value={post.author} onInput={e => change('author', e.target.value)} />
                 </div>
             }
             <textarea spellcheck="false" placeholder="请输入文案，支持 markdown 语法" value={post.content} onInput={e => change('content', e.target.value)}></textarea>

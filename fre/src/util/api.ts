@@ -71,3 +71,7 @@ export function getGonggao() {
 export function getTerms(uid) {
   return get(`https://www.ichushou.com/terms?pid=${uid}`)
 }
+
+export function addTerm(data){
+  return post('https://www.ichushou.com/term', data)
+}

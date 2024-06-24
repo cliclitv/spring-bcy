@@ -10,14 +10,13 @@ const routes = {
     '/': import('./home/home'),
     '/login': import('./login/login'),
     '/register': import('./login/register'),
-    '/draft/:id': import('./draft/draft'),
+    '/publish/:id': import('./home/home'),
 }
 
-const App = () => {
+const App = (props) => {
     let route = useRoutes(routes)
     let token = getToken()
     let user = getUserInfo()
-    console.log(user)
     if(!user){
         push('/login')
     }
