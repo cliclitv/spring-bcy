@@ -1,6 +1,6 @@
 import { useState, useEffect } from "fre"
 import { push } from "../use-route"
-import { addPost, addTerm, getGonggao, getPostDetail, getUserInfo, updatePost } from "../util/api"
+import { addTerm, addpost, getPostDetail, getTermDetail, getUserInfo, updatePost } from "../util/api"
 import './publish.css'
 
 
@@ -8,7 +8,15 @@ import './publish.css'
 export default function Publish(props) {
 
     const user = getUserInfo()
-    const [post, setPost] = useState({ title: "", cat: "原耽", author: user.name, createTime: "", content: "", uid: user.id })
+    const [post, setPost] = useState({ title: "", tag: props.tag,  createTime: "", content: "", uid: user.id })
+
+    useEffect(() => {
+        if (props.id > 0) {
+            getPostDetail(props.id).then(res => {
+                setPost(res.data)
+            })
+        }
+    }, [])
 
     function change(key, val) {
         setPost({
@@ -23,7 +31,7 @@ export default function Publish(props) {
             return
         }
 
-        addTerm(post).then(res => {
+        addpost(post).then(res => {
             console.log(res)
         })
     }
@@ -41,11 +49,7 @@ export default function Publish(props) {
             }
             <textarea spellcheck="false" placeholder="请输入文案，支持 markdown 语法" value={post.content} onInput={e => change('content', e.target.value)}></textarea>
             <div className="options">
-                <select onInput={e => change('cat', e.target.value)}>
-                    <option value="藏书馆" selected={post.cat === '藏书馆'}>藏书馆</option>
-                    <option value="原耽" selected={post.cat === '原耽'}>原耽</option>
-                    <option value="同人" selected={post.cat === '同人'}>同人</option>
-                </select>
+                <div>合集: {props.ptitle}</div>
                 {props.id > 0 && <input type="text" value={post.createTime} onInput={e => change('time', e.target.value)} />}
             </div>
             <div className="tags">

@@ -21,7 +21,6 @@ function CenterSection({ comp, props }) {
 
 }
 
-const user = getUserInfo()
 
 export default function App(props) {
     const [terms, setTerms] = useState([])

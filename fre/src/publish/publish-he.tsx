@@ -11,9 +11,11 @@ export default function Publish(props) {
     const [post, setPost] = useState({ title: "", cat: "原耽", author: user.name, createTime: "", content: "", uid: user.id })
 
     useEffect(() => {
-        getTermDetail(props.id).then(res => {
-            setPost(res.data)
-        })
+        if (props.id > 0) {
+            getTermDetail(props.id).then(res => {
+                setPost(res.data)
+            })
+        }
     }, [])
 
     function change(key, val) {

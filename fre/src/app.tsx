@@ -11,6 +11,7 @@ const routes = {
     '/login': import('./login/login'),
     '/register': import('./login/register'),
     '/publish/:id': import('./home/home'),
+    '/upload/:id': import('./read/read'),
     '/read/:id': import('./read/read'),
 }
 
