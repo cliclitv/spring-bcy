@@ -4,7 +4,7 @@ import * as dayjs from 'dayjs'
 
 import { push } from '../use-route'
 import { getTerms, getUserInfo } from '../util/api'
-import Publish from '../draft/draft'
+import Publish from '../publish/publish-fen'
 
 function CenterSection({ comp, props }) {
     const Comp = comp
