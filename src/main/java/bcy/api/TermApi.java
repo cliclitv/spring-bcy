@@ -39,9 +39,4 @@ public class TermApi {
         return JsonResponse.success();
     }
 
-    @PutMapping("/term")
-    public JsonResponse<String> updateTerm(@RequestBody Term term) {
-        termService.updateTerm(term);
-        return JsonResponse.success();
-    }
 }

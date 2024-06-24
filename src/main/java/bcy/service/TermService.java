@@ -14,21 +14,18 @@ public class TermService {
     @Autowired
     private TermDao termDao;
 
-
     public void addTerm(Term term) {
-        Date now = new Date();
+        if (term.getCreateTime() == null) {
+            Date now = new Date();
+            term.setCreateTime(now);
+        }
 
-        term.setCreateTime(now);
+        if (term.getId() != 0) {
+            termDao.updateTerm(term);
+        } else {
+            termDao.addTerm(term);
+        }
 
-        termDao.addTerm(term);
-    }
-
-    public void updateTerm(Term term) {
-        Date now = new Date();
-
-        term.setCreateTime(now);
-
-        termDao.updateTerm(term);
     }
 
     public List<Term> getTerms(Long pid) {

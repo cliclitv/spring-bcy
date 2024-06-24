@@ -11,6 +11,10 @@
     padding: 20px 0;
 }
 
+.upload.wrap{
+    width: 800px;
+}
+
 .draft {
     background: #e2e2e2;
     border-radius: 10px;
@@ -58,6 +62,7 @@
     resize: vertical;
     font-size: 16px;
     line-height: 20px;
+    border-radius: 8px;
 }
 
 
@@ -82,8 +87,8 @@
 
 .upload .title input {
     padding: 10px 20px;
-    border-radius: 4px;
-    margin: 20px 0;
+    border-radius: 8px;
+    margin-bottom: 10px;
     border: none;
     width: 100%;
     box-sizing: border-box;
@@ -129,8 +134,8 @@
     background: var(--primary);
     color: #fff;
     margin: 0 auto;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 8px 10px;
+    border-radius: 8px;
     border: none;
     width: 100px;
     cursor: pointer;
