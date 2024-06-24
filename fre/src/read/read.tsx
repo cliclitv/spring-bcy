@@ -61,16 +61,16 @@ export default function Read(props) {
     return (
         <div class="main">
             <div class="wrap">
-                {isEditor && <div class="write">
+                {<div class="write">
                     <div className="info">
-                        合集由  <Avatar email={term.email} name={term.name}></Avatar> 发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> <a onClick={() => setShow(post.id)}>编辑分集</a>
+                        {'<'}{term.title}{'>'} 由  <Avatar email={term.email} name={term.name}></Avatar> 添加于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> <a onClick={() => setShow(post.id)}>编辑分集</a>
                     </div>
-                    <div>
+                    {isEditor ? <div>
                         <button className="write-btn" onclick={() => setShow(0)}>
                             <i class="icon-font icon-writerin-f"> </i> 添加分集</button>
                         <button className="write-btn" onclick={() => push(`/publish/${props.id}`)} style={{ background: 'var(--secondary)' }}>
                             <i class="icon-font icon-writerin-f"> </i> 编辑合集</button>
-                    </div>
+                    </div> : null}
                 </div>}
 
                 <div className="post">
