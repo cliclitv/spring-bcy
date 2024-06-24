@@ -6,6 +6,7 @@ public class Term {
     private Long id;
     private String title;
     private String cat;
+
     public String getCat() {
         return cat;
     }
@@ -15,7 +16,34 @@ public class Term {
     }
 
     private String content;
-    private Long author;
+    private String author;
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String name;
+    private String email;
     private Date createTime;
 
     public String getContent() {
@@ -33,6 +61,7 @@ public class Term {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
     public Long getId() {
         return id;
     }

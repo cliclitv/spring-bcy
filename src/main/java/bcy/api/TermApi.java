@@ -22,8 +22,8 @@ public class TermApi {
     private TermService termService;
 
     @GetMapping("/terms")
-    public JsonResponse<List<Term>> getTerms(String cat, String author) {
-        List<Term> list = termService.getTerms(cat, author);
+    public JsonResponse<List<Term>> getTerms(String cat, String author, String uid) {
+        List<Term> list = termService.getTerms(cat, author, Long.valueOf(uid));
         return new JsonResponse<>(list);
     }
 
