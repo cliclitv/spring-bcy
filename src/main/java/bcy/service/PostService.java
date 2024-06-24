@@ -20,6 +20,11 @@ public class PostService {
 
     public void addPost(Post post) {
 
+        if (post.getId() != null) {
+            updatePost(post);
+            return;
+        }
+
         Post dbPost = this.getPostById(post.getId());
 
         if (dbPost != null) {
@@ -58,7 +63,7 @@ public class PostService {
     }
 
     public List<Post> getPosts(String tag, Long uid, Long pid, String search, Long page,
-            Long size, Long fid,String idstr) {
+            Long size, Long fid, String idstr) {
         String[] tags = new String[0];
         String[] ids = new String[0];
         if (idstr != null) {
@@ -68,7 +73,7 @@ public class PostService {
             tags = tag.split(",");
         }
         Long start = size * (page - 1);
-        return postDao.getPosts(tags, uid, pid, search, start, size, fid,ids);
+        return postDao.getPosts(tags, uid, pid, search, start, size, fid, ids);
     }
 
     public Post getPostById(Long id) {
@@ -77,8 +82,8 @@ public class PostService {
 
     public Long replacePv(Long pid) {
         Post dbPost = this.getPostById(pid);
-        Long pv = dbPost.getPv()+1;
-        postDao.replacePv(pid,pv);
+        Long pv = dbPost.getPv() + 1;
+        postDao.replacePv(pid, pv);
         return pv;
     }
 

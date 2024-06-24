@@ -41,15 +41,6 @@ public class PostApi {
 
     }
 
-    @PutMapping("/post/{id}")
-    public JsonResponse<String> putMethodName(@PathVariable String id, @RequestBody Post post) {
-        post.setId(Long.valueOf(id));
-
-        postService.updatePost(post);
-
-        return JsonResponse.success();
-    }
-
     @GetMapping("/posts")
     public JsonResponse<List<Post>> getPosts(String tag, String uid, String pid,
             String search, String page, String size, String fid, String ids) {

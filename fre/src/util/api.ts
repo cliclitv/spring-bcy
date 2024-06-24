@@ -12,32 +12,8 @@ export function getTermDetail(id) {
   return get(`https://www.ichushou.com/term/${id}`)
 }
 
-export function addPost({ title, content, status, sort, tag, videos }) {
-  return post('https://www.ichushou.com/post/add', {
-    title,
-    content,
-    status,
-    sort,
-    tag,
-    videos
-  })
-}
-
 export function getUserInfo() {
   return JSON.parse(window.localStorage.getItem('user'))
-}
-
-export function updatePost({ id, title, content, status, sort, tag, time, videos }) {
-  return post(`https://www.ichushou.com/post/update/${id}`, {
-    id,
-    title,
-    content,
-    status,
-    sort,
-    tag,
-    time,
-    videos
-  })
 }
 
 export function updateUser({ id, name, pwd, qq, level, hash, sign }) {
@@ -73,4 +49,8 @@ export function getTerms(cat, author, uid) {
 
 export function addTerm(data){
   return post('https://www.ichushou.com/term', data)
+}
+
+export function addpost(data){
+  return post('https://www.ichushou.com/post', data)
 }
