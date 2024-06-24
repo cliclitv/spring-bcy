@@ -3,7 +3,16 @@
 
 <mapper namespace="bcy.dao.TermDao">
     <select id="getTerms" resultType="bcy.dao.Term"> select terms.id, terms.title, terms.content, terms.cat,terms.createTime,terms.author from
-        terms
+        terms EFT JOIN users ON terms.uid = users.id where title != "删除"
+        <if test="author != null and author != '' ">
+            and author=#{author}
+        </if>
+        <if test="uid != null and uid != 0 ">
+            and uid=#{uid}
+        </if>
+        <if test="cat != null and cat != '' ">
+            and cat=#{cat}
+        </if>
         order by terms.createTime desc limit 0,20 
     </select>
     <insert id="addTerm" parameterType="bcy.dao.Term"> 
