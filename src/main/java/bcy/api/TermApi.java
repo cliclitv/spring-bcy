@@ -14,7 +14,6 @@ import bcy.dao.Term;
 import bcy.service.TermService;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
 @CrossOrigin(origins = "*")
 public class TermApi {
@@ -23,6 +22,9 @@ public class TermApi {
 
     @GetMapping("/terms")
     public JsonResponse<List<Term>> getTerms(String cat, String author, String uid) {
+        if (uid == null) {
+            uid = "0";
+        }
         List<Term> list = termService.getTerms(cat, author, Long.valueOf(uid));
         return new JsonResponse<>(list);
     }
