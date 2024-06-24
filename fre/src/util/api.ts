@@ -13,7 +13,7 @@ export function getTermDetail(id) {
 }
 
 export function getUserInfo() {
-  return JSON.parse(window.localStorage.getItem('user'))
+  return JSON.parse(window.localStorage.getItem('user')) || {}
 }
 
 export function updateUser({ id, name, pwd, qq, level, hash, sign }) {
@@ -47,10 +47,10 @@ export function getTerms(cat, author, uid) {
   return get(`https://www.ichushou.com/terms?cat=${cat}&author=${author}&uid=${uid}`)
 }
 
-export function addTerm(data){
+export function addTerm(data) {
   return post('https://www.ichushou.com/term', data)
 }
 
-export function addpost(data){
+export function addpost(data) {
   return post('https://www.ichushou.com/post', data)
 }
