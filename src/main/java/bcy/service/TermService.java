@@ -14,6 +14,10 @@ public class TermService {
     @Autowired
     private TermDao termDao;
 
+    public Term getTermById(Long id) {
+        return termDao.getTermById(id);
+    }
+
     public void addTerm(Term term) {
         if (term.getCreateTime() == null) {
             Date now = new Date();

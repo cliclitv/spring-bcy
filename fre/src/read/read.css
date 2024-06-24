@@ -1,14 +1,18 @@
-
-
 .write {
     display: flex;
     justify-content: space-between;
+}
+
+.write div {
+    display: flex;
+    align-items: center;
 }
 
 .write-btn {
     padding: 8px 30px;
     display: flex;
     align-items: center;
+    margin-left: 10px;
 }
 
 .mask {
@@ -59,32 +63,33 @@
     margin-top: 10px;
 }
 
-.post .info{
+.info {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    background: var(--bg);
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin: 10px 0;
 }
 
-.post .info .avatar{
-    margin: 0 10px 0 0;
-}
 
-.post h1{
-    padding:10px 0 5px 0;
+.post h1 {
+    padding: 10px 0 5px 0;
 
 }
 
-.post .info img{
+.write .info img {
     height: 24px;
     width: 24px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
-.post .info time{
+.info time {
     padding: 0 10px;
-    color: #bbb;
+    color: #aaa;
 }
 
-.post  p{
+.post p {
     font-size: 16px;
     letter-spacing: 2;
     line-height: 18px;

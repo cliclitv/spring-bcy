@@ -49,7 +49,7 @@ export default function App(props) {
                         <li>发布时间</li>
                     </ul>
                     {terms.map(term => {
-                        return <ul onClick={() => push(`/read/${term.id}`)}>
+                        return <ul onClick={() => push(`/read/${term.id}`,{title:term.title})}>
                             <li>{term.title}</li>
                             <li>{term.content}</li>
                             <li>{term.author}</li>
