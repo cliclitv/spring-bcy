@@ -46,6 +46,18 @@ export default function Read(props) {
         setPage(page + 1)
     }
 
+    function page$(){
+        return <div className="page">
+        {new Array(term.count).fill(null).map((c, index) => {
+
+            return <li class={page === index + 1 ? 'active' : ''} onClick={() => {
+                setPage(index + 1)
+            }}>{index + 1}</li>
+        })}
+        <div className="next" onClick={nextPage}>下一篇</div>
+    </div>
+    }
+
     return (
         <div class="main">
             <div class="wrap">
@@ -60,14 +72,15 @@ export default function Read(props) {
                             <i class="icon-font icon-writerin-f"> </i> 编辑合集</button>
                     </div>
                 </div>}
+
                 <div className="post">
                     {post?.title ? <><h2>{post?.title}</h2>
+                        {page$()}
                         <p ref={dom => {
                             if (dom) dom.innerHTML = marked(post?.content)
                         }}></p></> : <div>还没有添加分集</div>}
                 </div>
-                <div className="next" onClick={nextPage}>下一篇</div>
-
+                {page$()}
             </div>
             {
                 show != null && <CenterSection comp={Publish} props={{

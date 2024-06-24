@@ -72,19 +72,19 @@
     margin: 10px 0;
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-.next{
-    padding: 10px 20px;
+.next, .page li {
+    padding: 5px 15px;
     color: var(--primary);
     background: #ffece5;
     border-radius: 8px;
-    width: 200px;
-    margin: 10px auto;
+    margin: 10px;
     cursor: pointer;
     text-align: center;
+    display: inline-block;
 }
 
 
@@ -111,4 +111,17 @@ h2{
     padding: 10px 0;
     text-indent: 2em;
 
+}
+
+.page {
+    /* display: flex; */
+    justify-content: center;
+    /* max-width: 300px; */
+    margin: 10px auto;
+    text-align: center;
+}
+
+.page li.active{
+    background: var(--primary);
+    color: white;
 }
