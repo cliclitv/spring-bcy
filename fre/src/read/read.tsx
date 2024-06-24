@@ -21,13 +21,11 @@ function CenterSection({ comp, props }) {
 
 }
 
-const user = getUserInfo()
-
-export default function App(props) {
+export default function Read(props) {
     const [post, setPost] = useState({} as any)
 
     const user = getUserInfo()
-    const isEditor = user.level > 5
+    const isEditor = user.level > 1
 
     useEffect(() => {
         getPosts(props.id, 1, 1).then(res => {
@@ -35,7 +33,6 @@ export default function App(props) {
         })
     }, [])
     return (
-
         <div class="main">
             <div class="wrap">
                 {isEditor && <div class="write">
@@ -44,10 +41,10 @@ export default function App(props) {
                         <i class="icon-font icon-writerin-f"> </i> 添加章节</button>
                 </div>}
                 <div className="post">
-                    <h1>{post.title}</h1>
                     <div className="info">
                         <Avatar email={post.email} name={post.name}></Avatar> 发布于 <time>{dayjs(post.createTime).format('YYYY-MM-DD HH:mm')}</time>
                     </div>
+                    <h2>{post.title}</h2>
                     <p>{post.content}</p>
                 </div>
 
