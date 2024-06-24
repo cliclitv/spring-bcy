@@ -22,7 +22,24 @@ header nav {
 
 header nav li {
     padding: 12px;
+    position: relative;
+}
 
+header nav li.active{
+    color: var(--primary);
+}
+
+header nav li.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    height: 6px;
+    width: 6px;
+    border-bottom: 4px solid var(--primary);
+    border-left: 4px solid var(--primary);
+    transform-origin: 50% 50%;
+    transform: rotate(-45deg) translate(0, -50%);
 }
 
 header nav ul {
@@ -36,7 +53,7 @@ header .top {
     justify-content: space-between;
 }
 
-header .bio{
+header .bio {
     align-items: center;
     display: flex;
 }
