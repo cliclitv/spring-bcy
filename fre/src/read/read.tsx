@@ -26,20 +26,23 @@ export default function Read(props) {
     const [post, setPost] = useState({} as any)
     const [term, setTerm] = useState({} as any)
     const [show, setShow] = useState(null)
+    const [page, setPage] = useState(1)
 
     const user = getUserInfo()
     const isEditor = user.level > 1
 
     useEffect(() => {
-        getPosts(props.id, 1, 1).then(res => {
+        getPosts(props.id, page, 1).then(res => {
             setPost(res.data[0])
             getTermDetail(props.id).then(res => {
                 setTerm(res.data)
             })
         })
-    }, [])
+    }, [page])
 
-    console.log(props)
+    function nextPage(){
+        setPage(page+1)
+    }
 
     return (
         <div class="main">
@@ -59,6 +62,7 @@ export default function Read(props) {
                     {post.title ? <><h2>{post?.title}</h2>
                         <p>{post?.content}</p></> : <div>还没有添加分集</div>}
                 </div>
+                <div className="next" onClick={nextPage}>下一篇</div>
 
             </div>
             {show != null && <CenterSection comp={Publish} props={{

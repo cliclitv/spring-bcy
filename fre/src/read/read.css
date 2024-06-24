@@ -72,6 +72,17 @@
     margin: 10px 0;
 }
 
+.next{
+    padding: 10px 20px;
+    color: var(--primary);
+    background: #ffece5;
+    border-radius: 8px;
+    width: 200px;
+    margin: 10px auto;
+    cursor: pointer;
+    text-align: center;
+}
+
 
 .post h1 {
     padding: 10px 0 5px 0;
