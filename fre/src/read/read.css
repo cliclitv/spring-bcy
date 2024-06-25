@@ -125,3 +125,7 @@ h2 {
     background: var(--primary);
     color: white;
 }
+
+.info a{
+    color: var(--secondary);
+}

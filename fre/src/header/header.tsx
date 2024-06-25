@@ -27,7 +27,7 @@ export default function Header() {
                     <div className="logo" onClick={() => push('/')}></div>
                     <nav>
                         <ul>
-                            <li class="active">藏书馆</li>
+                            <li class="active">文库</li>
                             <li>原耽</li>
                             <li>同人</li>
                             {user.id == null && <li onClick={() => push('/login')}>登录</li>}
