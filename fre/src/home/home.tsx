@@ -37,7 +37,7 @@ export default function App(props) {
                 <div class="write">
                     <div></div>
                     <button className="write-btn" onclick={() => push('/publish/0')}>
-                        <i class="icon-font icon-writerin-f"> </i> 添加合集</button>
+                        <i class="icon-font icon-writerin-f"> </i>发布合集</button>
                 </div>
                 <div className="terms">
                     <ul>

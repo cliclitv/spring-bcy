@@ -63,7 +63,7 @@ export default function Publish(props) {
 
             </div>
             <div className="submit" onClick={submit}>
-                <button>添加</button>
+                <button>发布</button>
             </div>
         </div>
     )
