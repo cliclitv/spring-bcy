@@ -72,19 +72,61 @@ h1 {
 
 }
 
+button[loading] {
+    position: relative;
+    background: transparent;
+    color: #fff;
+    margin: 10px;
+}
+
+button[loading]:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-top: 3px solid var(--primary);
+    border-left: 3px solid var(--primary);
+    width: 16px;
+    height: 16px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media screen and (max-width: 500px) {
 
     .wrap,
     .top .wrap {
-        width: 100%!important;
+        width: 100% !important;
     }
 
-    .write{
-        display: block!important;
+    .write {
+        display: block !important;
         margin: 10px 0;
     }
 
-    .write div{
+    .write div {
         justify-content: center;
     }
 }

@@ -61,7 +61,7 @@ export default function Read(props) {
     return (
         <div class="main">
             <div class="wrap">
-                {<div class="write">
+                {!post.id || !term.id ? <button loading></button> : <><div class="write">
                     <div className="info">
                         {'<'}{term.title}{'>'} 由  <Avatar email={term.email} name={term.name}></Avatar>发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> {isEditor ? <a onClick={() => push(`/publish/${props.id}`)}>编辑合集</a> : null}
                     </div>
@@ -71,16 +71,16 @@ export default function Read(props) {
                         <button className="write-btn" onclick={() => setShow(post.id)} style={{ background: 'var(--secondary)' }}>
                             <i class="icon-font icon-writerin-f"> </i> 编辑当前单篇</button>
                     </div> : null}
-                </div>}
-
-                <div className="post">
-                    {post?.title ? <><h2>{post?.title}</h2>
-                        {page$()}
-                        <p ref={dom => {
-                            if (dom) dom.innerHTML = marked(post?.content)
-                        }}></p></> : <div>还没有添加分集</div>}
                 </div>
-                {page$()}
+
+                    <div className="post">
+                        {post?.title ? <><h2>{post?.title}</h2>
+                            {page$()}
+                            <p ref={dom => {
+                                if (dom) dom.innerHTML = marked(post?.content)
+                            }}></p></> : <div>还没有添加分集</div>}
+                    </div>
+                    {page$()}</>}
             </div>
             {
                 show != null && <CenterSection comp={Publish} props={{

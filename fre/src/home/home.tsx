@@ -46,14 +46,14 @@ export default function App(props) {
                         <li>作者</li>
                         <li>发布时间</li>
                     </ul>
-                    {terms.map(term => {
-                        return <ul onClick={() => push(`/read/${term.id}`,{title:term.title})}>
+                    {terms.length > 0 ? terms.map(term => {
+                        return <ul onClick={() => push(`/read/${term.id}`, { title: term.title })}>
                             <li>{term.title}</li>
                             <li>{term.content}</li>
                             <li>{term.author}</li>
                             <li>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</li>
                         </ul>
-                    })}
+                    }) : <button loading></button>}
                 </div>
                 {props.id && <CenterSection comp={Publish} props={props}></CenterSection>}
             </div>
