@@ -16,10 +16,8 @@ export function getUserInfo() {
   return JSON.parse(window.localStorage.getItem('user')) || {}
 }
 
-export function updateUser({ id, name, pwd, qq, level, hash, sign }) {
-  return post(`https://www.ichushou.com/user/update/${id}`, {
-    name, pwd, qq, level: parseInt(level), hash, sign
-  })
+export function addUser(user) {
+  return post(`https://www.ichushou.com/register`, user)
 }
 
 export function getUser(id) {

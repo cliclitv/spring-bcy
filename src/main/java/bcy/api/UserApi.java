@@ -41,15 +41,6 @@ public class UserApi {
         return new JsonResponse<>(token);
 
     }
-
-    @PutMapping("/user/{id}")
-    public JsonResponse<String> putMethodName(@PathVariable String id, @RequestBody User user) {
-        user.setId(Long.valueOf(id));
-
-        userService.updateUser(user);
-
-        return JsonResponse.success();
-    }
     
 
 }

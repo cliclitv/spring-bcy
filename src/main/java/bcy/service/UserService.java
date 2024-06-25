@@ -20,6 +20,11 @@ public class UserService {
 
     public void addUser(User user) {
 
+        if (user.getId() != null) {
+            this.updateUser(user);
+            return;
+        }
+
         User dbUser = this.getUserByEmail(user.getEmail());
 
         if (dbUser != null) {
@@ -44,7 +49,7 @@ public class UserService {
 
         String email = user.getEmail();
 
-        User dbUser = email.contains("@")?this.getUserByEmail(email):this.getUserByName(email);
+        User dbUser = email.contains("@") ? this.getUserByEmail(email) : this.getUserByName(email);
 
         if (dbUser == null) {
             throw new ConditionException("当前邮箱不存在！");
@@ -94,7 +99,7 @@ public class UserService {
         return userDao.getUserByEmail(email);
     }
 
-    public User getUserByName(String name){
+    public User getUserByName(String name) {
         return userDao.getUserByName(name);
     }
 
