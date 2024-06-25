@@ -9,15 +9,15 @@ body {
     color: var(--color);
     background: #f0f0f5;
     --primary: #F77649;
-    --border:#a1dbf3;
-    --light:#bae3ff;
+    --border: #a1dbf3;
+    --light: #bae3ff;
     --secondary: #00b8ac;
     --secondary-bg: rgba(108, 230, 123, 0.3);
     --bg: #f0f0f5;
     --black: rgb(37, 37, 37);
     --white: #fff;
     --border: 0 1px 2px #ddd;
-    --color: rgb(55,65,81);
+    --color: rgb(55, 65, 81);
     --background: #fafafa;
     --primary-bg: rgba(230, 108, 167, 0.1);
     --shadow: 2px 2px 0px rgba(5, 20, 50, 0.1)
@@ -70,4 +70,21 @@ h1 {
     font-weight: normal;
     padding: 20px 10px;
 
+}
+
+@media screen and (max-width: 500px) {
+
+    .wrap,
+    .top .wrap {
+        width: 100%!important;
+    }
+
+    .write{
+        display: block!important;
+        margin: 10px 0;
+    }
+
+    .write div{
+        justify-content: center;
+    }
 }
