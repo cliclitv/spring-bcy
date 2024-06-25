@@ -17,7 +17,7 @@ export function getUserInfo() {
 }
 
 export function addUser(user) {
-  return post(`https://www.ichushou.com/register`, user)
+  return post(`https://www.ichushou.com/user/register`, user)
 }
 
 export function getUser(id) {

@@ -16,7 +16,7 @@
         #{id} </select>
 
     <insert id="addUser" parameterType="bcy.dao.User"> insert into users (name, email, pwd, sign,
-        level) values (#{name}, #{email}, #{pwd}, "这个人很懒，什么也没留下~", 1) </insert>
+        level) values (#{name}, #{email}, #{pwd}, "这个人很懒，木有签名~", 1) </insert>
 
     <update id="updateUser" parameterType="bcy.dao.User"> update users set name=#{name},
         email=#{email}, pwd=#{pwd}, sign=#{sign}, level=#{level} where id = #{id} </update>
