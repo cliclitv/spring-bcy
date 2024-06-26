@@ -15,14 +15,14 @@ public class Term {
     private String name;
     private String email;
     private Date createTime;
-    private List<Post> chapters = new ArrayList<>();
+    private List<String> list = new ArrayList<>();
 
-    public List<Post> getChapters() {
-        return chapters;
+    public List<String> getList() {
+        return list;
     }
 
-    public void setChapters(List<Post> chapters) {
-        this.chapters = chapters;
+    public void setList(List<String> list) {
+        this.list = list;
     }
 
     public Long getUid() {

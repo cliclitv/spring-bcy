@@ -1,11 +1,13 @@
 package bcy.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bcy.dao.Comment;
 import bcy.dao.Post;
 import bcy.dao.PostDao;
 import bcy.dao.Term;
@@ -20,8 +22,12 @@ public class TermService {
 
     public Term getTermById(Long id) {
         Term term = termDao.getTermById(id);
-        List<Post> chapters = postDao.getPostsTitle(id, Long.valueOf(1), Long.valueOf(1000));
-        term.setChapters(chapters);
+        List<String> list = new ArrayList<>();
+        List<Post> posts = postDao.getPostsTitle(id, Long.valueOf(1), Long.valueOf(1000));
+        for (Post post : posts) {
+            list.add(post.getTitle());
+        }
+        term.setList(list);
         return term;
     }
 
