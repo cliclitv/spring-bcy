@@ -1,6 +1,7 @@
 import { useState, useEffect } from "fre"
 import { addpost, getPostDetail, getUserInfo } from "../util/api"
 import './publish.css'
+import { autoLayout } from "../util/layout"
 
 
 
@@ -44,8 +45,11 @@ export default function Publish(props) {
             </div>
             <textarea spellcheck="false" placeholder="请输入正文，支持 markdown 语法" value={post.content} onInput={e => change('content', e.target.value)}></textarea>
             <div className="options">
-                <div>合集: {props.ptitle}</div>
-                {props.id > 0 && <input type="text" value={post.createTime} onInput={e => change('time', e.target.value)} />}
+                <div>
+                    <div>合集: {props.ptitle}</div>
+                    {props.id > 0 && <input type="text" value={post.createTime} onInput={e => change('time', e.target.value)} />}
+                </div>
+                <a onClick={() => change('content', autoLayout(post.content))}>自动排版</a>
             </div>
             <div className="tags">
 

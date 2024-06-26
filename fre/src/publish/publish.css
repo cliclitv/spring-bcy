@@ -125,6 +125,12 @@
 .options {
     margin: 10px 0;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.options a{
+    color: var(--secondary);
 }
 
 .submit {
@@ -153,9 +159,15 @@
 .options input {
     border: none;
     outline: none;
-    background: #f2f2f2;
+    background: #ddd;
     padding: 2px 5px;
+    width: 200px;
     border-radius: 5px;
+    margin-left: 20px;
+}
+
+.options div{
+    display: flex;
 }
 
 .upload-video {
