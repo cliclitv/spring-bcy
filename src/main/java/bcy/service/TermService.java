@@ -23,7 +23,7 @@ public class TermService {
     public Term getTermById(Long id) {
         Term term = termDao.getTermById(id);
         List<String> list = new ArrayList<>();
-        List<Post> posts = postDao.getPostsTitle(id, Long.valueOf(1), Long.valueOf(1000));
+        List<Post> posts = postDao.getPostsTitle(id, Long.valueOf(0), Long.valueOf(1000));
         for (Post post : posts) {
             list.add(post.getTitle());
         }
