@@ -30,7 +30,7 @@ export default function Header() {
                             <li class="active">文库</li>
                             <li>原耽</li>
                             <li>同人</li>
-                            <li>甜梦圈</li>
+                            
                             {user.id == null && <li onClick={() => push('/login')}>登录</li>}
                         </ul>
                     </nav>
