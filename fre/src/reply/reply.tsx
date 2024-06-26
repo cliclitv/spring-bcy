@@ -36,11 +36,11 @@ export default function Reply({ post }) {
         <div class="reply wrap">
             <div className="reply-input">
                 <Avatar email={user.email}></Avatar>
-                <input type="text" placeholder="发条评论见证此刻" onInput={(e) => setReply(e.target.value)} />
+                <input type="text" placeholder="发个回帖见证此刻" onInput={(e) => setReply(e.target.value)} />
                 {user.id ? <button onClick={submit}>发送</button> : <button onclick={() => push('/login')}>登录</button>}
             </div>
 
-            <h1>共有{replys ? replys.length : 0}条书评</h1>
+            <h1>共有{replys ? replys.length : 0}条回帖</h1>
             {replys && replys.map(item => {
                 //@ts-ignore
                 const time = dayjs(item.time).format('MM-DD-YYYY')
