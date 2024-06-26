@@ -4,6 +4,7 @@ import './home.css'
 import { push } from '../use-route'
 import { getTerms, getUserInfo } from '../util/api'
 import Publish from '../publish/publish-he'
+import { getHui } from '../util/layout'
 
 function CenterSection({ comp, props }) {
     const Comp = comp
@@ -47,9 +48,9 @@ export default function App(props) {
                         <li>发布时间</li>
                     </ul>
                     {terms.length > 0 ? terms.map(term => {
-                        return <ul onClick={() => push(`/read/${term.id}`, { title: term.title })}>
+                        return <ul onClick={() => push(`/read/${term.id}`)}>
                             <li>{term.title}</li>
-                            <li>{term.content}</li>
+                            <li>{getHui(term.content)}</li>
                             <li>{term.author}</li>
                             <li>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</li>
                         </ul>
