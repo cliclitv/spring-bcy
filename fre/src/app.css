@@ -95,16 +95,6 @@ button[loading]:before {
     animation: spin 2s linear infinite;
 }
 
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -129,5 +119,23 @@ button[loading]:before {
 
     .write div {
         justify-content: center;
+    }
+
+    header nav ul {
+        width: 168px;
+        overflow-y: auto;
+        flex-wrap: nowrap;
+    }
+
+    header nav ul li{
+        min-width: 56px;
+        position: relative;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    header .logo{
+        width: 60px!important;
+        height: 30px!important;
     }
 }

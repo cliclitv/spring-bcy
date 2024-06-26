@@ -48,6 +48,7 @@ header nav li.active::after {
 header nav ul {
     display: flex;
     justify-content: space-between;
+    flex-wrap: nowrap;
 }
 
 header .top {
