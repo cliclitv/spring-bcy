@@ -64,7 +64,7 @@ export default function Read(props) {
     return (<div class="wrap">
         <div class="main">
 
-            {!post.id || !term.id ? <button loading></button> : <><div class="write">
+            {!term.id ? <button loading></button> : <><div class="write">
                 <div className="info">
                     {'<'}{term.title}{'>'} 由  <Avatar email={term.email} name={term.name}></Avatar>发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> {isEditor ? <a onClick={() => push(`/publish/${props.id}`)}>编辑合集</a> : null}
                 </div>
@@ -77,11 +77,11 @@ export default function Read(props) {
             </div>
 
                 <div className="post">
-                    {post?.title ? <><h2>{post?.title}</h2>
+                    {term.list.length>0 ? <><h2>{post?.title}</h2>
                         {page$()}
                         <p ref={dom => {
                             if (dom) dom.innerHTML = marked(post?.content)
-                        }}></p></> : <div>还没有添加分集</div>}
+                        }}></p></> : <div>还没有单篇</div>}
                 </div>
                 {page$()}</>}
         </div>
