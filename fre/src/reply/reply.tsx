@@ -36,7 +36,7 @@ export default function Reply({ post }) {
         <div class="reply wrap">
             <div className="reply-input">
                 <Avatar email={user.email}></Avatar>
-                <input type="text" placeholder="发个回帖见证此刻" onInput={(e) => setReply(e.target.value)} />
+                <input type="text" placeholder="发个回帖见证一下" onInput={(e) => setReply(e.target.value)} />
                 {user.id ? <button onClick={submit}>发送</button> : <button onclick={() => push('/login')}>登录</button>}
             </div>
 
