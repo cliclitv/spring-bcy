@@ -24,7 +24,8 @@ export default function Header() {
         <header>
             <div className="top wrap" >
                 <div class="bio">
-                    <div className="logo" onClick={() => push('/')}></div>
+                    {/* <div className="logo" onClick={() => push('/')}></div> */}
+                    <h1>有糖</h1>
                     <nav>
                         <ul>
                             <li class="active">文库</li>
