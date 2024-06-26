@@ -33,7 +33,7 @@ export default function Publish(props) {
 
         addpost(post).then(res => {
             alert(res.msg)
-            window.history.back()
+            // window.history.back()
         })
     }
 
