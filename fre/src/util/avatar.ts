@@ -2,8 +2,8 @@ import md5 from 'blueimp-md5'
 import { getUser } from './api'
 
 export function getAvatar(avatar) {
-  if (/^[0-9]+$/.test(avatar)) {
-    return `https://q1.qlogo.cn/g?b=qq&nk=${avatar}&s=640`
+  if (/^[0-9]+@qq.com$/.test(avatar)) {
+    return `https://q1.qlogo.cn/g?b=qq&nk=${avatar.substring(0, avatar.length-6)}&s=640`
   } else {
     let hash = md5(avatar)
     return `https://gravatar.aby.pub/avatar/${hash}?s=100`
