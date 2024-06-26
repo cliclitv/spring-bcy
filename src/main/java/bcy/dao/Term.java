@@ -1,6 +1,8 @@
 package bcy.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Term {
     private Long id;
@@ -13,6 +15,15 @@ public class Term {
     private String name;
     private String email;
     private Date createTime;
+    private List<Post> chapters = new ArrayList<>();
+
+    public List<Post> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(List<Post> chapters) {
+        this.chapters = chapters;
+    }
 
     public Long getUid() {
         return uid;

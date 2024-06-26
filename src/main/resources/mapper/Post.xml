@@ -31,6 +31,14 @@
         order by createTime asc limit #{start}, #{size}
     </select>
 
+    <select id="getPosts" resultType="bcy.dao.Post">
+        select posts.id,posts.title,posts.createTime,posts.updateTime from posts where title != "删除"
+        <if test="pid != null and pid != 0 ">
+            and tag=#{pid}
+        </if>
+        order by createTime asc limit #{start}, #{size}
+    </select>
+
     <insert id="addPost" parameterType="bcy.dao.Post" > 
         insert into posts (title, content, tag, uid, createTime, updateTime,pv) values (#{title}, #{content}, #{tag}, #{uid}, #{createTime}, #{updateTime},0)
     </insert>

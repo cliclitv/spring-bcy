@@ -43,7 +43,7 @@ public class PostApi {
 
     @GetMapping("/posts")
     public JsonResponse<List<Post>> getPosts(String tag, String uid, String pid,
-            String search, String page, String size, String fid, String ids) {
+            String search, String page, String size, String fid) {
         if (uid == null) {
             uid = "0";
         }
@@ -60,7 +60,7 @@ public class PostApi {
             size = "0";
         }
         List<Post> list = postService.getPosts(tag, Long.valueOf(uid), Long.valueOf(pid), search,
-                Long.valueOf(page), Long.valueOf(size), Long.valueOf(fid), ids);
+                Long.valueOf(page), Long.valueOf(size), Long.valueOf(fid));
         return new JsonResponse<>(list);
     }
 

@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import bcy.dao.Post;
+import bcy.dao.PostDao;
 import bcy.dao.Term;
 import bcy.dao.TermDao;
 
@@ -13,9 +15,13 @@ import bcy.dao.TermDao;
 public class TermService {
     @Autowired
     private TermDao termDao;
+    private PostDao postDao;
 
     public Term getTermById(Long id) {
-        return termDao.getTermById(id);
+        Term term = termDao.getTermById(id);
+        List<Post> chapters = postDao.getPostsTitle(id, Long.valueOf(1), Long.valueOf(1000));
+        term.setChapters(chapters);
+        return term;
     }
 
     public void addTerm(Term term) {
