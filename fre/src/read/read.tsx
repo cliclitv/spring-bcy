@@ -49,13 +49,14 @@ export default function Read(props) {
     function page$() {
         return <div className="page">
             <div className="next" onClick={nextPage}>下一篇</div>
-            {new Array(term.count).fill(null).map((c, index) => {
-
-                return <li class={page === index + 1 ? 'active' : ''} onClick={() => {
-                    window.location.hash = '#' + (index + 1)
-                    setPage(index + 1)
-                }}>{index + 1}</li>
-            })}
+            <select onInput={e => {
+                console.log(e.target.value)
+                setPage(parseInt(e.target.value) + 1)
+            }}>
+                {term.list.map((title, index) => {
+                    return <option value={index} selected={page === index + 1}>{title}</option>
+                })}
+            </select>
 
         </div>
     }
