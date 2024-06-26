@@ -1,0 +1,79 @@
+.reply {
+
+    /* margin-bottom: 80px; */
+    width: 600px;
+    margin: 20px auto;
+}
+
+.reply-item {
+    box-sizing: border-box;
+    padding: 10px 0;
+    display: flex;
+}
+
+.reply-block {
+    flex: 1;
+}
+
+.reply-item .avatar {
+    margin: 0;
+    display: block;
+    padding: 5px 10px;
+}
+
+.reply-item p {
+    padding: 5px;
+}
+
+.reply-item p:nth-child(1) {}
+
+.reply-item p:nth-child(3) {
+    color: #888;
+    font-size: 12px;
+}
+
+.reply h1 {
+    font-weight: normal;
+    font-size: 14px !important;
+    padding: 10px;
+}
+
+.reply-item li {
+    display: flex;
+    align-items: center;
+}
+
+.reply-input {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    z-index: 99999;
+    width: 600px;
+    box-sizing: border-box;
+}
+
+.reply-input input {
+    background: var(--bg);
+    color: #fff;
+    height: 36px;
+    border: 0px;
+    border-radius: 8px;
+    padding: 0 10px;
+    flex: 1;
+    margin: 10px;
+}
+
+.reply-input button {
+    height: 36px;
+    padding: 0 20px;
+    background: var(--secondary);
+}
+
+.rate ul {
+    display: flex;
+    justify-content: center;
+}
+
+.reply-item ul {
+    display: flex;
+}

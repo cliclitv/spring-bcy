@@ -1,5 +1,5 @@
 import { get, post } from './post'
-const host = 'https://www.tm0.net'
+const host = 'https://www.yootoo.cc'
 
 export function getPosts(tag, page, pageSize) {
   return get(`${host}/posts?&tag=${tag}&page=${page}&size=${pageSize}`)
@@ -25,17 +25,12 @@ export function getUser(id) {
   return get(`${host}/user/${id}`)
 }
 
-export function getComments(pid, rid, page?, pageSize?) {
-  return get(`${host}/comments?pid=${pid}&rid=${rid}&page=${page || 1}&pageSize=${pageSize || 1000}`)
+export function getReplys(pid, page?, pageSize?) {
+  return get(`${host}/comments?pid=${pid}&page=${page || 1}&size=${pageSize || 1000}`)
 }
 
-export function addComment({ pid, uid, pos, content, rid = 0, ruid, read = 0 }) {
-  return post(`${host}/comment/add`, {
-    content,
-    pos: pos.toString(),
-    uid: getUserInfo().id,
-    pid, rid, ruid, read
-  })
+export function addReply(data) {
+  return post(`${host}/comment`, data)
 }
 
 export function getGonggao() {

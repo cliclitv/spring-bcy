@@ -6,6 +6,7 @@ import { getPosts, getTermDetail, getTerms, getUserInfo } from '../util/api'
 import Avatar from '../component/avatar/avatar'
 import Publish from '../publish/publish-fen'
 import { marked } from 'marked'
+import Reply from '../reply/reply'
 
 function CenterSection({ comp, props }) {
     const Comp = comp
@@ -82,6 +83,9 @@ export default function Read(props) {
                     </div>
                     {page$()}</>}
             </div>
+
+            <Reply post={post}></Reply>
+
             {
                 show != null && <CenterSection comp={Publish} props={{
                     id: show > 0 ? show : null,
