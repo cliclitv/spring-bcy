@@ -56,45 +56,45 @@ export default function Read(props) {
                     setPage(index + 1)
                 }}>{index + 1}</li>
             })}
-            
+
         </div>
     }
 
-    return (
+    return (<div class="wrap">
         <div class="main">
-            <div class="wrap">
-                {!post.id || !term.id ? <button loading></button> : <><div class="write">
-                    <div className="info">
-                        {'<'}{term.title}{'>'} 由  <Avatar email={term.email} name={term.name}></Avatar>发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> {isEditor ? <a onClick={() => push(`/publish/${props.id}`)}>编辑合集</a> : null}
-                    </div>
-                    {isEditor ? <div>
-                        <button className="write-btn" onclick={() => setShow(0)}>
-                            <i class="icon-font icon-writerin-f"> </i>发布单篇</button>
-                        <button className="write-btn" onclick={() => setShow(post.id)} style={{ background: 'var(--secondary)' }}>
-                            <i class="icon-font icon-writerin-f"> </i> 编辑当前单篇</button>
-                    </div> : null}
-                </div>
 
-                    <div className="post">
-                        {post?.title ? <><h2>{post?.title}</h2>
-                            {page$()}
-                            <p ref={dom => {
-                                if (dom) dom.innerHTML = marked(post?.content)
-                            }}></p></> : <div>还没有添加分集</div>}
-                    </div>
-                    {page$()}</>}
+            {!post.id || !term.id ? <button loading></button> : <><div class="write">
+                <div className="info">
+                    {'<'}{term.title}{'>'} 由  <Avatar email={term.email} name={term.name}></Avatar>发布于 <time>{dayjs(term.createTime).format('YYYY-MM-DD HH:mm')}</time> {isEditor ? <a onClick={() => push(`/publish/${props.id}`)}>编辑合集</a> : null}
+                </div>
+                {isEditor ? <div>
+                    <button className="write-btn" onclick={() => setShow(0)}>
+                        <i class="icon-font icon-writerin-f"> </i>发布单篇</button>
+                    <button className="write-btn" onclick={() => setShow(post.id)} style={{ background: 'var(--secondary)' }}>
+                        <i class="icon-font icon-writerin-f"> </i> 编辑当前单篇</button>
+                </div> : null}
             </div>
 
-            <Reply post={post}></Reply>
+                <div className="post">
+                    {post?.title ? <><h2>{post?.title}</h2>
+                        {page$()}
+                        <p ref={dom => {
+                            if (dom) dom.innerHTML = marked(post?.content)
+                        }}></p></> : <div>还没有添加分集</div>}
+                </div>
+                {page$()}</>}
+        </div>
 
-            {
-                show != null && <CenterSection comp={Publish} props={{
-                    id: show > 0 ? show : null,
-                    tag: term.id,
-                    ptitle: term.title,
-                    setShow
-                }}></CenterSection>
-            }
-        </div >
+        <Reply post={post}></Reply>
+
+        {
+            show != null && <CenterSection comp={Publish} props={{
+                id: show > 0 ? show : null,
+                tag: term.id,
+                ptitle: term.title,
+                setShow
+            }}></CenterSection>
+        }
+    </div >
     )
 }

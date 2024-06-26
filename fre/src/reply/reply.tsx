@@ -34,11 +34,6 @@ export default function Reply({ post }) {
     const user = getUserInfo() || {}
     return <div>
         <div class="reply wrap">
-            <div className="reply-input">
-                <Avatar email={user.email}></Avatar>
-                <input type="text" placeholder="发个回帖见证一下" onInput={(e) => setReply(e.target.value)} />
-                {user.id ? <button onClick={submit}>发送</button> : <button onclick={() => push('/login')}>登录</button>}
-            </div>
 
             <h1>共有{replys ? replys.length : 0}条回帖</h1>
             {replys && replys.map(item => {
@@ -54,6 +49,11 @@ export default function Reply({ post }) {
 
                 </div>
             })}
+            <div className="reply-input">
+                <Avatar email={user.email}></Avatar>
+                <input type="text" placeholder="发个回帖见证一下" onInput={(e) => setReply(e.target.value)} />
+                {user.id ? <button onClick={submit}>发送</button> : <button onclick={() => push('/login')}>登录</button>}
+            </div>
         </div>
     </div>
 }

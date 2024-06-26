@@ -1,8 +1,12 @@
 .reply {
 
     /* margin-bottom: 80px; */
-    width: 600px;
-    margin: 20px auto;
+    /* width: 600px; */
+    /* margin: 20px auto; */
+    background: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0 0 8px 8px;
 }
 
 .reply-item {
