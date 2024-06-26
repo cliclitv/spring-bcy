@@ -48,6 +48,7 @@ export default function Read(props) {
 
     function page$() {
         return <div className="page">
+            <div className="next" onClick={nextPage}>下一篇</div>
             {new Array(term.count).fill(null).map((c, index) => {
 
                 return <li class={page === index + 1 ? 'active' : ''} onClick={() => {
@@ -55,7 +56,7 @@ export default function Read(props) {
                     setPage(index + 1)
                 }}>{index + 1}</li>
             })}
-            <div className="next" onClick={nextPage}>下一篇</div>
+            
         </div>
     }
 
