@@ -112,6 +112,10 @@ button[loading]:before {
         width: 100% !important;
     }
 
+    .reply-input{
+        width: 100%!important;
+    }
+
     .write {
         display: block !important;
         margin: 10px 0;
