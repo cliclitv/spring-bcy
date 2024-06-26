@@ -15,6 +15,7 @@ import bcy.dao.TermDao;
 public class TermService {
     @Autowired
     private TermDao termDao;
+    @Autowired
     private PostDao postDao;
 
     public Term getTermById(Long id) {
