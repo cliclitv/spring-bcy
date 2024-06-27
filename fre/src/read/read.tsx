@@ -50,7 +50,6 @@ export default function Read(props) {
         return <div className="page">
             <div className="next" onClick={nextPage}>下一篇</div>
             <select onInput={e => {
-                console.log(e.target.value)
                 setPage(parseInt(e.target.value) + 1)
             }}>
                 {term.list.map((title, index) => {
@@ -77,7 +76,7 @@ export default function Read(props) {
             </div>
 
                 <div className="post">
-                    {term.list.length>0 ? <><h2>{post?.title}</h2>
+                    {term.list.length > 0 ? <><h2>{post?.title}</h2>
                         {page$()}
                         <p ref={dom => {
                             if (dom) dom.innerHTML = marked(post?.content)
@@ -86,7 +85,7 @@ export default function Read(props) {
                 {page$()}</>}
         </div>
 
-        <Reply post={post}></Reply>
+        {post?.id && <Reply post={post}></Reply>}
 
         {
             show != null && <CenterSection comp={Publish} props={{
