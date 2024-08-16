@@ -57,7 +57,7 @@ export default function Publish(props) {
                     <option value="游戏" selected={post.cat === '游戏'}>游戏</option>
                     <option value="影音" selected={post.cat === '影音'}>影音</option>
                     <option value="技术" selected={post.cat === '技术'}>技术</option>
-                    <option value="其它" selected={post.cat === '转载'}>其它</option>
+                    <option value="其它" selected={post.cat === '其它'}>其它</option>
                 </select>
                 {props.id > 0 && <input type="text" value={post.createTime} onInput={e => change('time', e.target.value)} />}
             </div>
