@@ -9,7 +9,7 @@ export default ({ mode }) => {
       assetsDir: '',
     },
     server: {
-      port: 2000
+      port: 4000
     },
     resolve: {
       alias: {

@@ -7,13 +7,13 @@ body {
     font-size: 14px;
     list-style: none;
     color: var(--color);
-    background: #f0f0f5;
-    --primary: #F77649;
+    background: #F8F6F4;
+    --primary: #ffa500;
     --border: #a1dbf3;
     --light: #bae3ff;
     --secondary: #00b8ac;
     --secondary-bg: rgba(108, 230, 123, 0.3);
-    --bg: #f0f0f5;
+    --bg: #F8F6F4;
     --black: rgb(37, 37, 37);
     --white: #fff;
     --border: 0 1px 2px #ddd;

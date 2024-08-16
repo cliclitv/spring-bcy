@@ -42,7 +42,7 @@ export default function App(props) {
                 </div>
                 <div className="terms">
                     <ul>
-                        <li>文名</li>
+                        <li>合集</li>
                         <li>简介</li>
                         <li>作者</li>
                         <li>发布时间</li>
