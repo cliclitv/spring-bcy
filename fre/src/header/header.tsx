@@ -24,12 +24,13 @@ export default function Header() {
         <header>
             <div className="top wrap" >
                 <div class="bio">
-                    {/* <div className="logo" onClick={() => push('/')}></div> */}
+                    <div className="logo" onClick={() => push('/')}></div>
                     <h1 onClick={() => push('/')}>菠萝饭</h1>
                     <nav>
                         <ul>
                             <li class="active">发现</li>
                             <li>同人</li>
+                            <li>申请</li>
                             {user.id == null && <li onClick={() => push('/login')}>登录</li>}
                         </ul>
                     </nav>
