@@ -5,7 +5,7 @@ public class User {
     private String name;
     private String pwd;
     private String email;
-    private String sign;
+    private String bio;
     private Integer level;
 
     // 粉丝数
@@ -53,8 +53,8 @@ public class User {
         return email;
     }
 
-    public String getSign() {
-        return sign;
+    public String getBio() {
+        return bio;
     }
 
     public Integer getLevel() {
@@ -77,8 +77,8 @@ public class User {
         this.email = email;
     }
 
-    public void setSign(String sign) {
-        this.sign = sign;
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 
     public void setLevel(Integer level) {

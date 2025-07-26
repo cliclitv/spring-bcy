@@ -37,8 +37,8 @@ public class UserService {
 
         user.setPwd(md5Pwd);
 
-        if (user.getSign() == null) {
-            user.setSign("这个人很懒，木有签名~");
+        if (user.getBio() == null) {
+            user.setBio("这个人很懒，木有签名~");
         }
 
         userDao.addUser(user);

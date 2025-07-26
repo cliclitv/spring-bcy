@@ -4,20 +4,18 @@
 <mapper namespace="bcy.dao.UserDao">
 
     <select id="getUserByEmail" parameterType="java.lang.String" resultType="bcy.dao.User"> select *
-        from users where email = #{email} </select>
+        from user where email = #{email} </select>
 
     <select id="getUserByName" parameterType="java.lang.String" resultType="bcy.dao.User"> select *
-        from users where name = #{name} </select>
+        from user where name = #{name} </select>
 
     <select id="getUserById" parameterType="java.lang.Long" resultType="bcy.dao.User"> select
-        users.id,users.name,users.pwd,users.email,users.sign,users.level,(select count(*) from
-        follows where uid=#{id} and type="follow") as following,(select count(*) from follows where tid=#{id} and type='follow') as
-        followers,(select count(*) from posts where uid=#{id}) as postcount from users where id =
+        user.id,user.name,user.pwd,user.email,user.bio,user.level from user where id =
         #{id} </select>
 
-    <insert id="addUser" parameterType="bcy.dao.User"> insert into users (name, email, pwd, sign,
+    <insert id="addUser" parameterType="bcy.dao.User"> insert into user (name, email, pwd, bio,
         level) values (#{name}, #{email}, #{pwd}, "这个人很懒，木有签名~", 1) </insert>
 
-    <update id="updateUser" parameterType="bcy.dao.User"> update users set name=#{name},
-        email=#{email}, pwd=#{pwd}, sign=#{sign}, level=#{level} where id = #{id} </update>
+    <update id="updateUser" parameterType="bcy.dao.User"> update user set name=#{name},
+        email=#{email}, pwd=#{pwd}, bio=#{bio}, level=#{level} where id = #{id} </update>
 </mapper>
