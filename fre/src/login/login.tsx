@@ -17,7 +17,7 @@ export default function Login() {
     }
 
     function login() {
-        post("https://www.yootoo.cc/user/login", { email:name, pwd }).then((res: any) => {
+        post("https://www.fubook.net/user/login", { email:name, pwd }).then((res: any) => {
             console.log(res)
             if (res.code === 200) {
                 window.localStorage.setItem('token', res.data)

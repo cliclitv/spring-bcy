@@ -1,5 +1,5 @@
 import { get, post } from './post'
-const host = 'https://www.yootoo.cc'
+export const host = 'https://www.fubook.net'
 
 export function getPosts(tag, page, pageSize) {
   return get(`${host}/posts?&tag=${tag}&page=${page}&size=${pageSize}`)
