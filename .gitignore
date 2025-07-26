@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 **/src/main/resources/application.yml
+**/src/main/resources/db
 **/node_modules/
 **/**/node_modules/
 
@@ -26,6 +27,7 @@ target/
 /nbproject/private/
 /nbbuild/
 /dist/
+/db/
 /nbdist/
 /.nb-gradle/
 build/
