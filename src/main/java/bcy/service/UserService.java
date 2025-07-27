@@ -1,6 +1,5 @@
 package bcy.service;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import bcy.dao.User;
-import bcy.dao.UserDao;
 import bcy.service.util.ConditionException;
 import bcy.service.util.MD5Util;
 import bcy.service.util.TokenUtil;
@@ -118,7 +116,7 @@ public class UserService {
     }
 
     public Map<String, Object> getUserByEmail(String email) {
-        String sql = "SELECT * FROM users WHERE email = ?";
+        String sql = "SELECT * FROM user WHERE email = ?";
         try {
             return jdbcTemplate.queryForMap(sql, email);
         } catch (EmptyResultDataAccessException e) {
@@ -127,7 +125,7 @@ public class UserService {
     }
 
     public Map<String, Object> getUserByName(String name) {
-        String sql = "SELECT * FROM users WHERE name = ?";
+        String sql = "SELECT * FROM user WHERE name = ?";
         try {
             return jdbcTemplate.queryForMap(sql, name);
         } catch (EmptyResultDataAccessException e) {
@@ -139,7 +137,7 @@ public class UserService {
         if (id == 0) {
             id = userSupport.getCurrentUserId();
         }
-        String sql = "SELECT * FROM users WHERE id = ?";
+        String sql = "SELECT * FROM user WHERE id = ?";
         try {
             return jdbcTemplate.queryForMap(sql, id);
         } catch (EmptyResultDataAccessException e) {

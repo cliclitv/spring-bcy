@@ -1,6 +1,7 @@
 package bcy.api;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +24,8 @@ public class ReplyApi {
     private ReplyService replyService;
 
     @GetMapping("/reply/{id}")
-    public JsonResponse<Reply> getCurrentReply(@PathVariable String id) {
-        Reply reply = replyService.getReplyById(Long.valueOf(id));
-        return new JsonResponse<>(reply);
+    public Map<String, Object> getCurrentReply(@PathVariable String id) {
+        return replyService.getReplyById(Long.valueOf(id));
     }
 
     @PostMapping("/reply")
@@ -35,7 +35,7 @@ public class ReplyApi {
     }
 
     @GetMapping("/replys")
-    public JsonResponse<List<Reply>> getReplys(String pid, String cid, String page, String size) {
+    public List<Map<String, Object>> getReplys(String pid, String cid, String page, String size) {
         if (pid == null) {
             pid = "0";
         }
@@ -43,10 +43,9 @@ public class ReplyApi {
             cid = "0";
         }
 
-        List<Reply> list = replyService.getReplys(Long.valueOf(pid), Long.valueOf(cid), Long.valueOf(page),
+        return replyService.getReplies(Long.valueOf(pid), Long.valueOf(cid), Long.valueOf(page),
                 Long.valueOf(size));
 
-        return new JsonResponse<>(list);
     }
 
 }

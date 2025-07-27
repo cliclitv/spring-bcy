@@ -9,7 +9,7 @@ public class Reply {
     private String content;
     private Long pid;
     private Long uid;
-    private Long cid;
+    private Long rid;
     private Date createTime;
     private String name;
     private String email;
@@ -72,12 +72,12 @@ public class Reply {
         this.uid = uid;
     }
 
-    public Long getCid() {
-        return cid;
+    public Long getRid() {
+        return rid;
     }
 
-    public void setCid(Long cid) {
-        this.cid = cid;
+    public void setRid(Long cid) {
+        this.rid = cid;
     }
 
     public Date getCreateTime() {

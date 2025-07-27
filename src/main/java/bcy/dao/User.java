@@ -8,35 +8,6 @@ public class User {
     private String bio;
     private Integer level;
 
-    // 粉丝数
-    private Long following;
-    private long followers;
-    private Long postcount;
-
-    public Long getPostcount() {
-        return postcount;
-    }
-
-    public void setPostcount(Long postcount) {
-        this.postcount = postcount;
-    }
-
-    public Long getFollowing() {
-        return following;
-    }
-
-    public void setFollowing(Long following) {
-        this.following = following;
-    }
-
-    public long getFollowers() {
-        return followers;
-    }
-
-    public void setFollowers(long followers) {
-        this.followers = followers;
-    }
-
     public Long getId() {
         return id;
     }

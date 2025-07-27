@@ -6,21 +6,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import bcy.dao.Reply;
-import bcy.dao.ReplyDao;
 import bcy.service.util.ConditionException;
+import jakarta.annotation.Resource;
 
 @Service
 public class ReplyService {
-    @Autowired
-    private ReplyDao replyDao;
+
+    @Resource
+    private JdbcTemplate jdbcTemplate;
 
     public void addReply(Reply reply) {
 
-        Reply dbReply = this.getReplyById(reply.getId());
+        Map<String, Object> dbReply = this.getReplyById(reply.getId());
 
         if (dbReply != null) {
             throw new ConditionException("评论已存在");
@@ -30,34 +32,59 @@ public class ReplyService {
 
         reply.setCreateTime(now);
 
-        replyDao.addReply(reply);
+        String sql = "insert into reply (content, pid, uid, rid, createTime) values (?, ?, ?, ?, ?)";
 
+        Object[] objects = new Object[3];
+        objects[0] = reply.getContent();
+        objects[1] = reply.getPid();
+        objects[2] = reply.getUid();
+        objects[3] = reply.getRid();
+        objects[4] = reply.getCreateTime();
+        jdbcTemplate.update(sql, objects);
     }
 
-    public Reply getReplyById(Long id) {
-        return replyDao.getReplyById(id);
+    public Map<String, Object> getReplyById(Long id) {
+
+        String sql = "SELECT * FROM reply WHERE id = ?";
+        try {
+            return jdbcTemplate.queryForMap(sql, id);
+        } catch (EmptyResultDataAccessException e) {
+            return null; // 没有找到用户
+        }
     }
 
-    public List<Reply> getReplys(Long pid, Long cid, Long page, Long size) {
+    public List<Map<String, Object>> getReplies(Long pid, Long rid, Long page, Long size) {
         Long start = size * (page - 1);
-        List<Reply> replys = replyDao.getReplys(pid, cid, start, size);
-        List<Reply> list = new ArrayList<>();
-        Map<Long, Reply> replyMap = new HashMap<>();
+        // List<Map<String, Object>> replys = replyDao.getReplys(pid, cid, start, size);
 
-        for (Reply reply : replys) {
-            Long parentid = reply.getCid();
-            Long id = reply.getId();
+        String sql = "select * from reply LEFT JOIN user ON reply.uid = user.id where pid=? order by createTime desc limit ?, ?";
+        Object[] objects = new Object[3];
+        objects[0] = pid;
+        objects[1] = page;
+        objects[2] = size;
+
+        List<Map<String, Object>> replys = jdbcTemplate.queryForList(sql, objects);
+
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<Long, Map<String, Object>> replyMap = new HashMap<>();
+
+        for (Map<String, Object> reply : replys) {
+            Long parentid =(Long) reply.get("rid");
+            Long id = (Long) reply.get("id");
             if (parentid == 0) {
                 list.add(reply);
             }
             replyMap.put(id, reply);
         }
-        for (Reply reply : replys) {
-            Long parentid = reply.getCid();
+        for (Map<String, Object> reply : replys) {
+            Long parentid = (Long) reply.get("rid");
 
             if (parentid != 0) {
-                Reply parent = replyMap.get(parentid);
-                parent.getReplies().add(reply);
+                Map<String, Object> parent = replyMap.get(parentid);
+                @SuppressWarnings("unchecked")
+                List<Map<String, Object>> replies = (List<Map<String, Object>>) parent.get("replies");
+            replies.add(reply);
+                replies.add(reply);
             }
         }
         return list;
