@@ -55,12 +55,11 @@ public class ReplyService {
 
     public List<Map<String, Object>> getReplies(Long pid, Long rid, Long page, Long size) {
         Long start = size * (page - 1);
-        // List<Map<String, Object>> replys = replyDao.getReplys(pid, cid, start, size);
 
         String sql = "select * from reply LEFT JOIN user ON reply.uid = user.id where pid=? order by createTime desc limit ?, ?";
         Object[] objects = new Object[3];
         objects[0] = pid;
-        objects[1] = page;
+        objects[1] = start;
         objects[2] = size;
 
         List<Map<String, Object>> replys = jdbcTemplate.queryForList(sql, objects);

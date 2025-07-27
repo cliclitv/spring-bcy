@@ -12,17 +12,8 @@ public class Post {
     private Long uid;
     private String name;
     private String email;
-    private Integer collects;
+    private Integer likes;
     private Long pv;
-    private Long cv;
-
-    public Long getCv() {
-        return cv;
-    }
-
-    public void setCv(Long cv) {
-        this.cv = cv;
-    }
 
     public Long getPv() {
         return pv;
@@ -33,11 +24,11 @@ public class Post {
     }
 
     public Integer getCollects() {
-        return collects;
+        return likes;
     }
 
-    public void setCollects(Integer collects) {
-        this.collects = collects;
+    public void setCollects(Integer likes) {
+        this.likes = likes;
     }
 
     public String getName() {
