@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import bcy.dao.User;
 import bcy.dao.UserDao;
@@ -17,12 +17,13 @@ import jakarta.annotation.Resource;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserDao userDao;
     private static String salt = "clicli&bcy@123.";
 
     @Autowired
     private UserSupport userSupport;
+
+    @Resource
+    private JdbcTemplate jdbcTemplate;
 
     public void addUser(User user) {
 
@@ -31,7 +32,7 @@ public class UserService {
             return;
         }
 
-        User dbUser = this.getUserByEmail(user.getEmail());
+        Map<String, Object> dbUser = this.getUserByEmail(user.getEmail());
 
         if (dbUser != null) {
             throw new ConditionException("邮箱已注册！");
@@ -47,7 +48,13 @@ public class UserService {
             user.setBio("这个人很懒，木有签名~");
         }
 
-        userDao.addUser(user);
+        String sql = "insert into user (name, email, pwd, bio, level) values (?, ?, ?, '这个人很懒，木有签名~', 1)";
+
+        Object[] objects = new Object[3];
+        objects[0] = user.getName();
+        objects[1] = user.getEmail();
+        objects[2] = user.getPwd();
+        jdbcTemplate.update(sql, objects);
 
     }
 
@@ -55,7 +62,7 @@ public class UserService {
 
         String email = user.getEmail();
 
-        User dbUser = email.contains("@") ? this.getUserByEmail(email) : this.getUserByName(email);
+        Map<String, Object> dbUser = email.contains("@") ? this.getUserByEmail(email) : this.getUserByName(email);
 
         if (dbUser == null) {
             throw new ConditionException("当前邮箱不存在！");
@@ -65,13 +72,13 @@ public class UserService {
 
         String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt), salt);
 
-        String dbPwd = dbUser.getPwd();
+        String dbPwd = dbUser.get("pwd").toString();
 
         if (!md5Pwd.equals(dbPwd)) {
             throw new ConditionException("密码错误！");
         }
 
-        return TokenUtil.generateToken(dbUser.getId(), dbUser.getLevel());
+        return TokenUtil.generateToken((Long) dbUser.get("id"), (Integer) dbUser.get("level"));
     }
 
     public void updateUser(User user) {
@@ -79,41 +86,65 @@ public class UserService {
         Long currentId = userSupport.getCurrentUserId();
         Integer currentLevel = userSupport.getCurrentUserLevel();
 
-        User dbUser = this.getUserById(user.getId());
+        Map<String, Object> dbUser = this.getUserById(user.getId());
 
         if (dbUser == null) {
             throw new ConditionException("用户不存在");
         }
 
-        if (dbUser.getId() != currentId && currentLevel < 4) { // 不是当前用户或管理
+        if (dbUser.get("id") != currentId && currentLevel < 4) { // 不是当前用户或管理
             throw new ConditionException("没有权限");
         }
 
         String pwd = user.getPwd();
         if (pwd == null || pwd == "") { // 密码留空
-            user.setPwd(dbUser.getPwd());
+            user.setPwd(dbUser.get("pwd").toString());
         } else {
             String md5Pwd = MD5Util.sign(MD5Util.sign(pwd, salt), salt);
             user.setPwd(md5Pwd);
         }
 
-        userDao.updateUser(user);
+        String sql = "update user set name=?,email=?, pwd=?, bio=?, level=? where id = ?";
+
+        Object[] objects = new Object[6];
+        objects[0] = user.getName();
+        objects[1] = user.getEmail();
+        objects[2] = user.getPwd();
+        objects[3] = user.getBio();
+        objects[4] = user.getLevel();
+        objects[5] = user.getId();
+        jdbcTemplate.update(sql, objects);
 
     }
 
-    public User getUserByEmail(String email) {
-        return userDao.getUserByEmail(email);
+    public Map<String, Object> getUserByEmail(String email) {
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try {
+            return jdbcTemplate.queryForMap(sql, email);
+        } catch (EmptyResultDataAccessException e) {
+            return null; // 没有找到用户
+        }
     }
 
-    public User getUserByName(String name) {
-        return userDao.getUserByName(name);
+    public Map<String, Object> getUserByName(String name) {
+        String sql = "SELECT * FROM users WHERE name = ?";
+        try {
+            return jdbcTemplate.queryForMap(sql, name);
+        } catch (EmptyResultDataAccessException e) {
+            return null; // 没有找到用户
+        }
     }
 
-    public User getUserById(Long id) {
+    public Map<String, Object> getUserById(Long id) {
         if (id == 0) {
             id = userSupport.getCurrentUserId();
         }
-        return userDao.getUserById(id);
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try {
+            return jdbcTemplate.queryForMap(sql, id);
+        } catch (EmptyResultDataAccessException e) {
+            return null; // 没有找到用户
+        }
     }
 
 }
