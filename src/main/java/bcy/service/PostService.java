@@ -85,7 +85,7 @@ public class PostService {
     }
 
     public List<Map<String, Object>> getPosts(String tag, Long uid, Long pid, String search, Long page,
-            Long size, Long fid) {
+            Long size) {
         String[] tags = new String[0];
         if (tag != null) {
             tags = tag.split(",");

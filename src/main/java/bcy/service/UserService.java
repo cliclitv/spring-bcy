@@ -76,7 +76,7 @@ public class UserService {
             throw new ConditionException("密码错误！");
         }
 
-        return TokenUtil.generateToken((Long) dbUser.get("id"), (Integer) dbUser.get("level"));
+        return TokenUtil.generateToken(Integer.parseInt(dbUser.get("id").toString()), Integer.parseInt(dbUser.get("level").toString()));
     }
 
     public void updateUser(User user) {
