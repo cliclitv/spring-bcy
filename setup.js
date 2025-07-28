@@ -10,10 +10,8 @@ spring:
         resources:
             static-locations: "classpath:/dist"
     datasource:
-        url: ${databaseurl}
-        username: ${databaseuser}
-        password: ${databasepwd}
-        driver-class-name: 'com.mysql.cj.jdbc.Driver' 
+        url: jdbc:sqlite:\${user.dir}/src/main/resources/db/bcy.db
+        driver-class-name: org.sqlite.JDBC
 
 mybatis:
     mapper-locations: classpath:/mapper/*.xml
