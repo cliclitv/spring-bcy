@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'fre'
 import './home.css'
+import Nav from '../header/nav'
 
 export function homeLoader(){
     return {
@@ -9,7 +10,10 @@ export function homeLoader(){
 
 export default function App(props) {
     return (
-        <div>home</div>
+        <div>
+            
+            <Nav></Nav>
+        </div>
 
     )
 }

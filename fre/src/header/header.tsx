@@ -1,8 +1,5 @@
-import { render, useState, useEffect } from "fre"
 import { getUserInfo } from "../util/api"
-import Avatar from "../component/avatar/avatar"
 import './header.css'
-import { push } from "../router"
 
 function debounce(func, wait) {
     let timeout
@@ -22,7 +19,7 @@ export default function Header() {
 
     return (
         <header>
-            <nav className="top wrap" >
+            <div className="top wrap" >
                 <ul>
                     <li class="active">首页</li>
                     <li>APP</li>
@@ -37,8 +34,7 @@ export default function Header() {
                 <ul class="right">
                     <li>赞助</li>
                 </ul>
-            </nav>
-
+            </div>
         </header>
     )
 }

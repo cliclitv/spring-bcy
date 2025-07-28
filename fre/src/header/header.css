@@ -3,16 +3,16 @@ header {
     padding: 0;
 }
 
-header ul{
+header ul {
     display: flex;
 
 }
 
-header ul li{
-    padding:15px 10px;
+header ul li {
+    padding: 15px 10px;
 }
 
-header ul li.active{
+header ul li.active {
     font-weight: bold;
     background: url(https://www.ciweimao.com/resources/image/icon-cat-claw.png) no-repeat center bottom !important;
 }
@@ -23,22 +23,22 @@ header nav ul {
     flex-wrap: nowrap;
 }
 
-header .search{
+header .search {
     display: flex;
 }
 
-.search input{
+.search input {
     width: 200px;
     border: 0;
     padding: 8px 10px;
     border: 1px solid var(--primary);
 }
 
-.icon-search1{
+.icon-search1 {
     font-size: 18px;
 }
 
-.search button{
+.search button {
     padding: 8px 15px;
 }
 
@@ -53,6 +53,56 @@ header .bio {
     display: flex;
 }
 
+nav {
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: -2px;
+}
+
+/* nav ul::after {
+    position: absolute;
+    bottom: -2px;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+} */
+
+nav li {
+    font-size: 22px;
+    width: 20%;
+    padding: 30px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+nav li.active {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-bottom: 0 none;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 1px -3px 3px #dcdcdc;
+    
+}
+
+nav ul li{
+    background: url(https://www.ciweimao.com/resources/image/webicon.png) no-repeat 0 0;
+}
+
+nav section {
+    padding: 40px 20px 50px;
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    background: #fff;
+}
 
 
 footer {
