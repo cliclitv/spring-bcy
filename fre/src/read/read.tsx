@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from 'fre'
 import './read.css'
 
-import { push } from '../use-route'
+import { push } from '../router'
 import { getPosts, getTermDetail, getTerms, getUserInfo } from '../util/api'
 import Avatar from '../component/avatar/avatar'
 import Publish from '../publish/publish-fen'

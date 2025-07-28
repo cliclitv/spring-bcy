@@ -4,30 +4,34 @@
 }
 
 body {
-    font-size: 14px;
+    font-size: 16px;
     list-style: none;
     color: var(--color);
-    background: #F8F6F4;
-    --primary: #ffae53;
-    --border: #a1dbf3;
-    --light: #bae3ff;
+    background: #fafafa;
+    --primary: #fbc02d;
+    --border: #bae3ff;
+    --light: #fff7e8;
     --secondary: #64a06e;
     --secondary-bg: rgba(108, 230, 123, 0.3);
-    --bg: #F8F6F4;
+    --bg: #fff7e8;
     --black: rgb(37, 37, 37);
     --white: #fff;
     --border: 0 1px 2px #ddd;
-    --color: rgb(55, 65, 81);
+    --color: #333;
     --background: #fafafa;
     --primary-bg: rgba(230, 108, 167, 0.1);
     --shadow: 2px 2px 0px rgba(5, 20, 50, 0.1)
 }
 
+.wrap{
+    width: 1080px;
+    margin: 0 auto;
+}
+
 button {
     background: var(--primary);
-    color: #fff;
-    padding: 5px 30px;
-    border-radius: 8px;
+    color: #333;
+    padding: 5px 20px;
     border: none;
     cursor: pointer;
 }

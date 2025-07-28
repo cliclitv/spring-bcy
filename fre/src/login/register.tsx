@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'fre'
-import { A, push } from '../use-route'
+import { A, push } from '../router'
 import { post } from '../util/post'
 import './login.css'
 import { getUserInfo, getUser, updateUser, addUser } from '../util/api'

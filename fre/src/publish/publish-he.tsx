@@ -1,5 +1,5 @@
 import { useState, useEffect } from "fre"
-import { push } from "../use-route"
+import { push } from "../router"
 import { addTerm, getTermDetail, getUserInfo, updatePost } from "../util/api"
 import './publish.css'
 

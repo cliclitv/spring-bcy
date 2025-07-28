@@ -1,59 +1,45 @@
 header {
     background: var(--bg);
-    padding: 20px;
+    padding: 0;
 }
 
-header .logo {
-    cursor: pointer;
-    background: url(https://image.planet.youku.com/img/100/16/78404/i_1722172478404_61df78e920bcbf17934a992ed869f94c_b_w520h520.png);
-    width: 40px;
-    height: 50px;
-    background-size: cover;
+header ul{
+    display: flex;
 
 }
 
-header h1{
-    font-family: '黑体';
+header ul li{
+    padding:15px 10px;
+}
+
+header ul li.active{
     font-weight: bold;
-    font-size: 30px;
-    cursor: pointer;
-    padding: 10px 10px 0 10px;
-    color: var(--primary);
-}
-
-header nav {
-    color: var(--color);
-}
-
-header nav li {
-    padding: 12px;
-    position: relative;
-    cursor: pointer;
-    /* font-weight: bold; */
-    font-size: 16px;
-}
-
-header nav li.active{
-    color: var(--primary);
-}
-
-header nav li.active::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    height: 6px;
-    width: 6px;
-    border-bottom: 3.6px solid var(--primary);
-    border-left: 3.6px solid var(--primary);
-    transform-origin: 50% 50%;
-    transform: rotate(-45deg) translate(-25%, -50%);
+    background: url(https://www.ciweimao.com/resources/image/icon-cat-claw.png) no-repeat center bottom !important;
 }
 
 header nav ul {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
+}
+
+header .search{
+    display: flex;
+}
+
+.search input{
+    width: 200px;
+    border: 0;
+    padding: 8px 10px;
+    border: 1px solid var(--primary);
+}
+
+.icon-search1{
+    font-size: 18px;
+}
+
+.search button{
+    padding: 8px 15px;
 }
 
 header .top {
@@ -66,6 +52,8 @@ header .bio {
     align-items: center;
     display: flex;
 }
+
+
 
 footer {
     text-align: center;

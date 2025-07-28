@@ -1,35 +1,35 @@
 import { render, Fragment, } from "fre"
-import { push, useRoutes } from './use-route'
+import Router, { push } from './router'
 import './app.css'
 import Header from "./header/header"
 import Footer from "./header/footer"
 import { getToken } from "./util/post"
 import { getUserInfo } from "./util/api"
+import { homeLoader } from "./home/home"
 
-const routes = {
-    '/': import('./home/home'),
-    '/login': import('./login/login'),
-    '/register': import('./login/register'),
-    '/publish/:id': import('./home/home'),
-    '/upload/:id': import('./read/read'),
-    '/read/:id': import('./read/read'),
-}
+const routes = [
+    {
+        path: '/',
+        element: import('./home/home'),
+        loader: homeLoader
+    },
+    {
+        path: '/:action',
+        element: import('./home/home'),
+        loader: homeLoader
+    }
+]
 
 const App = (props) => {
-    let route = useRoutes(routes)
-    let token = getToken()
     let user = getUserInfo()
     if(!user){
         push('/login')
     }
-    if (token) {
-        // 不需要登录，直接写 localstorage
-        window.localStorage.setItem('token', token)
-    }
+
     return <main>
-        {!token && <Header />}
-        {route}
-        {!token && <Footer />}
+        <Header />
+        <Router routes={routes} fallback={<div>Loading page...</div>} />
+        <Footer />
     </main>
 }
 

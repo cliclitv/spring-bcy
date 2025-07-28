@@ -1,6 +1,6 @@
 import { useEffect, useState, Fragment } from 'fre'
 import Avatar from '../component/avatar/avatar'
-import { push } from '../use-route'
+import { push } from '../router'
 import { addReply, getReplys, getUserInfo } from '../util/api'
 import './reply.css'
 import Markdown from '../component/md/md'
