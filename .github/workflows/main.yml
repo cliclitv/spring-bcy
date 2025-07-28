@@ -49,7 +49,7 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: root
           password: ${{ secrets.DEPLOY_PASSWORD }}
-          port: 29073
+          port: 22
           script: |
             docker stop bcy
             docker rm bcy
